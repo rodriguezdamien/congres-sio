@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace congres.dll
 {
-    public class Class1
+    public class Session
     {
     }
 }
