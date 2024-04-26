@@ -8,5 +8,6 @@ namespace congres.dll
 {
     public class Congressiste
     {
+
     }
 }
