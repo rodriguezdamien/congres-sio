@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinCongres", "WinCongres\WinCongres.csproj", "{EFD12586-DC69-4E3E-8D0E-83CC18D8F728}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "Éléments de solution", "{DC4416E6-1333-48CF-86E7-E802D840BC73}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Congres.DLL", "congres.dll\Congres.DLL.csproj", "{9FADF9FD-9B92-4404-B9A6-E22CEE0196FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Congres.Test", "Congres.Test\Congres.Test.csproj", "{F36E78C4-5309-459C-AFA3-94419FDA08FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFD12586-DC69-4E3E-8D0E-83CC18D8F728}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFD12586-DC69-4E3E-8D0E-83CC18D8F728}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFD12586-DC69-4E3E-8D0E-83CC18D8F728}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFD12586-DC69-4E3E-8D0E-83CC18D8F728}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FADF9FD-9B92-4404-B9A6-E22CEE0196FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FADF9FD-9B92-4404-B9A6-E22CEE0196FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FADF9FD-9B92-4404-B9A6-E22CEE0196FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FADF9FD-9B92-4404-B9A6-E22CEE0196FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F36E78C4-5309-459C-AFA3-94419FDA08FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F36E78C4-5309-459C-AFA3-94419FDA08FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F36E78C4-5309-459C-AFA3-94419FDA08FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F36E78C4-5309-459C-AFA3-94419FDA08FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E4DA6F49-FFEC-4B6B-A154-98D6C9CD943F}
+	EndGlobalSection
+EndGlobal
