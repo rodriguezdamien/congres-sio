@@ -131,15 +131,25 @@ INSERT INTO PARTICIPER (idCongressiste, idActivite) VALUES
 GO
 
 -- Procédure stockée qui renvoie le nombre de place disponible pour un idSession donné
-drop procedure if exists dbo.nbPlaceDispo;
+drop procedure if exists dbo.nbPlaceDispoSession;
 go
-CREATE PROCEDURE nbPlaceDispo
+CREATE PROCEDURE nbPlaceDispoSession
 @idS INT
 AS
    declare @nbPlacePrise INT
    select @nbPlacePrise=count(*) from INSCRIRE where idSession = @idS
    select SUM(nbPlace - @nbPlacePrise) from SESSION where id = @idS
 
-exec nbPlaceDispo '2'
+exec nbPlaceDispoSession '2'
 
 -- Procédure stockée qui renvoie le nombre de place disponible pour un idActivite donné
+drop procedure if exists dbo.nbPlaceDispoActivite;
+go
+CREATE PROCEDURE nbPlaceDispoActivite
+@idA INT
+AS
+   declare @nbPlaceReserver INT
+   select @nbPlaceReserver = count(*) from PARTICIPER where idActivite = @idA
+   select SUM(nbPlace - @nbPlaceReserver) from SESSION where id = @idA
+   
+exec nbPlaceDispoActivite '2'
