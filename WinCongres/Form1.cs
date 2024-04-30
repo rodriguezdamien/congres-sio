@@ -15,7 +15,6 @@ namespace WinCongres
         public Form1()
         {
             InitializeComponent();
-            int bg = 1;
         }
     }
 }
