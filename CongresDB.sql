@@ -2,7 +2,14 @@ DROP DATABASE IF EXISTS CongresDB;
 
 CREATE DATABASE CongresDB;
 
-USE CongresDB;
+use CongresDB;
+go
+
+create login AppliGestCongres with password = 'MdpComplexe34';
+GO
+
+create user AppliGestCongres for login AppliGestCongres;
+go
 
 DROP TABLE IF EXISTS SESSION;
 CREATE TABLE SESSION(
@@ -138,9 +145,10 @@ CREATE PROCEDURE nbPlaceDispoSession
 AS
    declare @nbPlacePrise INT
    select @nbPlacePrise=count(*) from INSCRIRE where idSession = @idS
-   select SUM(nbPlace - @nbPlacePrise) from SESSION where id = @idS
+   select SUM(nbPlace - @nbPlacePrise) as nbPlaceDispo from SESSION where id = @idS
 
 exec nbPlaceDispoSession '2'
+
 
 -- Procédure stockée qui renvoie le nombre de place disponible pour un idActivite donné
 drop procedure if exists dbo.nbPlaceDispoActivite;
@@ -149,7 +157,7 @@ CREATE PROCEDURE nbPlaceDispoActivite
 @idA INT
 AS
    declare @nbPlaceReserver INT
-   select @nbPlaceReserver = count(*) from PARTICIPER where idActivite = @idA
-   select SUM(nbPlace - @nbPlaceReserver) from SESSION where id = @idA
-   
-exec nbPlaceDispoActivite '2'
+   select @nbPlaceReserver = count(*)  from PARTICIPER where idActivite = @idA
+   select SUM(nbPlace - @nbPlaceReserver) as nbPlaceDispo from ACTIVITE where id = @idA
+
+exec nbPlaceDispoActivite '1'
