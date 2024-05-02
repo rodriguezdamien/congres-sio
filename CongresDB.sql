@@ -147,7 +147,6 @@ AS
    select @nbPlacePrise=count(*) from INSCRIRE where idSession = @idS
    select SUM(nbPlace - @nbPlacePrise) as nbPlaceDispo from SESSION where id = @idS
 
-exec nbPlaceDispoSession '2'
 
 
 -- Procédure stockée qui renvoie le nombre de place disponible pour un idActivite donné
@@ -160,4 +159,15 @@ AS
    select @nbPlaceReserver = count(*)  from PARTICIPER where idActivite = @idA
    select SUM(nbPlace - @nbPlaceReserver) as nbPlaceDispo from ACTIVITE where id = @idA
 
-exec nbPlaceDispoActivite '1'
+-- Procédure stockée qui renvoie le montant totale à régler pour un congressiste donné
+DROP PROCEDURE IF EXISTS dbo.montantTotal
+GO
+CREATE PROCEDURE montantTotal 
+    @idC INT
+AS
+    DECLARE @accompte DECIMAL(15,2)
+    DECLARE @montantT DECIMAL(15,2)
+
+    SELECT @montantT = prix FROM HEBERGEMENT WHERE id = (SELECT idHebergement FROM CONGRESSISTE WHERE id = @idC)
+    SELECT @montantT = @montantT + ISNULL(SUM(prix), 0) FROM ACTIVITE WHERE id IN (SELECT idActivite FROM PARTICIPER WHERE idCongressiste = @idC)
+    SELECT SUM(@montantT - accompte) as montantTotal FROM CONGRESSISTE WHERE id = @idC
