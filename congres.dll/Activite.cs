@@ -33,5 +33,5 @@ namespace congres.dll
             this.Prix = prix;
             this.EstMatin = estMatin;
         }
-    }
+     }
 }
