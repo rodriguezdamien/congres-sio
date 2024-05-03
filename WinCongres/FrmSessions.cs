@@ -1,4 +1,5 @@
-﻿using System;
+﻿using congres.dll.Managers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,16 +11,16 @@ using System.Windows.Forms;
 
 namespace WinCongres
 {
-    public partial class FrmMDI : Form
+    public partial class FrmSessions : Form
     {
-        public FrmMDI()
+        public FrmSessions()
         {
             InitializeComponent();
+            bindSrcSessions.DataSource = SessionManager.GetSessions();
         }
 
-        private void menuBtnSessions_Click(object sender, EventArgs e)
+        private void bindSrcSession_CurrentChanged(object sender, EventArgs e)
         {
-            FrmSessions unFrmSessions = new FrmSessions();
 
         }
     }

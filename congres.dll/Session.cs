@@ -1,6 +1,7 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +17,8 @@ namespace congres.dll
         public decimal Prix { get; set; }
         public DateTime DateSession { get; set; }
         public bool EstMatin { get; set; }
+        public string AffichageMomentJournee { get { return this.EstMatin ? "Matin" : "Après-midi"; } }
+
 
         /**<summary> Constructeur de Session avec tout ses attributs </summary>
          * <param name="id"> Id de la session </param>

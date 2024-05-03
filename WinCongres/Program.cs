@@ -16,7 +16,7 @@ namespace WinCongres
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMDI());
+            Application.Run(new FrmSessions());
         }
     }
 }

@@ -9,8 +9,11 @@ namespace Congres.Test
     [TestClass]
     public class ManagerTest
     {
+        /// <summary>
+        /// Test de connexion à la base de donnée, en récupérant des ligues.
+        /// </summary>
         [TestMethod]
-        public void TestGetLigues()
+        public void TestConnexionBDD()
         {
             List<Ligue> ligues = LigueManager.GetLigues();
             Assert.IsFalse(ligues.Count == 0);
