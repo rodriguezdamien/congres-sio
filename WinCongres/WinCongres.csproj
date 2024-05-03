@@ -75,6 +75,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\congres.dll.Activite.datasource" />
+    <None Include="Properties\DataSources\congres.dll.Congressiste.datasource" />
+    <None Include="Properties\DataSources\congres.dll.Hebergement.datasource" />
+    <None Include="Properties\DataSources\congres.dll.Ligue.datasource" />
+    <None Include="Properties\DataSources\congres.dll.Session.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
