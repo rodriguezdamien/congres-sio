@@ -43,10 +43,13 @@
   <ItemGroup>
     <Compile Include="Activite.cs" />
     <Compile Include="Congressiste.cs" />
+    <Compile Include="Managers\LigueManager.cs" />
+    <Compile Include="Managers\DBManager.cs" />
     <Compile Include="Hebergement.cs" />
     <Compile Include="Ligue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Session.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
