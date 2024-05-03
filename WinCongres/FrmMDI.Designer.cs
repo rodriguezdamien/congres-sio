@@ -30,10 +30,10 @@
         {
             this.menuStripMDI = new System.Windows.Forms.MenuStrip();
             this.menuBtnSessions = new System.Windows.Forms.ToolStripMenuItem();
-            this.activitésToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.congressistesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hébergementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.liguesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuBtnActivites = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuBtnHebergements = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuBtnInscriptions = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuBtnLigues = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMDI.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,10 +43,10 @@
             this.menuStripMDI.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStripMDI.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuBtnSessions,
-            this.activitésToolStripMenuItem,
-            this.hébergementsToolStripMenuItem,
-            this.congressistesToolStripMenuItem,
-            this.liguesToolStripMenuItem});
+            this.menuBtnActivites,
+            this.menuBtnHebergements,
+            this.menuBtnInscriptions,
+            this.menuBtnLigues});
             this.menuStripMDI.Location = new System.Drawing.Point(0, 0);
             this.menuStripMDI.Name = "menuStripMDI";
             this.menuStripMDI.Size = new System.Drawing.Size(1538, 33);
@@ -60,30 +60,33 @@
             this.menuBtnSessions.Text = "Sessions";
             this.menuBtnSessions.Click += new System.EventHandler(this.menuBtnSessions_Click);
             // 
-            // activitésToolStripMenuItem
+            // menuBtnActivites
             // 
-            this.activitésToolStripMenuItem.Name = "activitésToolStripMenuItem";
-            this.activitésToolStripMenuItem.Size = new System.Drawing.Size(94, 29);
-            this.activitésToolStripMenuItem.Text = "Activités";
+            this.menuBtnActivites.Name = "menuBtnActivites";
+            this.menuBtnActivites.Size = new System.Drawing.Size(94, 29);
+            this.menuBtnActivites.Text = "Activités";
+            this.menuBtnActivites.Click += new System.EventHandler(this.menuBtnActivites_Click);
             // 
-            // congressistesToolStripMenuItem
+            // menuBtnHebergements
             // 
-            this.congressistesToolStripMenuItem.Name = "congressistesToolStripMenuItem";
-            this.congressistesToolStripMenuItem.Size = new System.Drawing.Size(119, 29);
-            this.congressistesToolStripMenuItem.Text = "Inscriptions";
-            this.congressistesToolStripMenuItem.Click += new System.EventHandler(this.congressistesToolStripMenuItem_Click);
+            this.menuBtnHebergements.Name = "menuBtnHebergements";
+            this.menuBtnHebergements.Size = new System.Drawing.Size(145, 29);
+            this.menuBtnHebergements.Text = "Hébergements";
+            this.menuBtnHebergements.Click += new System.EventHandler(this.menuBtnHebergements_Click);
             // 
-            // hébergementsToolStripMenuItem
+            // menuBtnInscriptions
             // 
-            this.hébergementsToolStripMenuItem.Name = "hébergementsToolStripMenuItem";
-            this.hébergementsToolStripMenuItem.Size = new System.Drawing.Size(145, 29);
-            this.hébergementsToolStripMenuItem.Text = "Hébergements";
+            this.menuBtnInscriptions.Name = "menuBtnInscriptions";
+            this.menuBtnInscriptions.Size = new System.Drawing.Size(119, 29);
+            this.menuBtnInscriptions.Text = "Inscriptions";
+            this.menuBtnInscriptions.Click += new System.EventHandler(this.menuBtnInscriptions_Click);
             // 
-            // liguesToolStripMenuItem
+            // menuBtnLigues
             // 
-            this.liguesToolStripMenuItem.Name = "liguesToolStripMenuItem";
-            this.liguesToolStripMenuItem.Size = new System.Drawing.Size(184, 29);
-            this.liguesToolStripMenuItem.Text = "Ligues participantes";
+            this.menuBtnLigues.Name = "menuBtnLigues";
+            this.menuBtnLigues.Size = new System.Drawing.Size(184, 29);
+            this.menuBtnLigues.Text = "Ligues participantes";
+            this.menuBtnLigues.Click += new System.EventHandler(this.menuBtnLigues_Click);
             // 
             // FrmMDI
             // 
@@ -93,7 +96,7 @@
             this.Controls.Add(this.menuStripMDI);
             this.MainMenuStrip = this.menuStripMDI;
             this.Name = "FrmMDI";
-            this.Text = ")";
+            this.Text = "Gestionnaire de l\'organisation du Congrès \"Sport et Santé\"";
             this.menuStripMDI.ResumeLayout(false);
             this.menuStripMDI.PerformLayout();
             this.ResumeLayout(false);
@@ -105,9 +108,9 @@
 
         private System.Windows.Forms.MenuStrip menuStripMDI;
         private System.Windows.Forms.ToolStripMenuItem menuBtnSessions;
-        private System.Windows.Forms.ToolStripMenuItem activitésToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem hébergementsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem congressistesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem liguesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuBtnActivites;
+        private System.Windows.Forms.ToolStripMenuItem menuBtnHebergements;
+        private System.Windows.Forms.ToolStripMenuItem menuBtnInscriptions;
+        private System.Windows.Forms.ToolStripMenuItem menuBtnLigues;
     }
 }

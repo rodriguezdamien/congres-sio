@@ -58,7 +58,7 @@
     <Compile Include="FrmMDI.Designer.cs">
       <DependentUpon>FrmMDI.cs</DependentUpon>
     </Compile>
-     <Compile Include="FrmSessions.cs">
+    <Compile Include="FrmSessions.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmSessions.Designer.cs">
@@ -97,7 +97,6 @@
     <None Include="Properties\DataSources\congres.dll.Congressiste.datasource" />
     <None Include="Properties\DataSources\congres.dll.Hebergement.datasource" />
     <None Include="Properties\DataSources\congres.dll.Ligue.datasource" />
-    <None Include="Properties\DataSources\congres.dll.DBManager.datasource" />
     <None Include="Properties\DataSources\congres.dll.Session.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

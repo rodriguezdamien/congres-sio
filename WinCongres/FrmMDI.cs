@@ -22,5 +22,23 @@ namespace WinCongres
             FrmSessions unFrmSessions = new FrmSessions();
 
         }
+        private void menuBtnActivites_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void menuBtnHebergements_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void menuBtnInscriptions_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void menuBtnLigues_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
