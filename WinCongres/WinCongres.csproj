@@ -52,10 +52,19 @@
     <Compile Include="FrmHebergements.Designer.cs">
       <DependentUpon>FrmHebergements.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMDI.Designer.cs">
+      <DependentUpon>FrmMDI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmHebergements.resx">
       <DependentUpon>FrmHebergements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMDI.resx">
+      <DependentUpon>FrmMDI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
