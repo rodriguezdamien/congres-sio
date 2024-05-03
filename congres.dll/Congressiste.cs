@@ -21,7 +21,7 @@ namespace congres.dll
          * <param name="idLigue"> Clé étrangère IdLigue du congressiste </param>
          * <param name="idHebergement"> Clé étrangère IdHebergement du congressiste </param>
          **/
-        public Congressiste(int id, string nom, string prenom, int tel, string adresse, string cp, string ville, float accompte, int idLigue, int idHebergement)
+        public Congressiste(int id, string nom, string prenom, string tel, string adresse, string cp, string ville, decimal accompte, int idLigue, int idHebergement)
         {
             this.Id = id;
             this.Nom = nom;
@@ -38,13 +38,14 @@ namespace congres.dll
         public int Id { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
-        public int Tel { get; set; }
+        public string Tel { get; set; }
         public string Adresse { get; set; }
         public string Cp { get; set; }
         public string Ville { get; set; }
-        public float Accompte { get; set; }
-        public int IdLigue { get; set; }
-        public int IdHebergement { get; set; }
+        //conversion de float à double
+        public decimal Accompte { get; set; }
+        public int? IdLigue { get; set; }
+        public int? IdHebergement { get; set; }
 
 
     }

@@ -44,6 +44,7 @@
     <Compile Include="Activite.cs" />
     <Compile Include="Congressiste.cs" />
     <Compile Include="Managers\HebergementManager.cs" />
+    <Compile Include="Managers\CongressisteManager.cs" />
     <Compile Include="Managers\LigueManager.cs" />
     <Compile Include="Managers\DBManager.cs" />
     <Compile Include="Hebergement.cs" />
