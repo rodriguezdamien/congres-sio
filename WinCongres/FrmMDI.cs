@@ -19,8 +19,16 @@ namespace WinCongres
 
         private void menuBtnSessions_Click(object sender, EventArgs e)
         {
-            FrmSessions unFrmSessions = new FrmSessions();
-
+            if (Application.OpenForms["FrmSessions"] != null)
+            {
+                FrmSessions unFrmSessions = new FrmSessions();
+                unFrmSessions.MdiParent = this;
+                unFrmSessions.Show();
+            }
+            else
+            {
+                Application.OpenForms["FrmSessions"].Focus();
+            }
         }
         private void menuBtnActivites_Click(object sender, EventArgs e)
         {
