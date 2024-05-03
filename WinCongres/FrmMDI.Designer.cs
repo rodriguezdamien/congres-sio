@@ -49,42 +49,42 @@
             this.menuBtnLigues});
             this.menuStripMDI.Location = new System.Drawing.Point(0, 0);
             this.menuStripMDI.Name = "menuStripMDI";
-            this.menuStripMDI.Size = new System.Drawing.Size(1538, 33);
+            this.menuStripMDI.Size = new System.Drawing.Size(1538, 36);
             this.menuStripMDI.TabIndex = 0;
             this.menuStripMDI.Text = "menuStripMDI";
             // 
             // menuBtnSessions
             // 
             this.menuBtnSessions.Name = "menuBtnSessions";
-            this.menuBtnSessions.Size = new System.Drawing.Size(96, 29);
+            this.menuBtnSessions.Size = new System.Drawing.Size(96, 32);
             this.menuBtnSessions.Text = "Sessions";
             this.menuBtnSessions.Click += new System.EventHandler(this.menuBtnSessions_Click);
             // 
             // menuBtnActivites
             // 
             this.menuBtnActivites.Name = "menuBtnActivites";
-            this.menuBtnActivites.Size = new System.Drawing.Size(94, 29);
+            this.menuBtnActivites.Size = new System.Drawing.Size(94, 32);
             this.menuBtnActivites.Text = "Activités";
             this.menuBtnActivites.Click += new System.EventHandler(this.menuBtnActivites_Click);
             // 
             // menuBtnHebergements
             // 
             this.menuBtnHebergements.Name = "menuBtnHebergements";
-            this.menuBtnHebergements.Size = new System.Drawing.Size(145, 29);
+            this.menuBtnHebergements.Size = new System.Drawing.Size(145, 32);
             this.menuBtnHebergements.Text = "Hébergements";
             this.menuBtnHebergements.Click += new System.EventHandler(this.menuBtnHebergements_Click);
             // 
             // menuBtnInscriptions
             // 
             this.menuBtnInscriptions.Name = "menuBtnInscriptions";
-            this.menuBtnInscriptions.Size = new System.Drawing.Size(119, 29);
+            this.menuBtnInscriptions.Size = new System.Drawing.Size(119, 32);
             this.menuBtnInscriptions.Text = "Inscriptions";
             this.menuBtnInscriptions.Click += new System.EventHandler(this.menuBtnInscriptions_Click);
             // 
             // menuBtnLigues
             // 
             this.menuBtnLigues.Name = "menuBtnLigues";
-            this.menuBtnLigues.Size = new System.Drawing.Size(184, 29);
+            this.menuBtnLigues.Size = new System.Drawing.Size(184, 32);
             this.menuBtnLigues.Text = "Ligues participantes";
             this.menuBtnLigues.Click += new System.EventHandler(this.menuBtnLigues_Click);
             // 
@@ -94,6 +94,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1538, 993);
             this.Controls.Add(this.menuStripMDI);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStripMDI;
             this.Name = "FrmMDI";
             this.Text = "Gestionnaire de l\'organisation du Congrès \"Sport et Santé\"";
