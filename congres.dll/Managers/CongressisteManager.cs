@@ -10,9 +10,9 @@ namespace congres.dll.Managers
     public class CongressisteManager
     {
         /// <summary>
-        /// Permet de récupérer la liste des conggressistes
+        /// Permet de récupérer la liste des conggressistes.
         /// </summary>
-        /// <returns>Liste d'objet congressiste</returns>
+        /// <returns>Liste d'objet congressiste.</returns>
         public static List<Congressiste> GetCongressistes()
         {
             List<Congressiste> lesCongressistes = new List<Congressiste>();
@@ -45,6 +45,11 @@ namespace congres.dll.Managers
             return lesCongressistes;
         }
 
+        /// <summary>
+        /// Permet d'ajouter un congressiste.
+        /// </summary>
+        /// <param name="congressiste"></param>
+        /// <returns>Retourne 'true' si l'ajout à fonctionner et 'false' si rien n'a été ajouté ou si une erreur à été levé.</returns>
         public static bool AddCongressiste(Congressiste congressiste)
         {
             bool isAdded = false;
@@ -91,6 +96,11 @@ namespace congres.dll.Managers
             return isAdded;
         }
 
+        /// <summary>
+        /// Permet de modifié les informations d'un congressiste.
+        /// </summary>
+        /// <param name="congressiste">Objet Congressiste.</param>
+        /// <returns>Retourne 'true' si la modification à fonctionner et 'false' si rien n'a été modifié ou si une erreur à été levé.</returns>
         public static bool UpdtCongressiste(Congressiste congressiste)
         {
             bool isUpdt = false;
@@ -135,6 +145,33 @@ namespace congres.dll.Managers
             }
 
             return isUpdt;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="idC">Id du congressiste à supprimer</param>
+        /// <returns></returns>
+        public static bool DelCongressiste(int idC)
+        {
+            bool isDel = false;
+
+            SqlCommand reqDel = new SqlCommand("DELETE CONGRESSISTE WHERE id = @id", DBManager.ConnexionDB);
+            reqDel.Parameters.AddWithValue("@id", idC);
+
+            try
+            {
+                DBManager.ConnexionDB.Open();
+                int ligneDel = reqDel.ExecuteNonQuery();
+                //if simplifié
+                if (ligneDel > 0) isDel = true;
+            }
+            finally
+            {
+                DBManager.ConnexionDB.Close();
+            }
+
+            return isDel;
         }
     }
 }
