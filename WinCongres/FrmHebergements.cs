@@ -1,4 +1,5 @@
-﻿using System;
+﻿using congres.dll.Managers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,17 @@ namespace WinCongres
         public FrmHebergements()
         {
             InitializeComponent();
+        }
+
+        private void FrmHebergements_Load(object sender, EventArgs e)
+        {
+            this.bindSrcHebergement.DataSource = HebergementManager.GetHebergements();
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
