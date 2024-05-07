@@ -20,10 +20,10 @@ namespace congres.dll.Managers
             
             try
             {
+                DBManager.ConnexionDB.Open();
                 SqlDataReader reader = reqGet.ExecuteReader();
                 while (reader.Read())
                 {
-                    DBManager.ConnexionDB.Open();
                     int id = reader.GetInt32(0);
                     string nom = reader.GetString(1);
                     string prenom = reader.GetString(2);
