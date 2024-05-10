@@ -56,6 +56,18 @@ namespace WinCongres
 
         }
 
-
+        private void btnCongressiste_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["FrmCongressiste"] == null)
+            {
+                FrmCongressiste unFrmHebergement = new FrmCongressiste();
+                unFrmHebergement.MdiParent = this;
+                unFrmHebergement.Show();
+            }
+            else
+            {
+                Application.OpenForms["FrmCongressiste"].Focus();
+            }
+        }
     }
 }

@@ -34,68 +34,78 @@
             this.menuBtnHebergements = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBtnInscriptions = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBtnLigues = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCongressiste = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMDI.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMDI
             // 
-            this.menuStripMDI.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStripMDI.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStripMDI.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuBtnSessions,
             this.menuBtnActivites,
             this.menuBtnHebergements,
             this.menuBtnInscriptions,
-            this.menuBtnLigues});
+            this.menuBtnLigues,
+            this.btnCongressiste});
             this.menuStripMDI.Location = new System.Drawing.Point(0, 0);
             this.menuStripMDI.Name = "menuStripMDI";
-            this.menuStripMDI.Size = new System.Drawing.Size(1538, 36);
+            this.menuStripMDI.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.menuStripMDI.Size = new System.Drawing.Size(1025, 24);
             this.menuStripMDI.TabIndex = 0;
             this.menuStripMDI.Text = "menuStripMDI";
             // 
             // menuBtnSessions
             // 
             this.menuBtnSessions.Name = "menuBtnSessions";
-            this.menuBtnSessions.Size = new System.Drawing.Size(96, 32);
+            this.menuBtnSessions.Size = new System.Drawing.Size(63, 22);
             this.menuBtnSessions.Text = "Sessions";
             this.menuBtnSessions.Click += new System.EventHandler(this.menuBtnSessions_Click);
             // 
             // menuBtnActivites
             // 
             this.menuBtnActivites.Name = "menuBtnActivites";
-            this.menuBtnActivites.Size = new System.Drawing.Size(94, 32);
+            this.menuBtnActivites.Size = new System.Drawing.Size(64, 22);
             this.menuBtnActivites.Text = "Activités";
             this.menuBtnActivites.Click += new System.EventHandler(this.menuBtnActivites_Click);
             // 
             // menuBtnHebergements
             // 
             this.menuBtnHebergements.Name = "menuBtnHebergements";
-            this.menuBtnHebergements.Size = new System.Drawing.Size(145, 32);
+            this.menuBtnHebergements.Size = new System.Drawing.Size(97, 22);
             this.menuBtnHebergements.Text = "Hébergements";
             this.menuBtnHebergements.Click += new System.EventHandler(this.menuBtnHebergements_Click);
             // 
             // menuBtnInscriptions
             // 
             this.menuBtnInscriptions.Name = "menuBtnInscriptions";
-            this.menuBtnInscriptions.Size = new System.Drawing.Size(119, 32);
+            this.menuBtnInscriptions.Size = new System.Drawing.Size(80, 22);
             this.menuBtnInscriptions.Text = "Inscriptions";
             this.menuBtnInscriptions.Click += new System.EventHandler(this.menuBtnInscriptions_Click);
             // 
             // menuBtnLigues
             // 
             this.menuBtnLigues.Name = "menuBtnLigues";
-            this.menuBtnLigues.Size = new System.Drawing.Size(184, 32);
+            this.menuBtnLigues.Size = new System.Drawing.Size(124, 22);
             this.menuBtnLigues.Text = "Ligues participantes";
             this.menuBtnLigues.Click += new System.EventHandler(this.menuBtnLigues_Click);
             // 
+            // btnCongressiste
+            // 
+            this.btnCongressiste.Name = "btnCongressiste";
+            this.btnCongressiste.Size = new System.Drawing.Size(91, 22);
+            this.btnCongressiste.Text = "Congressistes";
+            this.btnCongressiste.Click += new System.EventHandler(this.btnCongressiste_Click);
+            // 
             // FrmMDI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1538, 993);
+            this.ClientSize = new System.Drawing.Size(1025, 645);
             this.Controls.Add(this.menuStripMDI);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStripMDI;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmMDI";
             this.Text = "Gestionnaire de l\'organisation du Congrès \"Sport et Santé\"";
             this.menuStripMDI.ResumeLayout(false);
@@ -113,5 +123,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuBtnHebergements;
         private System.Windows.Forms.ToolStripMenuItem menuBtnInscriptions;
         private System.Windows.Forms.ToolStripMenuItem menuBtnLigues;
+        private System.Windows.Forms.ToolStripMenuItem btnCongressiste;
     }
 }
