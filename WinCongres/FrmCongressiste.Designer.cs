@@ -33,12 +33,17 @@
             this.tabPageListe = new System.Windows.Forms.TabPage();
             this.dataGridCongressiste = new System.Windows.Forms.DataGridView();
             this.tabPageDetail = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBxCongressiste = new System.Windows.Forms.ComboBox();
+            this.comboBxLigue = new System.Windows.Forms.ComboBox();
             this.lblId = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.lblPrix = new System.Windows.Forms.Label();
             this.txtBoxNom = new System.Windows.Forms.TextBox();
@@ -53,10 +58,7 @@
             this.txtBoxAdresse = new System.Windows.Forms.TextBox();
             this.txtBoxId = new System.Windows.Forms.TextBox();
             this.btnModifier = new System.Windows.Forms.Button();
-            this.comboBxLigue = new System.Windows.Forms.ComboBox();
-            this.comboBxCongressiste = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnNouveau = new System.Windows.Forms.Button();
             this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prenomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,15 +67,13 @@
             this.villeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accompteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindSrcCongressiste = new System.Windows.Forms.BindingSource(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnNouveau = new System.Windows.Forms.Button();
             this.tabControlCongressiste.SuspendLayout();
             this.tabPageListe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCongressiste)).BeginInit();
             this.tabPageDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindSrcCongressiste)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,6 +135,23 @@
             this.tabPageDetail.Text = "Information congressiste";
             this.tabPageDetail.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(632, 211);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Inscriptions aux activités :";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(639, 237);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(353, 138);
+            this.dataGridView1.TabIndex = 3;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -159,7 +176,7 @@
             this.groupBox1.Controls.Add(this.comboBxLigue);
             this.groupBox1.Controls.Add(this.lblId);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnAnnuler);
             this.groupBox1.Controls.Add(this.btnAjouter);
             this.groupBox1.Controls.Add(this.lblPrix);
             this.groupBox1.Controls.Add(this.txtBoxNom);
@@ -181,6 +198,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informations du congressiste";
             // 
+            // textBox1
+            // 
+            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcCongressiste, "Accompte", true));
+            this.textBox1.Location = new System.Drawing.Point(418, 193);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(152, 20);
+            this.textBox1.TabIndex = 20;
+            // 
+            // comboBxCongressiste
+            // 
+            this.comboBxCongressiste.FormattingEnabled = true;
+            this.comboBxCongressiste.Location = new System.Drawing.Point(449, 52);
+            this.comboBxCongressiste.Name = "comboBxCongressiste";
+            this.comboBxCongressiste.Size = new System.Drawing.Size(121, 21);
+            this.comboBxCongressiste.TabIndex = 19;
+            this.comboBxCongressiste.Text = "Hébergement";
+            // 
+            // comboBxLigue
+            // 
+            this.comboBxLigue.FormattingEnabled = true;
+            this.comboBxLigue.Location = new System.Drawing.Point(321, 52);
+            this.comboBxLigue.Name = "comboBxLigue";
+            this.comboBxLigue.Size = new System.Drawing.Size(121, 21);
+            this.comboBxLigue.TabIndex = 18;
+            this.comboBxLigue.Text = "Ligue";
+            // 
             // lblId
             // 
             this.lblId.AutoSize = true;
@@ -197,18 +240,18 @@
             this.label9.Size = new System.Drawing.Size(100, 23);
             this.label9.TabIndex = 0;
             // 
-            // button1
+            // btnAnnuler
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(349, 258);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(149, 31);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Annuler";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Visible = false;
+            this.btnAnnuler.BackColor = System.Drawing.Color.Transparent;
+            this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnnuler.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAnnuler.Location = new System.Drawing.Point(349, 258);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(149, 31);
+            this.btnAnnuler.TabIndex = 3;
+            this.btnAnnuler.Text = "Annuler";
+            this.btnAnnuler.UseVisualStyleBackColor = false;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
             // btnAjouter
             // 
@@ -337,40 +380,16 @@
             this.btnModifier.Text = "Modifier";
             this.btnModifier.UseVisualStyleBackColor = false;
             // 
-            // comboBxLigue
+            // btnNouveau
             // 
-            this.comboBxLigue.FormattingEnabled = true;
-            this.comboBxLigue.Location = new System.Drawing.Point(321, 52);
-            this.comboBxLigue.Name = "comboBxLigue";
-            this.comboBxLigue.Size = new System.Drawing.Size(121, 21);
-            this.comboBxLigue.TabIndex = 18;
-            this.comboBxLigue.Text = "Ligue";
-            // 
-            // comboBxCongressiste
-            // 
-            this.comboBxCongressiste.FormattingEnabled = true;
-            this.comboBxCongressiste.Location = new System.Drawing.Point(449, 52);
-            this.comboBxCongressiste.Name = "comboBxCongressiste";
-            this.comboBxCongressiste.Size = new System.Drawing.Size(121, 21);
-            this.comboBxCongressiste.TabIndex = 19;
-            this.comboBxCongressiste.Text = "Hébergement";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(632, 211);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Inscriptions aux activités :";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(639, 237);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(353, 138);
-            this.dataGridView1.TabIndex = 3;
+            this.btnNouveau.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNouveau.Location = new System.Drawing.Point(407, 489);
+            this.btnNouveau.Name = "btnNouveau";
+            this.btnNouveau.Size = new System.Drawing.Size(234, 34);
+            this.btnNouveau.TabIndex = 2;
+            this.btnNouveau.Text = "Ajouter un nouvel hébergement";
+            this.btnNouveau.UseVisualStyleBackColor = true;
+            this.btnNouveau.Click += new System.EventHandler(this.btnNouveau_Click);
             // 
             // nomDataGridViewTextBoxColumn
             // 
@@ -432,24 +451,6 @@
             // 
             this.bindSrcCongressiste.DataSource = typeof(congres.dll.Congressiste);
             // 
-            // textBox1
-            // 
-            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcCongressiste, "Accompte", true));
-            this.textBox1.Location = new System.Drawing.Point(418, 193);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(152, 20);
-            this.textBox1.TabIndex = 20;
-            // 
-            // btnNouveau
-            // 
-            this.btnNouveau.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNouveau.Location = new System.Drawing.Point(407, 489);
-            this.btnNouveau.Name = "btnNouveau";
-            this.btnNouveau.Size = new System.Drawing.Size(234, 34);
-            this.btnNouveau.TabIndex = 2;
-            this.btnNouveau.Text = "Ajouter un nouvel hébergement";
-            this.btnNouveau.UseVisualStyleBackColor = true;
-            // 
             // FrmCongressiste
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -465,10 +466,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCongressiste)).EndInit();
             this.tabPageDetail.ResumeLayout(false);
             this.tabPageDetail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindSrcCongressiste)).EndInit();
             this.ResumeLayout(false);
 
@@ -485,7 +486,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.Button btnAjouter;
         private System.Windows.Forms.Label lblPrix;
         private System.Windows.Forms.TextBox txtBoxNom;
