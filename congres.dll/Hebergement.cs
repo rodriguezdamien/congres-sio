@@ -20,17 +20,17 @@ namespace congres.dll
         public decimal Prix { get; set; }
         public List<Congressiste> LesCongressistes { get; set; }
 
-
-        /**<summary> Constructeur de Hebergement avec tout ses attributs </summary>
-        * <param name="id"> Id de l'hebergement </param>
-        * <param name="nom"> Nom de l'hebergement </param>
-        * <param name="adresse"> Adresse de l'hebergement </param>
-        * <param name="cp"> Code postal de l'hebergement </param>
-        * <param name="ville"> Ville de l'hebergement </param>
-        * <param name="tel"> Telephone de l'hebergement </param>
-        * <param name="nbEtoiles"> Nombre d'etoiles de l'hebergement </param>
-        * <param name="prix"> Prix de l'hebergement </param>
-        */
+        /// <summary>
+        /// Constructeur de Hebergement avec tout ses attributs
+        /// </summary>
+        /// <param name="id">Id de l'hebergement</param>
+        /// <param name="nom">Nom de l'hebergement</param>
+        /// <param name="adresse">Adresse de l'hebergement</param>
+        /// <param name="cp">Code postal de l'hebergement</param>
+        /// <param name="ville">Ville de l'hebergement</param>
+        /// <param name="tel">Telephone de l'hebergement</param>
+        /// <param name="nbEtoiles">Nombre d'etoiles de l'hebergement</param>
+        /// <param name="prix">Prix de l'hebergement</param>
         public Hebergement(int id, string nom, string adresse, string cp, string ville, string tel, string nbEtoiles, decimal prix)
         {
             this.Id = id;
