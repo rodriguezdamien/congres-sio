@@ -1,4 +1,5 @@
-﻿using congres.dll.Managers;
+﻿using congres.dll;
+using congres.dll.Managers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +27,28 @@ namespace WinCongres
         private void FrmCongressiste_Load(object sender, EventArgs e)
         {
             this.bindSrcCongressiste.DataSource = CongressisteManager.GetCongressistes();
+            this.bindSrcHebergement.DataSource = HebergementManager.GetHebergements();
+            this.bindSrcLigue.DataSource = LigueManager.GetLigues();
+
+            foreach (Congressiste unC in this.bindSrcCongressiste)
+            {
+                int i = 0;
+                while (((Hebergement)this.bindSrcHebergement[i]).Id != unC.IdHebergement)
+                {
+                    i++;
+                }
+                unC.sonHebergement = (Hebergement)this.bindSrcHebergement[i];
+            }
+
+            foreach (Congressiste unC in this.bindSrcCongressiste)
+            {
+                int i = 0;
+                while (((Ligue)this.bindSrcLigue[i]).Id != unC.IdLigue)
+                {
+                    i++;
+                }
+                unC.laLigue = (Ligue)this.bindSrcLigue[i];
+            }
         }
 
         /// <summary>
