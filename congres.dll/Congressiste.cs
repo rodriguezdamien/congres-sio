@@ -44,7 +44,7 @@ namespace congres.dll
         public string Ville { get; set; }
         //conversion de float à double
         public decimal Accompte { get; set; }
-        public int? IdLigue { get; set; }
+        public int IdLigue { get; set; }
         public Ligue laLigue { get; set; }
         public int? IdHebergement { get; set; }
         public Hebergement sonHebergement { get; set; }
