@@ -48,6 +48,7 @@
             this.telDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindSrcCongressiste = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblId = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtBoxVille = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -69,7 +70,6 @@
             this.btnSupprimer = new System.Windows.Forms.Button();
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnNouveau = new System.Windows.Forms.Button();
-            this.lblId = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindSrcHebergement)).BeginInit();
             this.tabControlHebergement.SuspendLayout();
             this.tabPageListe.SuspendLayout();
@@ -252,6 +252,15 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Détail de l\'hébergement";
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(8, 52);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(16, 13);
+            this.lblId.TabIndex = 17;
+            this.lblId.Text = "Id";
             // 
             // label9
             // 
@@ -438,15 +447,6 @@
             this.btnNouveau.TabIndex = 1;
             this.btnNouveau.Text = "Ajouter un nouvel hébergement";
             this.btnNouveau.UseVisualStyleBackColor = true;
-            // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(8, 52);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(16, 13);
-            this.lblId.TabIndex = 17;
-            this.lblId.Text = "Id";
             // 
             // FrmHebergements
             // 

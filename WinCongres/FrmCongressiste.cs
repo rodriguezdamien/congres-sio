@@ -1,4 +1,5 @@
-﻿using System;
+﻿using congres.dll.Managers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,11 @@ namespace WinCongres
         public FrmCongressiste()
         {
             InitializeComponent();
+        }
+
+        private void FrmCongressiste_Load(object sender, EventArgs e)
+        {
+            this.bindSrcCongressiste.DataSource = CongressisteManager.GetCongressistes();
         }
     }
 }
