@@ -63,14 +63,8 @@ namespace congres.dll.Managers
             reqAdd.Parameters.AddWithValue("@cp", congressiste.Cp);
             reqAdd.Parameters.AddWithValue("@v", congressiste.Ville);
             reqAdd.Parameters.AddWithValue("@accompte", congressiste.Accompte);
-            if(congressiste.IdLigue == null)
-            {
-                reqAdd.Parameters.AddWithValue("@idL", DBNull.Value);
-            }
-            else
-            {
-                reqAdd.Parameters.AddWithValue("@idL", congressiste.IdLigue);
-            }
+            reqAdd.Parameters.AddWithValue("@idL", congressiste.IdLigue);
+
             if (congressiste.IdHebergement == null)
             {
                 reqAdd.Parameters.AddWithValue("@idH", DBNull.Value);
