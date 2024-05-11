@@ -26,28 +26,38 @@ namespace WinCongres
         /// </summary>
         private void FrmCongressiste_Load(object sender, EventArgs e)
         {
-            this.bindSrcCongressiste.DataSource = CongressisteManager.GetCongressistes();
-            this.bindSrcHebergement.DataSource = HebergementManager.GetHebergements();
-            this.bindSrcLigue.DataSource = LigueManager.GetLigues();
-
-            foreach (Congressiste unC in this.bindSrcCongressiste)
+            try
             {
-                int i = 0;
-                while (((Hebergement)this.bindSrcHebergement[i]).Id != unC.IdHebergement)
+
+
+                this.bindSrcCongressiste.DataSource = CongressisteManager.GetCongressistes();
+                this.bindSrcHebergement.DataSource = HebergementManager.GetHebergements();
+                this.bindSrcHebergement.Add(new Hebergement(null, "Sans hébergement"));
+                this.bindSrcLigue.DataSource = LigueManager.GetLigues();
+
+                foreach (Congressiste unC in this.bindSrcCongressiste)
                 {
-                    i++;
+                    int i = 0;
+                    while (((Hebergement)this.bindSrcHebergement[i]).Id != unC.IdHebergement)
+                    {
+                        i++;
+                    }
+                    unC.sonHebergement = (Hebergement)this.bindSrcHebergement[i];
                 }
-                unC.sonHebergement = (Hebergement)this.bindSrcHebergement[i];
+
+                foreach (Congressiste unC in this.bindSrcCongressiste)
+                {
+                    int i = 0;
+                    while (((Ligue)this.bindSrcLigue[i]).Id != unC.IdLigue)
+                    {
+                        i++;
+                    }
+                    unC.laLigue = (Ligue)this.bindSrcLigue[i];
+                }
             }
-
-            foreach (Congressiste unC in this.bindSrcCongressiste)
+            catch (Exception ex)
             {
-                int i = 0;
-                while (((Ligue)this.bindSrcLigue[i]).Id != unC.IdLigue)
-                {
-                    i++;
-                }
-                unC.laLigue = (Ligue)this.bindSrcLigue[i];
+                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -56,10 +66,13 @@ namespace WinCongres
         /// </summary>
         private void btnNouveau_Click(object sender, EventArgs e)
         {
-            add = true;
             btnNouveau.Visible = btnModifier.Visible = false;
             tabControlCongressiste.SelectedIndex = 1;
             btnAjouter.Visible = true;
+            comboBxLigue.Enabled = comboBxHebergement.Enabled = true;
+            txtBoxId.Enabled = false;
+            bindSrcCongressiste.AddNew();
+            add = true;
         }
 
         /// <summary>
@@ -81,10 +94,30 @@ namespace WinCongres
         {
             add = false;
             btnNouveau.Visible = btnModifier.Visible = true;
-            tabControlCongressiste.SelectedIndex = 0;
             btnAjouter.Visible = false;
+            bindSrcCongressiste.CancelEdit();
+            bindSrcCongressiste.ResetBindings(false);
+            tabControlCongressiste.SelectedIndex = 0;
         }
 
         private void annulationModif() { }
+
+        private void btnAjouter_Click(object sender, EventArgs e)
+        {
+            bindSrcCongressiste.EndEdit();
+
+            ((Congressiste)bindSrcCongressiste.Current).IdLigue = ((Ligue)bindSrcLigue.Current).Id;
+            ((Congressiste)bindSrcCongressiste.Current).IdHebergement = ((Hebergement)bindSrcHebergement.Current).Id;
+
+            if (CongressisteManager.AddCongressiste((Congressiste)bindSrcCongressiste.Current))
+            {
+                MessageBox.Show("Employé ajouté.", "Information", MessageBoxButtons.OK);
+                btnModifier.Visible = false;
+                tabControlCongressiste.SelectedIndex = 0;
+                btnAjouter.Visible = false;
+                comboBxLigue.Enabled = comboBxHebergement.Enabled = true;
+                add = false;
+            }
+        }
     }
 }

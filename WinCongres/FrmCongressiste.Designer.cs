@@ -46,8 +46,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBxCongressiste = new System.Windows.Forms.ComboBox();
+            this.txtBoxAccompte = new System.Windows.Forms.TextBox();
+            this.comboBxHebergement = new System.Windows.Forms.ComboBox();
             this.bindSrcHebergement = new System.Windows.Forms.BindingSource(this.components);
             this.comboBxLigue = new System.Windows.Forms.ComboBox();
             this.bindSrcLigue = new System.Windows.Forms.BindingSource(this.components);
@@ -55,20 +55,22 @@
             this.label9 = new System.Windows.Forms.Label();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnAjouter = new System.Windows.Forms.Button();
-            this.lblPrix = new System.Windows.Forms.Label();
+            this.lblPrenom = new System.Windows.Forms.Label();
             this.txtBoxNom = new System.Windows.Forms.TextBox();
-            this.lblNbEtoiles = new System.Windows.Forms.Label();
+            this.lblAccompte = new System.Windows.Forms.Label();
             this.lblTel = new System.Windows.Forms.Label();
             this.lblCp = new System.Windows.Forms.Label();
             this.lblAdresse = new System.Windows.Forms.Label();
             this.lblNom = new System.Windows.Forms.Label();
             this.txtBoxTel = new System.Windows.Forms.TextBox();
-            this.txtBoxPrix = new System.Windows.Forms.TextBox();
+            this.txtBoxPrenom = new System.Windows.Forms.TextBox();
             this.txtBoxCp = new System.Windows.Forms.TextBox();
             this.txtBoxAdresse = new System.Windows.Forms.TextBox();
             this.txtBoxId = new System.Windows.Forms.TextBox();
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnNouveau = new System.Windows.Forms.Button();
+            this.lblVille = new System.Windows.Forms.Label();
+            this.txtBoxVille = new System.Windows.Forms.TextBox();
             this.tabControlCongressiste.SuspendLayout();
             this.tabPageListe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCongressiste)).BeginInit();
@@ -235,22 +237,24 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.comboBxCongressiste);
+            this.groupBox1.Controls.Add(this.lblVille);
+            this.groupBox1.Controls.Add(this.txtBoxVille);
+            this.groupBox1.Controls.Add(this.txtBoxAccompte);
+            this.groupBox1.Controls.Add(this.comboBxHebergement);
             this.groupBox1.Controls.Add(this.comboBxLigue);
             this.groupBox1.Controls.Add(this.lblId);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.btnAnnuler);
             this.groupBox1.Controls.Add(this.btnAjouter);
-            this.groupBox1.Controls.Add(this.lblPrix);
+            this.groupBox1.Controls.Add(this.lblPrenom);
             this.groupBox1.Controls.Add(this.txtBoxNom);
-            this.groupBox1.Controls.Add(this.lblNbEtoiles);
+            this.groupBox1.Controls.Add(this.lblAccompte);
             this.groupBox1.Controls.Add(this.lblTel);
             this.groupBox1.Controls.Add(this.lblCp);
             this.groupBox1.Controls.Add(this.lblAdresse);
             this.groupBox1.Controls.Add(this.lblNom);
             this.groupBox1.Controls.Add(this.txtBoxTel);
-            this.groupBox1.Controls.Add(this.txtBoxPrix);
+            this.groupBox1.Controls.Add(this.txtBoxPrenom);
             this.groupBox1.Controls.Add(this.txtBoxCp);
             this.groupBox1.Controls.Add(this.txtBoxAdresse);
             this.groupBox1.Controls.Add(this.txtBoxId);
@@ -262,26 +266,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informations du congressiste";
             // 
-            // textBox1
+            // txtBoxAccompte
             // 
-            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcCongressiste, "Accompte", true));
-            this.textBox1.Location = new System.Drawing.Point(418, 193);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(152, 20);
-            this.textBox1.TabIndex = 20;
+            this.txtBoxAccompte.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcCongressiste, "Accompte", true));
+            this.txtBoxAccompte.Location = new System.Drawing.Point(418, 193);
+            this.txtBoxAccompte.Name = "txtBoxAccompte";
+            this.txtBoxAccompte.Size = new System.Drawing.Size(152, 20);
+            this.txtBoxAccompte.TabIndex = 20;
             // 
-            // comboBxCongressiste
+            // comboBxHebergement
             // 
-            this.comboBxCongressiste.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.bindSrcCongressiste, "sonHebergement", true));
-            this.comboBxCongressiste.DataSource = this.bindSrcHebergement;
-            this.comboBxCongressiste.DisplayMember = "Nom";
-            this.comboBxCongressiste.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBxCongressiste.Enabled = false;
-            this.comboBxCongressiste.FormattingEnabled = true;
-            this.comboBxCongressiste.Location = new System.Drawing.Point(321, 25);
-            this.comboBxCongressiste.Name = "comboBxCongressiste";
-            this.comboBxCongressiste.Size = new System.Drawing.Size(130, 21);
-            this.comboBxCongressiste.TabIndex = 19;
+            this.comboBxHebergement.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.bindSrcCongressiste, "sonHebergement", true));
+            this.comboBxHebergement.DataSource = this.bindSrcHebergement;
+            this.comboBxHebergement.DisplayMember = "Nom";
+            this.comboBxHebergement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBxHebergement.Enabled = false;
+            this.comboBxHebergement.FormattingEnabled = true;
+            this.comboBxHebergement.Location = new System.Drawing.Point(83, 231);
+            this.comboBxHebergement.Name = "comboBxHebergement";
+            this.comboBxHebergement.Size = new System.Drawing.Size(130, 21);
+            this.comboBxHebergement.TabIndex = 19;
             // 
             // bindSrcHebergement
             // 
@@ -295,7 +299,7 @@
             this.comboBxLigue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBxLigue.Enabled = false;
             this.comboBxLigue.FormattingEnabled = true;
-            this.comboBxLigue.Location = new System.Drawing.Point(321, 52);
+            this.comboBxLigue.Location = new System.Drawing.Point(321, 231);
             this.comboBxLigue.Name = "comboBxLigue";
             this.comboBxLigue.Size = new System.Drawing.Size(249, 21);
             this.comboBxLigue.TabIndex = 18;
@@ -345,15 +349,16 @@
             this.btnAjouter.Text = "Ajouter";
             this.btnAjouter.UseVisualStyleBackColor = false;
             this.btnAjouter.Visible = false;
+            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
-            // lblPrix
+            // lblPrenom
             // 
-            this.lblPrix.AutoSize = true;
-            this.lblPrix.Location = new System.Drawing.Point(318, 102);
-            this.lblPrix.Name = "lblPrix";
-            this.lblPrix.Size = new System.Drawing.Size(43, 13);
-            this.lblPrix.TabIndex = 15;
-            this.lblPrix.Text = "Prénom";
+            this.lblPrenom.AutoSize = true;
+            this.lblPrenom.Location = new System.Drawing.Point(318, 102);
+            this.lblPrenom.Name = "lblPrenom";
+            this.lblPrenom.Size = new System.Drawing.Size(43, 13);
+            this.lblPrenom.TabIndex = 15;
+            this.lblPrenom.Text = "Prénom";
             // 
             // txtBoxNom
             // 
@@ -363,14 +368,14 @@
             this.txtBoxNom.Size = new System.Drawing.Size(221, 20);
             this.txtBoxNom.TabIndex = 14;
             // 
-            // lblNbEtoiles
+            // lblAccompte
             // 
-            this.lblNbEtoiles.AutoSize = true;
-            this.lblNbEtoiles.Location = new System.Drawing.Point(318, 196);
-            this.lblNbEtoiles.Name = "lblNbEtoiles";
-            this.lblNbEtoiles.Size = new System.Drawing.Size(55, 13);
-            this.lblNbEtoiles.TabIndex = 13;
-            this.lblNbEtoiles.Text = "Accompte";
+            this.lblAccompte.AutoSize = true;
+            this.lblAccompte.Location = new System.Drawing.Point(318, 196);
+            this.lblAccompte.Name = "lblAccompte";
+            this.lblAccompte.Size = new System.Drawing.Size(55, 13);
+            this.lblAccompte.TabIndex = 13;
+            this.lblAccompte.Text = "Accompte";
             // 
             // lblTel
             // 
@@ -416,13 +421,13 @@
             this.txtBoxTel.Size = new System.Drawing.Size(152, 20);
             this.txtBoxTel.TabIndex = 6;
             // 
-            // txtBoxPrix
+            // txtBoxPrenom
             // 
-            this.txtBoxPrix.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcCongressiste, "Prenom", true));
-            this.txtBoxPrix.Location = new System.Drawing.Point(418, 99);
-            this.txtBoxPrix.Name = "txtBoxPrix";
-            this.txtBoxPrix.Size = new System.Drawing.Size(152, 20);
-            this.txtBoxPrix.TabIndex = 5;
+            this.txtBoxPrenom.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcCongressiste, "Prenom", true));
+            this.txtBoxPrenom.Location = new System.Drawing.Point(418, 99);
+            this.txtBoxPrenom.Name = "txtBoxPrenom";
+            this.txtBoxPrenom.Size = new System.Drawing.Size(152, 20);
+            this.txtBoxPrenom.TabIndex = 5;
             // 
             // txtBoxCp
             // 
@@ -471,6 +476,23 @@
             this.btnNouveau.UseVisualStyleBackColor = true;
             this.btnNouveau.Click += new System.EventHandler(this.btnNouveau_Click);
             // 
+            // lblVille
+            // 
+            this.lblVille.AutoSize = true;
+            this.lblVille.Location = new System.Drawing.Point(318, 55);
+            this.lblVille.Name = "lblVille";
+            this.lblVille.Size = new System.Drawing.Size(26, 13);
+            this.lblVille.TabIndex = 22;
+            this.lblVille.Text = "Ville";
+            // 
+            // txtBoxVille
+            // 
+            this.txtBoxVille.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcCongressiste, "Ville", true));
+            this.txtBoxVille.Location = new System.Drawing.Point(418, 52);
+            this.txtBoxVille.Name = "txtBoxVille";
+            this.txtBoxVille.Size = new System.Drawing.Size(152, 20);
+            this.txtBoxVille.TabIndex = 21;
+            // 
             // FrmCongressiste
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -510,15 +532,15 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.Button btnAjouter;
-        private System.Windows.Forms.Label lblPrix;
+        private System.Windows.Forms.Label lblPrenom;
         private System.Windows.Forms.TextBox txtBoxNom;
-        private System.Windows.Forms.Label lblNbEtoiles;
+        private System.Windows.Forms.Label lblAccompte;
         private System.Windows.Forms.Label lblTel;
         private System.Windows.Forms.Label lblCp;
         private System.Windows.Forms.Label lblAdresse;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.TextBox txtBoxTel;
-        private System.Windows.Forms.TextBox txtBoxPrix;
+        private System.Windows.Forms.TextBox txtBoxPrenom;
         private System.Windows.Forms.TextBox txtBoxCp;
         private System.Windows.Forms.TextBox txtBoxAdresse;
         private System.Windows.Forms.TextBox txtBoxId;
@@ -531,13 +553,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cpDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn villeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accompteDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ComboBox comboBxCongressiste;
+        private System.Windows.Forms.ComboBox comboBxHebergement;
         private System.Windows.Forms.ComboBox comboBxLigue;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBoxAccompte;
         private System.Windows.Forms.Button btnNouveau;
         private System.Windows.Forms.BindingSource bindSrcLigue;
         private System.Windows.Forms.BindingSource bindSrcHebergement;
+        private System.Windows.Forms.Label lblVille;
+        private System.Windows.Forms.TextBox txtBoxVille;
     }
 }
