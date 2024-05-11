@@ -54,7 +54,7 @@ namespace congres.dll.Managers
         {
             bool isAdded = false;
 
-            SqlCommand reqAdd = new SqlCommand("INSERT INTO CONGRESSISTE (id, nom, prenom, tel, adresse, cp, ville, accompte, idLigue, idHebergement) VALUES (@id, @n, @p, @t, @a, @cp, @v, @accompte, @idL, @idH", DBManager.ConnexionDB);
+            SqlCommand reqAdd = new SqlCommand("INSERT INTO CONGRESSISTE (nom, prenom, tel, adresse, cp, ville, accompte, idLigue, idHebergement) VALUES (@n, @p, @t, @a, @cp, @v, @accompte, @idL, @idH)", DBManager.ConnexionDB);
             reqAdd.Parameters.AddWithValue("@id", congressiste.Id);
             reqAdd.Parameters.AddWithValue("@n", congressiste.Nom);
             reqAdd.Parameters.AddWithValue("@p", congressiste.Prenom);
@@ -108,14 +108,8 @@ namespace congres.dll.Managers
             reqUdpt.Parameters.AddWithValue("@cp", congressiste.Cp);
             reqUdpt.Parameters.AddWithValue("@v", congressiste.Ville);
             reqUdpt.Parameters.AddWithValue("@accompte", congressiste.Accompte);
-            if (congressiste.IdLigue == null)
-            {
-                reqUdpt.Parameters.AddWithValue("@idL", DBNull.Value);
-            }
-            else
-            {
-                reqUdpt.Parameters.AddWithValue("@idL", congressiste.IdLigue);
-            }
+            reqUdpt.Parameters.AddWithValue("@idL", congressiste.IdLigue);
+
             if (congressiste.IdHebergement == null)
             {
                 reqUdpt.Parameters.AddWithValue("@idH", DBNull.Value);
