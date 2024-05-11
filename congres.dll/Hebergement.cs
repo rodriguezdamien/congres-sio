@@ -10,7 +10,7 @@ namespace congres.dll
 {
     public class Hebergement
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Nom { get; set; }
         public string Adresse { get; set; }
         public string Cp { get; set; }
@@ -42,6 +42,12 @@ namespace congres.dll
             this.NbEtoiles = nbEtoiles;
             this.Prix = prix;
             this.LesCongressistes = new List<Congressiste>();
+        }
+
+        public Hebergement(int? id, string nom) 
+        {
+            this.Id = id;
+            this.Nom = nom;
         }
     }
 }
