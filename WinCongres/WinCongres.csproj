@@ -71,6 +71,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSessions.resx">
       <DependentUpon>FrmSessions.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMDI.resx">
       <DependentUpon>FrmMDI.cs</DependentUpon>
