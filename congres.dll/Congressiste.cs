@@ -8,19 +8,24 @@ namespace congres.dll
 {
     public class Congressiste
     {
+        /// <summary>
+        /// Constructeur par défaut
+        /// </summary>
+        public Congressiste() { }
 
-        /**<summary> Constructeur de Congressiste avec tout ses attributs </summary>
-         * <param name="id"> Id du congressiste </param>
-         * <param name="nom"> Nom du congressiste </param>
-         * <param name="prenom"> Prenom du congressiste </param>
-         * <param name="tel"> Tel du congressiste </param>
-         * <param name="adresse"> Adresse du congressiste </param>
-         * <param name="cp"> Cp du congressiste </param>
-         * <param name="ville"> Ville du congressiste </param>
-         * <param name="accompte"> Accompte du congressiste </param>
-         * <param name="idLigue"> Clé étrangère IdLigue du congressiste </param>
-         * <param name="idHebergement"> Clé étrangère IdHebergement du congressiste </param>
-         **/
+        /// <summary>
+        /// Constructeur de Congressiste avec tout ses attributs
+        /// </summary>
+        /// <param name="id">Id du congressiste</param>
+        /// <param name="nom">Nom du congressiste</param>
+        /// <param name="prenom">Prenom du congressiste</param>
+        /// <param name="tel">Tel du congressiste</param>
+        /// <param name="adresse">Adresse du congressiste</param>
+        /// <param name="cp">Code postal du congressiste</param>
+        /// <param name="ville">Ville du congressiste</param>
+        /// <param name="accompte">Accompte du congressiste</param>
+        /// <param name="idLigue">Clé étrangère IdLigue du congressiste</param>
+        /// <param name="idHebergement">Clé étrangère IdHebergement du congressiste</param>
         public Congressiste(int id, string nom, string prenom, string tel, string adresse, string cp, string ville, decimal accompte, int idLigue, int idHebergement)
         {
             this.Id = id;
@@ -44,8 +49,10 @@ namespace congres.dll
         public string Ville { get; set; }
         //conversion de float à double
         public decimal Accompte { get; set; }
-        public int? IdLigue { get; set; }
+        public int IdLigue { get; set; }
+        public Ligue laLigue { get; set; }
         public int? IdHebergement { get; set; }
+        public Hebergement sonHebergement { get; set; }
 
 
     }

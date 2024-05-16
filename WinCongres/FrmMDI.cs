@@ -36,7 +36,16 @@ namespace WinCongres
         }
         private void menuBtnHebergements_Click(object sender, EventArgs e)
         {
-
+            if (Application.OpenForms["FrmHebergements"] == null)
+            {
+                FrmHebergements unFrmHebergement = new FrmHebergements();
+                unFrmHebergement.MdiParent = this;
+                unFrmHebergement.Show();
+            }
+            else
+            {
+                Application.OpenForms["FrmHebergements"].Focus();
+            }
         }
         private void menuBtnInscriptions_Click(object sender, EventArgs e)
         {
@@ -47,6 +56,18 @@ namespace WinCongres
 
         }
 
-
+        private void btnCongressiste_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["FrmCongressiste"] == null)
+            {
+                FrmCongressiste unFrmHebergement = new FrmCongressiste();
+                unFrmHebergement.MdiParent = this;
+                unFrmHebergement.Show();
+            }
+            else
+            {
+                Application.OpenForms["FrmCongressiste"].Focus();
+            }
+        }
     }
 }
