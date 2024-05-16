@@ -18,6 +18,7 @@ namespace congres.dll
         public DateTime DateSession { get; set; }
         public bool EstMatin { get; set; }
         public string AffichageMomentJournee { get { return this.EstMatin ? "Matin" : "Après-midi"; } }
+        public List<Congressiste> CongressisteParticipants { get; set; }
 
 
         /**<summary> Constructeur de Session avec tout ses attributs </summary>
