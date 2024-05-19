@@ -79,5 +79,22 @@ namespace congres.dll.Managers
             }
             return congressistes;
         }
+        public static void AddSession(ref Session uneSession) {
+            try {
+                DBManager.ConnexionDB.Open();
+                SqlCommand req = new SqlCommand("INSERT INTO Session(theme,nomPresident,nbPlace,salle,prix,dateSession,estMatin) VALUES(@theme,@nomPresident,@nbPlace,@salle,@prix,@dateSession,@estMatin); SELECT SCOPE_IDENTITY();", DBManager.ConnexionDB);
+                req.Parameters.AddWithValue("@theme", uneSession.Theme);
+                req.Parameters.AddWithValue("@nomPresident", uneSession.NomPresident);
+                req.Parameters.AddWithValue("@nbPlace", uneSession.NbPlace);
+                req.Parameters.AddWithValue("@salle", uneSession.Salle);
+                req.Parameters.AddWithValue("@prix", uneSession.Prix);
+                req.Parameters.AddWithValue("@dateSession", uneSession.DateSession);
+                req.Parameters.AddWithValue("@estMatin", uneSession.EstMatin);
+                uneSession.Id = Convert.ToInt32(req.ExecuteScalar());
+
+            } finally {
+                DBManager.ConnexionDB.Close();
+            }
+        }
     }
 }
