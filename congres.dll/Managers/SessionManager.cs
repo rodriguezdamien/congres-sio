@@ -23,7 +23,15 @@ namespace congres.dll.Managers
                 SqlDataReader reader = req.ExecuteReader();
                 while (reader.Read())
                 {
-                    sessions.Add(new Session(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetString(4), reader.GetDecimal(5), reader.GetDateTime(6), reader.GetBoolean(7)));
+                    sessions.Add(new Session(id: reader.GetInt32(0),
+                                             theme: reader.GetString(1),
+                                             nomPresident: reader.GetString(2),
+                                             nbPlace: reader.GetInt32(3),
+                                             salle: reader.GetString(4),
+                                             prix: reader.GetDecimal(5),
+                                             dateSession:reader.GetDateTime(6),
+                                             estMatin:reader.GetBoolean(7)
+                                             ));
                 }
             }
             finally
