@@ -42,5 +42,9 @@ namespace congres.dll
             this.DateSession = dateSession;
             this.EstMatin = estMatin;
         }
+
+        public Session()
+        {
+        }
     }
 }
