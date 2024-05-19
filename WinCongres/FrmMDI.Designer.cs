@@ -51,7 +51,7 @@
             this.menuStripMDI.Location = new System.Drawing.Point(0, 0);
             this.menuStripMDI.Name = "menuStripMDI";
             this.menuStripMDI.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStripMDI.Size = new System.Drawing.Size(1025, 24);
+            this.menuStripMDI.Size = new System.Drawing.Size(1461, 24);
             this.menuStripMDI.TabIndex = 0;
             this.menuStripMDI.Text = "menuStripMDI";
             // 
@@ -101,11 +101,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1025, 645);
+            this.ClientSize = new System.Drawing.Size(1461, 855);
             this.Controls.Add(this.menuStripMDI);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStripMDI;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmMDI";
             this.Text = "Gestionnaire de l\'organisation du Congrès \"Sport et Santé\"";
             this.menuStripMDI.ResumeLayout(false);
