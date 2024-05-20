@@ -29,36 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label themeLabel;
+            System.Windows.Forms.Label lblTheme;
             System.Windows.Forms.Label dateSessionLabel;
             this.tabControlSession = new System.Windows.Forms.TabControl();
             this.tabPageSessions = new System.Windows.Forms.TabPage();
             this.dataGridSession = new System.Windows.Forms.DataGridView();
-            this.AffichageMomentJournee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPageDetail = new System.Windows.Forms.TabPage();
-            this.groupBoxParticipants = new System.Windows.Forms.GroupBox();
-            this.btnSupprParticipant = new System.Windows.Forms.Button();
-            this.btnAjouterParticipant = new System.Windows.Forms.Button();
-            this.dataGridParticipants = new System.Windows.Forms.DataGridView();
-            this.bindSrcParticipants = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.datePickerSession = new System.Windows.Forms.DateTimePicker();
-            this.radioBtnApresMidi = new System.Windows.Forms.RadioButton();
-            this.radioBtnMatin = new System.Windows.Forms.RadioButton();
-            this.themeTextBox = new System.Windows.Forms.TextBox();
-            this.btnAnnulerNouveau = new System.Windows.Forms.Button();
-            this.btnConfirmNouveau = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtBoxPrix = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblNomPresident = new System.Windows.Forms.Label();
-            this.lblSalle = new System.Windows.Forms.Label();
-            this.txtBoxVille = new System.Windows.Forms.TextBox();
-            this.txtBoxCp = new System.Windows.Forms.TextBox();
-            this.txtBoxAdresse = new System.Windows.Forms.TextBox();
-            this.btnSupprSession = new System.Windows.Forms.Button();
-            this.btnModifier = new System.Windows.Forms.Button();
-            this.btnNouveau = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.themeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomPresidentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,32 +41,57 @@
             this.salleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prixDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateSessionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AffichageMomentJournee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindSrcSessions = new System.Windows.Forms.BindingSource(this.components);
+            this.tabPageDetail = new System.Windows.Forms.TabPage();
+            this.groupBoxParticipants = new System.Windows.Forms.GroupBox();
+            this.btnSupprParticipant = new System.Windows.Forms.Button();
+            this.btnAjouterParticipant = new System.Windows.Forms.Button();
+            this.dataGridParticipants = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prenomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            themeLabel = new System.Windows.Forms.Label();
+            this.bindSrcParticipants = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.datePickerSession = new System.Windows.Forms.DateTimePicker();
+            this.radioBtnApresMidi = new System.Windows.Forms.RadioButton();
+            this.radioBtnMatin = new System.Windows.Forms.RadioButton();
+            this.txtBoxTheme = new System.Windows.Forms.TextBox();
+            this.btnAnnulerNouveau = new System.Windows.Forms.Button();
+            this.btnConfirmNouveau = new System.Windows.Forms.Button();
+            this.lblPrix = new System.Windows.Forms.Label();
+            this.txtBoxPrix = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblNomPresident = new System.Windows.Forms.Label();
+            this.lblSalle = new System.Windows.Forms.Label();
+            this.txtBoxNbPlaces = new System.Windows.Forms.TextBox();
+            this.txtBoxNomPresident = new System.Windows.Forms.TextBox();
+            this.txtBoxSalle = new System.Windows.Forms.TextBox();
+            this.btnSupprSession = new System.Windows.Forms.Button();
+            this.btnModifier = new System.Windows.Forms.Button();
+            this.btnNouveau = new System.Windows.Forms.Button();
+            lblTheme = new System.Windows.Forms.Label();
             dateSessionLabel = new System.Windows.Forms.Label();
             this.tabControlSession.SuspendLayout();
             this.tabPageSessions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSession)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindSrcSessions)).BeginInit();
             this.tabPageDetail.SuspendLayout();
             this.groupBoxParticipants.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridParticipants)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindSrcParticipants)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindSrcSessions)).BeginInit();
             this.SuspendLayout();
             // 
-            // themeLabel
+            // lblTheme
             // 
-            themeLabel.AutoSize = true;
-            themeLabel.Location = new System.Drawing.Point(9, 54);
-            themeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            themeLabel.Name = "themeLabel";
-            themeLabel.Size = new System.Drawing.Size(40, 13);
-            themeLabel.TabIndex = 18;
-            themeLabel.Text = "Thème";
+            lblTheme.AutoSize = true;
+            lblTheme.Location = new System.Drawing.Point(9, 54);
+            lblTheme.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            lblTheme.Name = "lblTheme";
+            lblTheme.Size = new System.Drawing.Size(40, 13);
+            lblTheme.TabIndex = 18;
+            lblTheme.Text = "Thème";
             // 
             // dateSessionLabel
             // 
@@ -156,6 +156,69 @@
             this.dataGridSession.Size = new System.Drawing.Size(1041, 404);
             this.dataGridSession.TabIndex = 0;
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Width = 41;
+            // 
+            // themeDataGridViewTextBoxColumn
+            // 
+            this.themeDataGridViewTextBoxColumn.DataPropertyName = "Theme";
+            this.themeDataGridViewTextBoxColumn.HeaderText = "Theme";
+            this.themeDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.themeDataGridViewTextBoxColumn.Name = "themeDataGridViewTextBoxColumn";
+            this.themeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.themeDataGridViewTextBoxColumn.Width = 65;
+            // 
+            // nomPresidentDataGridViewTextBoxColumn
+            // 
+            this.nomPresidentDataGridViewTextBoxColumn.DataPropertyName = "NomPresident";
+            this.nomPresidentDataGridViewTextBoxColumn.HeaderText = "Président";
+            this.nomPresidentDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.nomPresidentDataGridViewTextBoxColumn.Name = "nomPresidentDataGridViewTextBoxColumn";
+            this.nomPresidentDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomPresidentDataGridViewTextBoxColumn.Width = 76;
+            // 
+            // nbPlaceDataGridViewTextBoxColumn
+            // 
+            this.nbPlaceDataGridViewTextBoxColumn.DataPropertyName = "NbPlace";
+            this.nbPlaceDataGridViewTextBoxColumn.HeaderText = "Nb. de Places";
+            this.nbPlaceDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.nbPlaceDataGridViewTextBoxColumn.Name = "nbPlaceDataGridViewTextBoxColumn";
+            this.nbPlaceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nbPlaceDataGridViewTextBoxColumn.Width = 99;
+            // 
+            // salleDataGridViewTextBoxColumn
+            // 
+            this.salleDataGridViewTextBoxColumn.DataPropertyName = "Salle";
+            this.salleDataGridViewTextBoxColumn.HeaderText = "Salle";
+            this.salleDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.salleDataGridViewTextBoxColumn.Name = "salleDataGridViewTextBoxColumn";
+            this.salleDataGridViewTextBoxColumn.ReadOnly = true;
+            this.salleDataGridViewTextBoxColumn.Width = 55;
+            // 
+            // prixDataGridViewTextBoxColumn
+            // 
+            this.prixDataGridViewTextBoxColumn.DataPropertyName = "Prix";
+            this.prixDataGridViewTextBoxColumn.HeaderText = "Prix";
+            this.prixDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.prixDataGridViewTextBoxColumn.Name = "prixDataGridViewTextBoxColumn";
+            this.prixDataGridViewTextBoxColumn.ReadOnly = true;
+            this.prixDataGridViewTextBoxColumn.Width = 49;
+            // 
+            // dateSessionDataGridViewTextBoxColumn
+            // 
+            this.dateSessionDataGridViewTextBoxColumn.DataPropertyName = "DateSession";
+            this.dateSessionDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateSessionDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.dateSessionDataGridViewTextBoxColumn.Name = "dateSessionDataGridViewTextBoxColumn";
+            this.dateSessionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dateSessionDataGridViewTextBoxColumn.Width = 55;
+            // 
             // AffichageMomentJournee
             // 
             this.AffichageMomentJournee.DataPropertyName = "AffichageMomentJournee";
@@ -164,6 +227,11 @@
             this.AffichageMomentJournee.Name = "AffichageMomentJournee";
             this.AffichageMomentJournee.ReadOnly = true;
             this.AffichageMomentJournee.Width = 70;
+            // 
+            // bindSrcSessions
+            // 
+            this.bindSrcSessions.DataSource = typeof(congres.dll.Session);
+            this.bindSrcSessions.CurrentChanged += new System.EventHandler(this.bindSrcSession_CurrentChanged);
             // 
             // tabPageDetail
             // 
@@ -231,6 +299,30 @@
             this.dataGridParticipants.Size = new System.Drawing.Size(398, 283);
             this.dataGridParticipants.TabIndex = 4;
             // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn1.Width = 41;
+            // 
+            // nomDataGridViewTextBoxColumn
+            // 
+            this.nomDataGridViewTextBoxColumn.DataPropertyName = "Nom";
+            this.nomDataGridViewTextBoxColumn.HeaderText = "Nom";
+            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
+            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomDataGridViewTextBoxColumn.Width = 54;
+            // 
+            // prenomDataGridViewTextBoxColumn
+            // 
+            this.prenomDataGridViewTextBoxColumn.DataPropertyName = "Prenom";
+            this.prenomDataGridViewTextBoxColumn.HeaderText = "Prenom";
+            this.prenomDataGridViewTextBoxColumn.Name = "prenomDataGridViewTextBoxColumn";
+            this.prenomDataGridViewTextBoxColumn.ReadOnly = true;
+            this.prenomDataGridViewTextBoxColumn.Width = 68;
+            // 
             // bindSrcParticipants
             // 
             this.bindSrcParticipants.DataMember = "CongressisteParticipants";
@@ -242,18 +334,18 @@
             this.groupBox1.Controls.Add(this.datePickerSession);
             this.groupBox1.Controls.Add(this.radioBtnApresMidi);
             this.groupBox1.Controls.Add(this.radioBtnMatin);
-            this.groupBox1.Controls.Add(themeLabel);
-            this.groupBox1.Controls.Add(this.themeTextBox);
+            this.groupBox1.Controls.Add(lblTheme);
+            this.groupBox1.Controls.Add(this.txtBoxTheme);
             this.groupBox1.Controls.Add(this.btnAnnulerNouveau);
             this.groupBox1.Controls.Add(this.btnConfirmNouveau);
-            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.lblPrix);
             this.groupBox1.Controls.Add(this.txtBoxPrix);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.lblNomPresident);
             this.groupBox1.Controls.Add(this.lblSalle);
-            this.groupBox1.Controls.Add(this.txtBoxVille);
-            this.groupBox1.Controls.Add(this.txtBoxCp);
-            this.groupBox1.Controls.Add(this.txtBoxAdresse);
+            this.groupBox1.Controls.Add(this.txtBoxNbPlaces);
+            this.groupBox1.Controls.Add(this.txtBoxNomPresident);
+            this.groupBox1.Controls.Add(this.txtBoxSalle);
             this.groupBox1.Controls.Add(this.btnSupprSession);
             this.groupBox1.Controls.Add(this.btnModifier);
             this.groupBox1.Location = new System.Drawing.Point(5, 29);
@@ -294,14 +386,14 @@
             this.radioBtnMatin.Text = "Matin";
             this.radioBtnMatin.UseVisualStyleBackColor = true;
             // 
-            // themeTextBox
+            // txtBoxTheme
             // 
-            this.themeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcSessions, "Theme", true));
-            this.themeTextBox.Location = new System.Drawing.Point(103, 52);
-            this.themeTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.themeTextBox.Name = "themeTextBox";
-            this.themeTextBox.Size = new System.Drawing.Size(181, 20);
-            this.themeTextBox.TabIndex = 19;
+            this.txtBoxTheme.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcSessions, "Theme", true));
+            this.txtBoxTheme.Location = new System.Drawing.Point(103, 52);
+            this.txtBoxTheme.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBoxTheme.Name = "txtBoxTheme";
+            this.txtBoxTheme.Size = new System.Drawing.Size(181, 20);
+            this.txtBoxTheme.TabIndex = 19;
             // 
             // btnAnnulerNouveau
             // 
@@ -331,14 +423,14 @@
             this.btnConfirmNouveau.Visible = false;
             this.btnConfirmNouveau.Click += new System.EventHandler(this.btnConfirmNouveau_Click);
             // 
-            // label7
+            // lblPrix
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 203);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(24, 13);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Prix";
+            this.lblPrix.AutoSize = true;
+            this.lblPrix.Location = new System.Drawing.Point(9, 203);
+            this.lblPrix.Name = "lblPrix";
+            this.lblPrix.Size = new System.Drawing.Size(24, 13);
+            this.lblPrix.TabIndex = 15;
+            this.lblPrix.Text = "Prix";
             // 
             // txtBoxPrix
             // 
@@ -375,29 +467,29 @@
             this.lblSalle.TabIndex = 9;
             this.lblSalle.Text = "Salle";
             // 
-            // txtBoxVille
+            // txtBoxNbPlaces
             // 
-            this.txtBoxVille.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcSessions, "NbPlace", true));
-            this.txtBoxVille.Location = new System.Drawing.Point(415, 55);
-            this.txtBoxVille.Name = "txtBoxVille";
-            this.txtBoxVille.Size = new System.Drawing.Size(161, 20);
-            this.txtBoxVille.TabIndex = 5;
+            this.txtBoxNbPlaces.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcSessions, "NbPlace", true));
+            this.txtBoxNbPlaces.Location = new System.Drawing.Point(415, 55);
+            this.txtBoxNbPlaces.Name = "txtBoxNbPlaces";
+            this.txtBoxNbPlaces.Size = new System.Drawing.Size(161, 20);
+            this.txtBoxNbPlaces.TabIndex = 5;
             // 
-            // txtBoxCp
+            // txtBoxNomPresident
             // 
-            this.txtBoxCp.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcSessions, "NomPresident", true));
-            this.txtBoxCp.Location = new System.Drawing.Point(103, 148);
-            this.txtBoxCp.Name = "txtBoxCp";
-            this.txtBoxCp.Size = new System.Drawing.Size(181, 20);
-            this.txtBoxCp.TabIndex = 4;
+            this.txtBoxNomPresident.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcSessions, "NomPresident", true));
+            this.txtBoxNomPresident.Location = new System.Drawing.Point(103, 148);
+            this.txtBoxNomPresident.Name = "txtBoxNomPresident";
+            this.txtBoxNomPresident.Size = new System.Drawing.Size(181, 20);
+            this.txtBoxNomPresident.TabIndex = 4;
             // 
-            // txtBoxAdresse
+            // txtBoxSalle
             // 
-            this.txtBoxAdresse.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcSessions, "Salle", true));
-            this.txtBoxAdresse.Location = new System.Drawing.Point(103, 99);
-            this.txtBoxAdresse.Name = "txtBoxAdresse";
-            this.txtBoxAdresse.Size = new System.Drawing.Size(181, 20);
-            this.txtBoxAdresse.TabIndex = 3;
+            this.txtBoxSalle.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcSessions, "Salle", true));
+            this.txtBoxSalle.Location = new System.Drawing.Point(103, 99);
+            this.txtBoxSalle.Name = "txtBoxSalle";
+            this.txtBoxSalle.Size = new System.Drawing.Size(181, 20);
+            this.txtBoxSalle.TabIndex = 3;
             // 
             // btnSupprSession
             // 
@@ -436,98 +528,6 @@
             this.btnNouveau.UseVisualStyleBackColor = true;
             this.btnNouveau.Click += new System.EventHandler(this.btnNouveau_Click);
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 41;
-            // 
-            // themeDataGridViewTextBoxColumn
-            // 
-            this.themeDataGridViewTextBoxColumn.DataPropertyName = "Theme";
-            this.themeDataGridViewTextBoxColumn.HeaderText = "Theme";
-            this.themeDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.themeDataGridViewTextBoxColumn.Name = "themeDataGridViewTextBoxColumn";
-            this.themeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.themeDataGridViewTextBoxColumn.Width = 65;
-            // 
-            // nomPresidentDataGridViewTextBoxColumn
-            // 
-            this.nomPresidentDataGridViewTextBoxColumn.DataPropertyName = "NomPresident";
-            this.nomPresidentDataGridViewTextBoxColumn.HeaderText = "Président";
-            this.nomPresidentDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.nomPresidentDataGridViewTextBoxColumn.Name = "nomPresidentDataGridViewTextBoxColumn";
-            this.nomPresidentDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nomPresidentDataGridViewTextBoxColumn.Width = 76;
-            // 
-            // nbPlaceDataGridViewTextBoxColumn
-            // 
-            this.nbPlaceDataGridViewTextBoxColumn.DataPropertyName = "NbPlace";
-            this.nbPlaceDataGridViewTextBoxColumn.HeaderText = "Nb. de Places";
-            this.nbPlaceDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.nbPlaceDataGridViewTextBoxColumn.Name = "nbPlaceDataGridViewTextBoxColumn";
-            this.nbPlaceDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nbPlaceDataGridViewTextBoxColumn.Width = 99;
-            // 
-            // salleDataGridViewTextBoxColumn
-            // 
-            this.salleDataGridViewTextBoxColumn.DataPropertyName = "Salle";
-            this.salleDataGridViewTextBoxColumn.HeaderText = "Salle";
-            this.salleDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.salleDataGridViewTextBoxColumn.Name = "salleDataGridViewTextBoxColumn";
-            this.salleDataGridViewTextBoxColumn.ReadOnly = true;
-            this.salleDataGridViewTextBoxColumn.Width = 55;
-            // 
-            // prixDataGridViewTextBoxColumn
-            // 
-            this.prixDataGridViewTextBoxColumn.DataPropertyName = "Prix";
-            this.prixDataGridViewTextBoxColumn.HeaderText = "Prix";
-            this.prixDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.prixDataGridViewTextBoxColumn.Name = "prixDataGridViewTextBoxColumn";
-            this.prixDataGridViewTextBoxColumn.ReadOnly = true;
-            this.prixDataGridViewTextBoxColumn.Width = 49;
-            // 
-            // dateSessionDataGridViewTextBoxColumn
-            // 
-            this.dateSessionDataGridViewTextBoxColumn.DataPropertyName = "DateSession";
-            this.dateSessionDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateSessionDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.dateSessionDataGridViewTextBoxColumn.Name = "dateSessionDataGridViewTextBoxColumn";
-            this.dateSessionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dateSessionDataGridViewTextBoxColumn.Width = 55;
-            // 
-            // bindSrcSessions
-            // 
-            this.bindSrcSessions.DataSource = typeof(congres.dll.Session);
-            this.bindSrcSessions.CurrentChanged += new System.EventHandler(this.bindSrcSession_CurrentChanged);
-            // 
-            // idDataGridViewTextBoxColumn1
-            // 
-            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
-            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn1.Width = 41;
-            // 
-            // nomDataGridViewTextBoxColumn
-            // 
-            this.nomDataGridViewTextBoxColumn.DataPropertyName = "Nom";
-            this.nomDataGridViewTextBoxColumn.HeaderText = "Nom";
-            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
-            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nomDataGridViewTextBoxColumn.Width = 54;
-            // 
-            // prenomDataGridViewTextBoxColumn
-            // 
-            this.prenomDataGridViewTextBoxColumn.DataPropertyName = "Prenom";
-            this.prenomDataGridViewTextBoxColumn.HeaderText = "Prenom";
-            this.prenomDataGridViewTextBoxColumn.Name = "prenomDataGridViewTextBoxColumn";
-            this.prenomDataGridViewTextBoxColumn.ReadOnly = true;
-            this.prenomDataGridViewTextBoxColumn.Width = 68;
-            // 
             // FrmSessions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -541,13 +541,13 @@
             this.tabControlSession.ResumeLayout(false);
             this.tabPageSessions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSession)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindSrcSessions)).EndInit();
             this.tabPageDetail.ResumeLayout(false);
             this.groupBoxParticipants.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridParticipants)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindSrcParticipants)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindSrcSessions)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -571,18 +571,18 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnAnnulerNouveau;
         private System.Windows.Forms.Button btnConfirmNouveau;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblPrix;
         private System.Windows.Forms.TextBox txtBoxPrix;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblNomPresident;
         private System.Windows.Forms.Label lblSalle;
-        private System.Windows.Forms.TextBox txtBoxVille;
-        private System.Windows.Forms.TextBox txtBoxCp;
-        private System.Windows.Forms.TextBox txtBoxAdresse;
+        private System.Windows.Forms.TextBox txtBoxNbPlaces;
+        private System.Windows.Forms.TextBox txtBoxNomPresident;
+        private System.Windows.Forms.TextBox txtBoxSalle;
         private System.Windows.Forms.Button btnSupprSession;
         private System.Windows.Forms.Button btnModifier;
         private System.Windows.Forms.Button btnNouveau;
-        private System.Windows.Forms.TextBox themeTextBox;
+        private System.Windows.Forms.TextBox txtBoxTheme;
         private System.Windows.Forms.DateTimePicker datePickerSession;
         private System.Windows.Forms.RadioButton radioBtnApresMidi;
         private System.Windows.Forms.RadioButton radioBtnMatin;
