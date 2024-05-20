@@ -91,6 +91,7 @@ namespace WinCongres
         /// <exception cref="NotImplementedException"></exception>
         private void btnConfirmNouveau_Click(object sender, EventArgs e)
         {
+                //TODO : AJOUTER LA VERIFCATION DES CHAMPS
                 bindSrcSessions.EndEdit();
                 Session nouvelleSession = (Session)bindSrcSessions.Current;
                 SessionManager.AddSession(ref nouvelleSession);
