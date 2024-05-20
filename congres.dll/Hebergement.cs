@@ -44,6 +44,8 @@ namespace congres.dll
             this.LesCongressistes = new List<Congressiste>();
         }
 
+        public Hebergement() { }
+
         public Hebergement(int? id, string nom) 
         {
             this.Id = id;
