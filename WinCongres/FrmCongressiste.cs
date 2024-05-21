@@ -32,7 +32,7 @@ namespace WinCongres
 
                 this.bindSrcCongressiste.DataSource = CongressisteManager.GetCongressistes();
                 this.bindSrcHebergement.DataSource = HebergementManager.GetHebergements();
-                this.bindSrcHebergement.Add(new Hebergement(null, "Sans hébergement"));
+                this.bindSrcHebergement.Add(new Hebergement("Sans hébergement"));
                 this.bindSrcLigue.DataSource = LigueManager.GetLigues();
 
                 foreach (Congressiste unC in this.bindSrcCongressiste)
