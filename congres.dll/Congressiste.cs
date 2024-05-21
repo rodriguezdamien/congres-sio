@@ -26,7 +26,7 @@ namespace congres.dll
         /// <param name="accompte">Accompte du congressiste</param>
         /// <param name="idLigue">Clé étrangère IdLigue du congressiste</param>
         /// <param name="idHebergement">Clé étrangère IdHebergement du congressiste</param>
-        public Congressiste(int id, string nom, string prenom, string tel, string adresse, string cp, string ville, decimal accompte, int idLigue, int idHebergement)
+        public Congressiste(int id, string nom, string prenom, string tel, string adresse, string cp, string ville, decimal accompte, int idLigue, int? idHebergement)
         {
             this.Id = id;
             this.Nom = nom;
