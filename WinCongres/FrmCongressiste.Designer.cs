@@ -45,13 +45,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.themeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomPresidentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nbPlaceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prixDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateSessionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.affichageMomentJourneeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindSrcSession = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblVille = new System.Windows.Forms.Label();
@@ -80,6 +73,9 @@
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnNouveau = new System.Windows.Forms.Button();
             this.btnSupprimer = new System.Windows.Forms.Button();
+            this.themeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateSessionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.affichageMomentJourneeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlCongressiste.SuspendLayout();
             this.tabPageListe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCongressiste)).BeginInit();
@@ -248,10 +244,6 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.themeDataGridViewTextBoxColumn,
-            this.nomPresidentDataGridViewTextBoxColumn,
-            this.nbPlaceDataGridViewTextBoxColumn,
-            this.salleDataGridViewTextBoxColumn,
-            this.prixDataGridViewTextBoxColumn,
             this.dateSessionDataGridViewTextBoxColumn,
             this.affichageMomentJourneeDataGridViewTextBoxColumn});
             this.dataGridView2.DataSource = this.bindSrcSession;
@@ -261,55 +253,6 @@
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(353, 138);
             this.dataGridView2.TabIndex = 1;
-            // 
-            // themeDataGridViewTextBoxColumn
-            // 
-            this.themeDataGridViewTextBoxColumn.DataPropertyName = "Theme";
-            this.themeDataGridViewTextBoxColumn.HeaderText = "Theme";
-            this.themeDataGridViewTextBoxColumn.Name = "themeDataGridViewTextBoxColumn";
-            this.themeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nomPresidentDataGridViewTextBoxColumn
-            // 
-            this.nomPresidentDataGridViewTextBoxColumn.DataPropertyName = "NomPresident";
-            this.nomPresidentDataGridViewTextBoxColumn.HeaderText = "President";
-            this.nomPresidentDataGridViewTextBoxColumn.Name = "nomPresidentDataGridViewTextBoxColumn";
-            this.nomPresidentDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nbPlaceDataGridViewTextBoxColumn
-            // 
-            this.nbPlaceDataGridViewTextBoxColumn.DataPropertyName = "NbPlace";
-            this.nbPlaceDataGridViewTextBoxColumn.HeaderText = "NbPlace";
-            this.nbPlaceDataGridViewTextBoxColumn.Name = "nbPlaceDataGridViewTextBoxColumn";
-            this.nbPlaceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // salleDataGridViewTextBoxColumn
-            // 
-            this.salleDataGridViewTextBoxColumn.DataPropertyName = "Salle";
-            this.salleDataGridViewTextBoxColumn.HeaderText = "Salle";
-            this.salleDataGridViewTextBoxColumn.Name = "salleDataGridViewTextBoxColumn";
-            this.salleDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // prixDataGridViewTextBoxColumn
-            // 
-            this.prixDataGridViewTextBoxColumn.DataPropertyName = "Prix";
-            this.prixDataGridViewTextBoxColumn.HeaderText = "Prix";
-            this.prixDataGridViewTextBoxColumn.Name = "prixDataGridViewTextBoxColumn";
-            this.prixDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dateSessionDataGridViewTextBoxColumn
-            // 
-            this.dateSessionDataGridViewTextBoxColumn.DataPropertyName = "DateSession";
-            this.dateSessionDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateSessionDataGridViewTextBoxColumn.Name = "dateSessionDataGridViewTextBoxColumn";
-            this.dateSessionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // affichageMomentJourneeDataGridViewTextBoxColumn
-            // 
-            this.affichageMomentJourneeDataGridViewTextBoxColumn.DataPropertyName = "AffichageMomentJournee";
-            this.affichageMomentJourneeDataGridViewTextBoxColumn.HeaderText = "Moment";
-            this.affichageMomentJourneeDataGridViewTextBoxColumn.Name = "affichageMomentJourneeDataGridViewTextBoxColumn";
-            this.affichageMomentJourneeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // bindSrcSession
             // 
@@ -586,6 +529,27 @@
             this.btnSupprimer.UseVisualStyleBackColor = false;
             this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
             // 
+            // themeDataGridViewTextBoxColumn
+            // 
+            this.themeDataGridViewTextBoxColumn.DataPropertyName = "Theme";
+            this.themeDataGridViewTextBoxColumn.HeaderText = "Theme";
+            this.themeDataGridViewTextBoxColumn.Name = "themeDataGridViewTextBoxColumn";
+            this.themeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateSessionDataGridViewTextBoxColumn
+            // 
+            this.dateSessionDataGridViewTextBoxColumn.DataPropertyName = "DateSession";
+            this.dateSessionDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateSessionDataGridViewTextBoxColumn.Name = "dateSessionDataGridViewTextBoxColumn";
+            this.dateSessionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // affichageMomentJourneeDataGridViewTextBoxColumn
+            // 
+            this.affichageMomentJourneeDataGridViewTextBoxColumn.DataPropertyName = "AffichageMomentJournee";
+            this.affichageMomentJourneeDataGridViewTextBoxColumn.HeaderText = "Moment";
+            this.affichageMomentJourneeDataGridViewTextBoxColumn.Name = "affichageMomentJourneeDataGridViewTextBoxColumn";
+            this.affichageMomentJourneeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // FrmCongressiste
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -659,13 +623,9 @@
         private System.Windows.Forms.Label lblVille;
         private System.Windows.Forms.TextBox txtBoxVille;
         private System.Windows.Forms.BindingSource bindSrcSession;
+        private System.Windows.Forms.Button btnSupprimer;
         private System.Windows.Forms.DataGridViewTextBoxColumn themeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomPresidentDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nbPlaceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prixDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateSessionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn affichageMomentJourneeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button btnSupprimer;
     }
 }
