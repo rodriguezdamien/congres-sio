@@ -28,13 +28,13 @@ namespace WinCongres
         /// <param name="e"></param>
         private void bindSrcSession_CurrentChanged(object sender, EventArgs e)
         {
-            //List<Congressiste> participants = SessionManager.GetParticipantsSession((Session)bindSrcSessions.Current);
-            //bindSrcParticipants.DataSource = participants;
-            ////Si la session est le matin, le radio bouton matin est sélectionné. Sinon, le radio bouton après-midi est sélectionné.
-            //if (((Session)bindSrcSessions.Current).EstMatin)
-            //    radioBtnMatin.Checked = true;
-            //else
-            //    radioBtnApresMidi.Checked = true;
+            List<Congressiste> participants = SessionManager.GetParticipantsSession((Session)bindSrcSessions.Current);
+            bindSrcParticipants.DataSource = participants;
+            //Si la session est le matin, le radio bouton matin est sélectionné. Sinon, le radio bouton après-midi est sélectionné.
+            if (((Session)bindSrcSessions.Current).EstMatin)
+                radioBtnMatin.Checked = true;
+            else
+                radioBtnApresMidi.Checked = true;
         }
 
         /// <summary>
@@ -94,6 +94,11 @@ namespace WinCongres
                 //TODO : AJOUTER LA VERIFCATION DES CHAMPS
                 bindSrcSessions.EndEdit();
                 Session nouvelleSession = (Session)bindSrcSessions.Current;
+                if (radioBtnMatin.Checked)
+                    nouvelleSession.EstMatin = true;
+                else
+                    nouvelleSession.EstMatin = false;
+                nouvelleSession.DateSession = nouvelleSession.DateSession.Date;
                 SessionManager.AddSession(ref nouvelleSession);
                 //Réactivation des boutons de modifications
                 btnNouveau.Enabled = true;
@@ -117,18 +122,28 @@ namespace WinCongres
         /// <exception cref="NotImplementedException"></exception>
         private void btnAnnulerNouveau_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException("Pas encore implémenté");
+            if(MessageBox.Show("Voulez-vous vraiment annuler la création de la session ?", "Annulation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                AnnulerModif(sender, e);
         }
 
         /// <summary>
-        /// Actions qui seront effectuées lors du clic sur le bouton "Supprimer la session"
+        /// Actions qui seront effectuées lors du clic sur le bouton "Modifier la session"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <exception cref="NotImplementedException"></exception>
         private void btnModifier_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException("Pas encore implémenté");
+            bindSrcSessions.EndEdit();
+            Session sessionModifie = (Session)bindSrcSessions.Current;
+            if (radioBtnMatin.Checked)
+                sessionModifie.EstMatin = true;
+            else
+                sessionModifie.EstMatin = false;
+            sessionModifie.DateSession = sessionModifie.DateSession.Date;
+            SessionManager.UpdateSession(sessionModifie);
+            isEditing = false;
+            MessageBox.Show("La session a bien été modifiée", "Session modifiée", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         /// <summary>
@@ -153,15 +168,16 @@ namespace WinCongres
             if (isEditing)
             {
                 if (MessageBox.Show("Des modifications n'ont pas été validés, êtes vous sûr de vouloir continuer ? \n\n Toutes les modifications seront perdues. ", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                    AnnulerNouveau(sender, e);
+                    AnnulerModif(sender, e);
                 else
                     e.Cancel = true;
             }
         }
 
-        private void AnnulerNouveau(object sender,EventArgs e)
+        private void AnnulerModif(object sender,EventArgs e)
         {
             bindSrcSessions.CancelEdit();
+            bindSrcSessions.ResetBindings(false);
             //Réactivation des boutons de modifications
             btnNouveau.Enabled = true;
             btnModifier.Visible = true;
@@ -173,6 +189,12 @@ namespace WinCongres
             btnAnnulerNouveau.Visible = false;
             //Remise à false de isEditing pour "sortir" du "mode" édition
             isEditing = false;
+        }
+
+        private void ModifierChamp(object sender, EventArgs e)
+        {
+            if (tabControlSession.SelectedIndex == 1)
+                isEditing = true;
         }
     }
 }

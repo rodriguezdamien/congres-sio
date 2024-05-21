@@ -43,10 +43,11 @@ namespace congres.dll.Managers
         /// <summary>
         /// Récupération de tout les congressistes participant à la session passé en paramètre.
         /// </summary>
-        /// <param name="uneSession"> La session dont on veut récupérer les participants. </param>
+        /// <param name="idSession"></param>
         /// <returns></returns>
-        public static void GetParticipantsSession(ref Session uneSession)
+        public static List<Congressiste> GetParticipantsSession(Session uneSession)
         {
+            List<Congressiste> congressistes = new List<Congressiste>();
             try
             {
                 DBManager.ConnexionDB.Open();
@@ -58,7 +59,8 @@ namespace congres.dll.Managers
                 SqlDataReader reader = req.ExecuteReader();
                 while (reader.Read())
                 {
-                    uneSession.CongressisteParticipants.Add(new Congressiste(id: reader.GetInt32(0),
+                    //(int id, string nom, string prenom, string tel, string adresse, string cp, string ville, decimal accompte, int idLigue, int idHebergement)
+                    congressistes.Add(new Congressiste(id: reader.GetInt32(0),
                                                        nom: reader.GetString(1),
                                                        prenom: reader.GetString(2),
                                                        tel: reader.GetString(3),
@@ -76,12 +78,8 @@ namespace congres.dll.Managers
             {
                 DBManager.ConnexionDB.Close();
             }
+            return congressistes;
         }
-
-        /// <summary>
-        /// Ajoute une session passé en paramètre à la base de données.
-        /// </summary>
-        /// <param name="uneSession">Session à ajouter à la base de données.</param>
         public static void AddSession(ref Session uneSession) {
             try {
                 DBManager.ConnexionDB.Open();
@@ -96,6 +94,27 @@ namespace congres.dll.Managers
                 uneSession.Id = Convert.ToInt32(req.ExecuteScalar());
 
             } finally {
+                DBManager.ConnexionDB.Close();
+            }
+        }
+
+        public static void UpdateSession(Session uneSession)
+        {
+            try { 
+            DBManager.ConnexionDB.Open();
+            SqlCommand req = new SqlCommand("UPDATE Session SET theme = @theme, nomPresident = @nomPresident, nbPlace = @nbPlace, salle = @salle, prix = @prix, dateSession = @dateSession, estMatin = @estMatin WHERE id = @id", DBManager.ConnexionDB);
+            req.Parameters.AddWithValue("@theme", uneSession.Theme);
+            req.Parameters.AddWithValue("@nomPresident", uneSession.NomPresident);
+            req.Parameters.AddWithValue("@nbPlace", uneSession.NbPlace);
+            req.Parameters.AddWithValue("@salle", uneSession.Salle);
+            req.Parameters.AddWithValue("@prix", uneSession.Prix);
+            req.Parameters.AddWithValue("@dateSession", uneSession.DateSession);
+            req.Parameters.AddWithValue("@estMatin", uneSession.EstMatin);
+            req.Parameters.AddWithValue("@id", uneSession.Id);
+            req.ExecuteNonQuery();
+            }
+            finally
+            {
                 DBManager.ConnexionDB.Close();
             }
         }
