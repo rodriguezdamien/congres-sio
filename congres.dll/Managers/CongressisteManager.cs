@@ -34,7 +34,13 @@ namespace congres.dll.Managers
                     string ville = reader.GetString(6);
                     decimal accompte = reader.GetDecimal(7);
                     int idLigue = reader.GetInt32(8);
-                    int idHebergement = reader.GetInt32(9);
+                    int? idHebergement = null;
+
+                    if (!reader.IsDBNull(9))
+                    {
+                        idHebergement = reader.GetInt32(9);
+
+                    }
 
                     lesCongressistes.Add(new Congressiste(id, nom, prenom, tel, adresse, cp, ville, accompte, idLigue, idHebergement));
                 }
@@ -113,7 +119,7 @@ namespace congres.dll.Managers
             reqUdpt.Parameters.AddWithValue("@accompte", congressiste.Accompte);
             reqUdpt.Parameters.AddWithValue("@idL", congressiste.IdLigue);
 
-            if (congressiste.IdHebergement == null)
+            if (congressiste.IdHebergement == 0)
             {
                 reqUdpt.Parameters.AddWithValue("@idH", DBNull.Value);
             }
