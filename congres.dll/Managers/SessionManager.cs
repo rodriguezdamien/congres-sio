@@ -97,6 +97,27 @@ namespace congres.dll.Managers
             }
         }
 
+        public static void UpdateSession(Session uneSession)
+        {
+            try { 
+            DBManager.ConnexionDB.Open();
+            SqlCommand req = new SqlCommand("UPDATE Session SET theme = @theme, nomPresident = @nomPresident, nbPlace = @nbPlace, salle = @salle, prix = @prix, dateSession = @dateSession, estMatin = @estMatin WHERE id = @id", DBManager.ConnexionDB);
+            req.Parameters.AddWithValue("@theme", uneSession.Theme);
+            req.Parameters.AddWithValue("@nomPresident", uneSession.NomPresident);
+            req.Parameters.AddWithValue("@nbPlace", uneSession.NbPlace);
+            req.Parameters.AddWithValue("@salle", uneSession.Salle);
+            req.Parameters.AddWithValue("@prix", uneSession.Prix);
+            req.Parameters.AddWithValue("@dateSession", uneSession.DateSession);
+            req.Parameters.AddWithValue("@estMatin", uneSession.EstMatin);
+            req.Parameters.AddWithValue("@id", uneSession.Id);
+            req.ExecuteNonQuery();
+            }
+            finally
+            {
+                DBManager.ConnexionDB.Close();
+            }
+        }
+
         /// <summary>
         /// Récupération de toute les sessions auxquelles un congressiste participe.
         /// </summary>
