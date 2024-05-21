@@ -58,5 +58,25 @@ namespace congres.dll.Managers
 
             return isUdpt;
         }
+
+        public static bool DelLigue(int idL)
+        {
+            bool isDel = false;
+
+            SqlCommand sqlCommand = new SqlCommand("DELETE LIGUE WHERE id = @idL", DBManager.ConnexionDB);
+            sqlCommand.Parameters.AddWithValue("@idL", idL);
+
+            try
+            {
+                DBManager.ConnexionDB.Open();
+                if(sqlCommand.ExecuteNonQuery()>0) isDel = true;
+            }
+            finally
+            {
+                DBManager.ConnexionDB.Close();
+            }
+
+            return isDel;
+        }
     }
 }
