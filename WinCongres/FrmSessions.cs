@@ -133,7 +133,16 @@ namespace WinCongres
         /// <exception cref="NotImplementedException"></exception>
         private void btnModifier_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException("Pas encore implémenté");
+            bindSrcSessions.EndEdit();
+            Session sessionModifie = (Session)bindSrcSessions.Current;
+            if (radioBtnMatin.Checked)
+                sessionModifie.EstMatin = true;
+            else
+                sessionModifie.EstMatin = false;
+            sessionModifie.DateSession = sessionModifie.DateSession.Date;
+            SessionManager.UpdateSession(sessionModifie);
+            isEditing = false;
+            MessageBox.Show("La session a bien été modifiée", "Session modifiée", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         /// <summary>
