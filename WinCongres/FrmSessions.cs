@@ -98,6 +98,7 @@ namespace WinCongres
                     nouvelleSession.EstMatin = true;
                 else
                     nouvelleSession.EstMatin = false;
+                nouvelleSession.DateSession = nouvelleSession.DateSession.Date;
                 SessionManager.AddSession(ref nouvelleSession);
                 //Réactivation des boutons de modifications
                 btnNouveau.Enabled = true;
