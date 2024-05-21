@@ -537,7 +537,7 @@
             this.Controls.Add(this.btnNouveau);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmSessions";
-            this.Text = "FrmSessions";
+            this.Text = "Gestion des sessions";
             this.tabControlSession.ResumeLayout(false);
             this.tabPageSessions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSession)).EndInit();
