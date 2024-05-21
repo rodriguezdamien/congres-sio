@@ -80,18 +80,6 @@ namespace WinCongres
         /// </summary>
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            if(add)
-            {
-                annulationAjout();
-            }
-            else
-            {
-                //Apl d'une fonction pour annuler lors de la modification
-            }
-        }
-
-        private void annulationAjout() 
-        {
             add = false;
             btnNouveau.Visible = btnModifier.Visible = true;
             btnAjouter.Visible = false;
@@ -99,8 +87,6 @@ namespace WinCongres
             bindSrcCongressiste.ResetBindings(false);
             tabControlCongressiste.SelectedIndex = 0;
         }
-
-        private void annulationModif() { }
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
@@ -115,8 +101,50 @@ namespace WinCongres
                 btnModifier.Visible = false;
                 tabControlCongressiste.SelectedIndex = 0;
                 btnAjouter.Visible = false;
-                comboBxLigue.Enabled = comboBxHebergement.Enabled = true;
+                comboBxLigue.Enabled = true;
                 add = false;
+            }
+        }
+
+        private void dataGridCongressiste_CurrentCellChanged(object sender, EventArgs e)
+        {
+            Congressiste unC = (Congressiste)bindSrcCongressiste.Current;
+
+            bindSrcSession.DataSource = SessionManager.GetSessionsByCongressiste(unC.Id);
+        }
+
+        private void btnModifier_Click(object sender, EventArgs e)
+        {
+            // Modifier l'hébergement
+            bindSrcHebergement.EndEdit();
+            CongressisteManager.UpdtCongressiste((Congressiste)bindSrcCongressiste.Current);
+
+
+            MessageBox.Show("Informations du congressiste modifié.", "Information", MessageBoxButtons.OK);
+            bindSrcHebergement.ResetCurrentItem();
+        }
+
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show($"Êtes-vous sûr de vouloir supprimer {((Congressiste)bindSrcCongressiste.Current).Nom} {((Congressiste)bindSrcCongressiste.Current).Prenom} de la liste des congressistes ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+
+                    // Supprimer l'hébergement
+                    bindSrcHebergement.EndEdit();
+                    CongressisteManager.DelCongressiste(((Congressiste)bindSrcCongressiste.Current).Id);
+
+
+                    MessageBox.Show("Congresiste supprimé.", "Information", MessageBoxButtons.OK);
+                    bindSrcCongressiste.RemoveCurrent();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
     }

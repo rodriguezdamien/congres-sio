@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -117,7 +118,7 @@ namespace congres.dll.Managers
             else
             {
 
-                reqUdpt.Parameters.AddWithValue("@idH", congressiste.IdHebergement);
+                reqUdpt.Parameters.AddWithValue("@idH", congressiste.sonHebergement.Id);
             }
 
             try
