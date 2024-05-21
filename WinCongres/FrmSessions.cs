@@ -28,13 +28,13 @@ namespace WinCongres
         /// <param name="e"></param>
         private void bindSrcSession_CurrentChanged(object sender, EventArgs e)
         {
-            List<Congressiste> participants = SessionManager.GetParticipantsSession((Session)bindSrcSessions.Current);
-            bindSrcParticipants.DataSource = participants;
-            //Si la session est le matin, le radio bouton matin est sélectionné. Sinon, le radio bouton après-midi est sélectionné.
-            if (((Session)bindSrcSessions.Current).EstMatin)
-                radioBtnMatin.Checked = true;
-            else
-                radioBtnApresMidi.Checked = true;
+            //List<Congressiste> participants = SessionManager.GetParticipantsSession((Session)bindSrcSessions.Current);
+            //bindSrcParticipants.DataSource = participants;
+            ////Si la session est le matin, le radio bouton matin est sélectionné. Sinon, le radio bouton après-midi est sélectionné.
+            //if (((Session)bindSrcSessions.Current).EstMatin)
+            //    radioBtnMatin.Checked = true;
+            //else
+            //    radioBtnApresMidi.Checked = true;
         }
 
         /// <summary>
