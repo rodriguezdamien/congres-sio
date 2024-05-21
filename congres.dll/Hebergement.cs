@@ -46,9 +46,8 @@ namespace congres.dll
 
         public Hebergement() { }
 
-        public Hebergement(int? id, string nom) 
+        public Hebergement(string nom) 
         {
-            this.Id = id;
             this.Nom = nom;
         }
     }
