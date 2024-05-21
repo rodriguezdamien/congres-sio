@@ -51,9 +51,9 @@ namespace congres.dll.Managers
         /// </summary>
         /// <param name="congressiste"></param>
         /// <returns>Retourne 'true' si l'ajout à fonctionner et 'false' si rien n'a été ajouté ou si une erreur à été levé.</returns>
-        public static bool AddCongressiste(Congressiste congressiste)
+        public static int AddCongressiste(Congressiste congressiste)
         {
-            bool isAdded = false;
+            object id;
 
             SqlCommand reqAdd = new SqlCommand("INSERT INTO CONGRESSISTE (nom, prenom, tel, adresse, cp, ville, accompte, idLigue, idHebergement) VALUES (@n, @p, @t, @a, @cp, @v, @accompte, @idL, @idH)", DBManager.ConnexionDB);
             reqAdd.Parameters.AddWithValue("@id", congressiste.Id);
@@ -65,6 +65,8 @@ namespace congres.dll.Managers
             reqAdd.Parameters.AddWithValue("@v", congressiste.Ville);
             reqAdd.Parameters.AddWithValue("@accompte", congressiste.Accompte);
             reqAdd.Parameters.AddWithValue("@idL", congressiste.IdLigue);
+
+            SqlCommand reqGetId = new SqlCommand("SELECT @@IDENTITY", DBManager.ConnexionDB);
 
             if (congressiste.IdHebergement == null)
             {
@@ -81,14 +83,14 @@ namespace congres.dll.Managers
                 DBManager.ConnexionDB.Open();
                 int ligneAjt = reqAdd.ExecuteNonQuery();
                 //if simplifié
-                if (ligneAjt > 0) isAdded = true;
+                id = reqGetId.ExecuteScalar();
             }
             finally
             {
                 DBManager.ConnexionDB.Close();
             }
 
-            return isAdded;
+            return Convert.ToInt32(id);
         }
 
         /// <summary>

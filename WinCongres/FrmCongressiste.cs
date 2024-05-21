@@ -94,16 +94,16 @@ namespace WinCongres
 
             ((Congressiste)bindSrcCongressiste.Current).IdLigue = ((Ligue)bindSrcLigue.Current).Id;
             ((Congressiste)bindSrcCongressiste.Current).IdHebergement = ((Hebergement)bindSrcHebergement.Current).Id;
+            
 
-            if (CongressisteManager.AddCongressiste((Congressiste)bindSrcCongressiste.Current))
-            {
-                MessageBox.Show("Employé ajouté.", "Information", MessageBoxButtons.OK);
-                btnModifier.Visible = false;
-                tabControlCongressiste.SelectedIndex = 0;
-                btnAjouter.Visible = false;
-                comboBxLigue.Enabled = true;
-                add = false;
-            }
+            ((Congressiste)bindSrcCongressiste.Current).Id = CongressisteManager.AddCongressiste((Congressiste)bindSrcCongressiste.Current);
+
+            MessageBox.Show("Employé ajouté.", "Information", MessageBoxButtons.OK);
+            btnModifier.Visible = false;
+            tabControlCongressiste.SelectedIndex = 0;
+            btnAjouter.Visible = false;
+            comboBxLigue.Enabled = true;
+            add = false;
         }
 
         private void dataGridCongressiste_CurrentCellChanged(object sender, EventArgs e)
