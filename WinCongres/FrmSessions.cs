@@ -94,6 +94,10 @@ namespace WinCongres
                 //TODO : AJOUTER LA VERIFCATION DES CHAMPS
                 bindSrcSessions.EndEdit();
                 Session nouvelleSession = (Session)bindSrcSessions.Current;
+                if (radioBtnMatin.Checked)
+                    nouvelleSession.EstMatin = true;
+                else
+                    nouvelleSession.EstMatin = false;
                 SessionManager.AddSession(ref nouvelleSession);
                 //Réactivation des boutons de modifications
                 btnNouveau.Enabled = true;
