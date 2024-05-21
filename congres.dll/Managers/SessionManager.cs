@@ -63,9 +63,10 @@ namespace congres.dll.Managers
                                                        prenom: reader.GetString(2),
                                                        tel: reader.GetString(3),
                                                        adresse: reader.GetString(4),
-                                                       cp:reader.GetString(5),
-                                                       ville:reader.GetString(6),
-                                                       accompte:reader.GetDecimal(7),
+                                                       cp: reader.GetString(5),
+                                                       ville: reader.GetString(6),
+                                                       accompte: reader.GetDecimal(7),
+                                                       montantARegler: 0,
                                                        idLigue:reader.GetInt32(8),
                                                        idHebergement:reader.GetInt32(9)
                                                        ));

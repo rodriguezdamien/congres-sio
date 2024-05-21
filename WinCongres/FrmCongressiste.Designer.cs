@@ -32,19 +32,15 @@
             this.tabControlCongressiste = new System.Windows.Forms.TabControl();
             this.tabPageListe = new System.Windows.Forms.TabPage();
             this.dataGridCongressiste = new System.Windows.Forms.DataGridView();
-            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prenomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adresseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cpDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.villeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accompteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindSrcCongressiste = new System.Windows.Forms.BindingSource(this.components);
             this.tabPageDetail = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.themeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateSessionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.affichageMomentJourneeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindSrcSession = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblVille = new System.Windows.Forms.Label();
@@ -73,9 +69,14 @@
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnNouveau = new System.Windows.Forms.Button();
             this.btnSupprimer = new System.Windows.Forms.Button();
-            this.themeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateSessionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.affichageMomentJourneeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prenomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adresseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cpDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.villeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accompteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.montantARegler = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlCongressiste.SuspendLayout();
             this.tabPageListe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCongressiste)).BeginInit();
@@ -124,7 +125,8 @@
             this.adresseDataGridViewTextBoxColumn,
             this.cpDataGridViewTextBoxColumn,
             this.villeDataGridViewTextBoxColumn,
-            this.accompteDataGridViewTextBoxColumn});
+            this.accompteDataGridViewTextBoxColumn,
+            this.montantARegler});
             this.dataGridCongressiste.DataSource = this.bindSrcCongressiste;
             this.dataGridCongressiste.Location = new System.Drawing.Point(0, 0);
             this.dataGridCongressiste.MultiSelect = false;
@@ -134,62 +136,6 @@
             this.dataGridCongressiste.Size = new System.Drawing.Size(1011, 412);
             this.dataGridCongressiste.TabIndex = 0;
             this.dataGridCongressiste.CurrentCellChanged += new System.EventHandler(this.dataGridCongressiste_CurrentCellChanged);
-            // 
-            // nomDataGridViewTextBoxColumn
-            // 
-            this.nomDataGridViewTextBoxColumn.DataPropertyName = "Nom";
-            this.nomDataGridViewTextBoxColumn.HeaderText = "Nom";
-            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
-            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nomDataGridViewTextBoxColumn.Width = 54;
-            // 
-            // prenomDataGridViewTextBoxColumn
-            // 
-            this.prenomDataGridViewTextBoxColumn.DataPropertyName = "Prenom";
-            this.prenomDataGridViewTextBoxColumn.HeaderText = "Prenom";
-            this.prenomDataGridViewTextBoxColumn.Name = "prenomDataGridViewTextBoxColumn";
-            this.prenomDataGridViewTextBoxColumn.ReadOnly = true;
-            this.prenomDataGridViewTextBoxColumn.Width = 68;
-            // 
-            // telDataGridViewTextBoxColumn
-            // 
-            this.telDataGridViewTextBoxColumn.DataPropertyName = "Tel";
-            this.telDataGridViewTextBoxColumn.HeaderText = "Tel";
-            this.telDataGridViewTextBoxColumn.Name = "telDataGridViewTextBoxColumn";
-            this.telDataGridViewTextBoxColumn.ReadOnly = true;
-            this.telDataGridViewTextBoxColumn.Width = 47;
-            // 
-            // adresseDataGridViewTextBoxColumn
-            // 
-            this.adresseDataGridViewTextBoxColumn.DataPropertyName = "Adresse";
-            this.adresseDataGridViewTextBoxColumn.HeaderText = "Adresse";
-            this.adresseDataGridViewTextBoxColumn.Name = "adresseDataGridViewTextBoxColumn";
-            this.adresseDataGridViewTextBoxColumn.ReadOnly = true;
-            this.adresseDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // cpDataGridViewTextBoxColumn
-            // 
-            this.cpDataGridViewTextBoxColumn.DataPropertyName = "Cp";
-            this.cpDataGridViewTextBoxColumn.HeaderText = "Cp";
-            this.cpDataGridViewTextBoxColumn.Name = "cpDataGridViewTextBoxColumn";
-            this.cpDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cpDataGridViewTextBoxColumn.Width = 45;
-            // 
-            // villeDataGridViewTextBoxColumn
-            // 
-            this.villeDataGridViewTextBoxColumn.DataPropertyName = "Ville";
-            this.villeDataGridViewTextBoxColumn.HeaderText = "Ville";
-            this.villeDataGridViewTextBoxColumn.Name = "villeDataGridViewTextBoxColumn";
-            this.villeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.villeDataGridViewTextBoxColumn.Width = 51;
-            // 
-            // accompteDataGridViewTextBoxColumn
-            // 
-            this.accompteDataGridViewTextBoxColumn.DataPropertyName = "Accompte";
-            this.accompteDataGridViewTextBoxColumn.HeaderText = "Accompte";
-            this.accompteDataGridViewTextBoxColumn.Name = "accompteDataGridViewTextBoxColumn";
-            this.accompteDataGridViewTextBoxColumn.ReadOnly = true;
-            this.accompteDataGridViewTextBoxColumn.Width = 80;
             // 
             // bindSrcCongressiste
             // 
@@ -253,6 +199,27 @@
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(353, 138);
             this.dataGridView2.TabIndex = 1;
+            // 
+            // themeDataGridViewTextBoxColumn
+            // 
+            this.themeDataGridViewTextBoxColumn.DataPropertyName = "Theme";
+            this.themeDataGridViewTextBoxColumn.HeaderText = "Theme";
+            this.themeDataGridViewTextBoxColumn.Name = "themeDataGridViewTextBoxColumn";
+            this.themeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateSessionDataGridViewTextBoxColumn
+            // 
+            this.dateSessionDataGridViewTextBoxColumn.DataPropertyName = "DateSession";
+            this.dateSessionDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateSessionDataGridViewTextBoxColumn.Name = "dateSessionDataGridViewTextBoxColumn";
+            this.dateSessionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // affichageMomentJourneeDataGridViewTextBoxColumn
+            // 
+            this.affichageMomentJourneeDataGridViewTextBoxColumn.DataPropertyName = "AffichageMomentJournee";
+            this.affichageMomentJourneeDataGridViewTextBoxColumn.HeaderText = "Moment";
+            this.affichageMomentJourneeDataGridViewTextBoxColumn.Name = "affichageMomentJourneeDataGridViewTextBoxColumn";
+            this.affichageMomentJourneeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // bindSrcSession
             // 
@@ -529,26 +496,69 @@
             this.btnSupprimer.UseVisualStyleBackColor = false;
             this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
             // 
-            // themeDataGridViewTextBoxColumn
+            // nomDataGridViewTextBoxColumn
             // 
-            this.themeDataGridViewTextBoxColumn.DataPropertyName = "Theme";
-            this.themeDataGridViewTextBoxColumn.HeaderText = "Theme";
-            this.themeDataGridViewTextBoxColumn.Name = "themeDataGridViewTextBoxColumn";
-            this.themeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomDataGridViewTextBoxColumn.DataPropertyName = "Nom";
+            this.nomDataGridViewTextBoxColumn.HeaderText = "Nom";
+            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
+            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomDataGridViewTextBoxColumn.Width = 54;
             // 
-            // dateSessionDataGridViewTextBoxColumn
+            // prenomDataGridViewTextBoxColumn
             // 
-            this.dateSessionDataGridViewTextBoxColumn.DataPropertyName = "DateSession";
-            this.dateSessionDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateSessionDataGridViewTextBoxColumn.Name = "dateSessionDataGridViewTextBoxColumn";
-            this.dateSessionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.prenomDataGridViewTextBoxColumn.DataPropertyName = "Prenom";
+            this.prenomDataGridViewTextBoxColumn.HeaderText = "Prenom";
+            this.prenomDataGridViewTextBoxColumn.Name = "prenomDataGridViewTextBoxColumn";
+            this.prenomDataGridViewTextBoxColumn.ReadOnly = true;
+            this.prenomDataGridViewTextBoxColumn.Width = 68;
             // 
-            // affichageMomentJourneeDataGridViewTextBoxColumn
+            // telDataGridViewTextBoxColumn
             // 
-            this.affichageMomentJourneeDataGridViewTextBoxColumn.DataPropertyName = "AffichageMomentJournee";
-            this.affichageMomentJourneeDataGridViewTextBoxColumn.HeaderText = "Moment";
-            this.affichageMomentJourneeDataGridViewTextBoxColumn.Name = "affichageMomentJourneeDataGridViewTextBoxColumn";
-            this.affichageMomentJourneeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.telDataGridViewTextBoxColumn.DataPropertyName = "Tel";
+            this.telDataGridViewTextBoxColumn.HeaderText = "Tel";
+            this.telDataGridViewTextBoxColumn.Name = "telDataGridViewTextBoxColumn";
+            this.telDataGridViewTextBoxColumn.ReadOnly = true;
+            this.telDataGridViewTextBoxColumn.Width = 47;
+            // 
+            // adresseDataGridViewTextBoxColumn
+            // 
+            this.adresseDataGridViewTextBoxColumn.DataPropertyName = "Adresse";
+            this.adresseDataGridViewTextBoxColumn.HeaderText = "Adresse";
+            this.adresseDataGridViewTextBoxColumn.Name = "adresseDataGridViewTextBoxColumn";
+            this.adresseDataGridViewTextBoxColumn.ReadOnly = true;
+            this.adresseDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // cpDataGridViewTextBoxColumn
+            // 
+            this.cpDataGridViewTextBoxColumn.DataPropertyName = "Cp";
+            this.cpDataGridViewTextBoxColumn.HeaderText = "Cp";
+            this.cpDataGridViewTextBoxColumn.Name = "cpDataGridViewTextBoxColumn";
+            this.cpDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cpDataGridViewTextBoxColumn.Width = 45;
+            // 
+            // villeDataGridViewTextBoxColumn
+            // 
+            this.villeDataGridViewTextBoxColumn.DataPropertyName = "Ville";
+            this.villeDataGridViewTextBoxColumn.HeaderText = "Ville";
+            this.villeDataGridViewTextBoxColumn.Name = "villeDataGridViewTextBoxColumn";
+            this.villeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.villeDataGridViewTextBoxColumn.Width = 51;
+            // 
+            // accompteDataGridViewTextBoxColumn
+            // 
+            this.accompteDataGridViewTextBoxColumn.DataPropertyName = "Accompte";
+            this.accompteDataGridViewTextBoxColumn.HeaderText = "Accompte";
+            this.accompteDataGridViewTextBoxColumn.Name = "accompteDataGridViewTextBoxColumn";
+            this.accompteDataGridViewTextBoxColumn.ReadOnly = true;
+            this.accompteDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // montantARegler
+            // 
+            this.montantARegler.DataPropertyName = "montantARegler";
+            this.montantARegler.HeaderText = "Montant à régler";
+            this.montantARegler.Name = "montantARegler";
+            this.montantARegler.ReadOnly = true;
+            this.montantARegler.Width = 77;
             // 
             // FrmCongressiste
             // 
@@ -605,13 +615,6 @@
         private System.Windows.Forms.TextBox txtBoxId;
         private System.Windows.Forms.Button btnModifier;
         private System.Windows.Forms.BindingSource bindSrcCongressiste;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prenomDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn adresseDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cpDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn villeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn accompteDataGridViewTextBoxColumn;
         private System.Windows.Forms.ComboBox comboBxHebergement;
         private System.Windows.Forms.ComboBox comboBxLigue;
         private System.Windows.Forms.Label label1;
@@ -627,5 +630,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn themeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateSessionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn affichageMomentJourneeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prenomDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn adresseDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cpDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn villeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accompteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn montantARegler;
     }
 }

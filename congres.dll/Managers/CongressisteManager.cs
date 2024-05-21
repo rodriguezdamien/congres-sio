@@ -18,7 +18,7 @@ namespace congres.dll.Managers
         {
             List<Congressiste> lesCongressistes = new List<Congressiste>();
             SqlCommand reqGet = new SqlCommand("SELECT id, nom, prenom, tel, adresse, cp, ville, accompte, idLigue, idHebergement FROM CONGRESSISTE", DBManager.ConnexionDB);
-            
+            SqlCommand reqProcedure = new SqlCommand("exec montantTotal @idC", DBManager.ConnexionDB);
             try
             {
                 DBManager.ConnexionDB.Open();
@@ -42,7 +42,9 @@ namespace congres.dll.Managers
 
                     }
 
-                    lesCongressistes.Add(new Congressiste(id, nom, prenom, tel, adresse, cp, ville, accompte, idLigue, idHebergement));
+                    double montant = GetMontantARegler(id);
+
+                    lesCongressistes.Add(new Congressiste(id, nom, prenom, tel, adresse, cp, ville, accompte, montantARegler: montant, idLigue, idHebergement));
                 }
             }
             finally
@@ -169,6 +171,23 @@ namespace congres.dll.Managers
             }
 
             return isDel;
+        }
+
+        private static double GetMontantARegler(int idCongressiste)
+        {
+            double montant;
+            SqlConnection conn = new SqlConnection(DBManager.ConnexionDB.ConnectionString);
+            SqlCommand cmdGetMontant = new SqlCommand("exec montantTotal @idC", conn);
+            try
+            {
+                conn.Open();
+                cmdGetMontant.Parameters.AddWithValue("@idC", idCongressiste);
+                var result = cmdGetMontant.ExecuteScalar();
+                montant = Convert.ToDouble(result);
+            }
+            finally { conn.Close(); }
+
+            return montant;
         }
     }
 }

@@ -14,7 +14,6 @@ namespace WinCongres
 {
     public partial class FrmCongressiste : Form
     {
-        bool add = false;
 
         public FrmCongressiste()
         {
@@ -72,7 +71,6 @@ namespace WinCongres
             comboBxLigue.Enabled = comboBxHebergement.Enabled = true;
             txtBoxId.Enabled = false;
             bindSrcCongressiste.AddNew();
-            add = true;
         }
 
         /// <summary>
@@ -80,7 +78,6 @@ namespace WinCongres
         /// </summary>
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            add = false;
             btnNouveau.Visible = btnModifier.Visible = true;
             btnAjouter.Visible = false;
             bindSrcCongressiste.CancelEdit();
@@ -103,7 +100,6 @@ namespace WinCongres
             tabControlCongressiste.SelectedIndex = 0;
             btnAjouter.Visible = false;
             comboBxLigue.Enabled = true;
-            add = false;
         }
 
         private void dataGridCongressiste_CurrentCellChanged(object sender, EventArgs e)
