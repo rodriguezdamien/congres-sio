@@ -154,7 +154,13 @@ namespace WinCongres
         /// <exception cref="NotImplementedException"></exception>
         private void btnSupprSession_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException("Pas encore implémenté");
+            Session sessionASuppr = (Session)bindSrcSessions.Current;
+            if (MessageBox.Show("Voulez-vous vraiment supprimer la session ?", "Suppression", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                SessionManager.DeleteSession(sessionASuppr);
+                bindSrcSessions.RemoveCurrent();
+                MessageBox.Show("La session a bien été supprimée.", "Session supprimée", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         /// <summary>
