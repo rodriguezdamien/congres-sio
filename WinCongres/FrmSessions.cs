@@ -16,6 +16,9 @@ namespace WinCongres
     {
         private bool isEditing = false;
 
+        /// <summary>
+        /// Constructeur du formulaire : Affiche les sessions
+        /// </summary>
         public FrmSessions()
         {
             InitializeComponent();
@@ -28,8 +31,9 @@ namespace WinCongres
         /// <param name="e"></param>
         private void bindSrcSession_CurrentChanged(object sender, EventArgs e)
         {
-            List<Congressiste> participants = SessionManager.GetParticipantsSession((Session)bindSrcSessions.Current);
-            bindSrcParticipants.DataSource = participants;
+            //Illisible, mais permet de récupérer les participants de la session sélectionnée, puis de les afficher dans le tableau des participants
+            ((Session)bindSrcSessions.Current).CongressisteParticipants = SessionManager.GetParticipantsSession((Session)bindSrcSessions.Current);
+            bindSrcParticipants.DataSource = ((Session)bindSrcSessions.Current).CongressisteParticipants;
             //Si la session est le matin, le radio bouton matin est sélectionné. Sinon, le radio bouton après-midi est sélectionné.
             if (((Session)bindSrcSessions.Current).EstMatin)
                 radioBtnMatin.Checked = true;
@@ -180,6 +184,11 @@ namespace WinCongres
             }
         }
 
+        /// <summary>
+        /// Fonction qui permet d'annuler les modifications en cours (Changement d'onglet, annulation de création ou de modification de session)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AnnulerModif(object sender,EventArgs e)
         {
             bindSrcSessions.CancelEdit();

@@ -363,7 +363,8 @@
             this.datePickerSession.Name = "datePickerSession";
             this.datePickerSession.Size = new System.Drawing.Size(161, 20);
             this.datePickerSession.TabIndex = 22;
-            this.datePickerSession.ValueChanged += new System.EventHandler(this.ModifierChamp);
+            this.datePickerSession.CloseUp += new System.EventHandler(this.ModifierChamp_Souris);
+            this.datePickerSession.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ModifierChamp);
             // 
             // radioBtnApresMidi
             // 
@@ -386,7 +387,8 @@
             this.radioBtnMatin.TabStop = true;
             this.radioBtnMatin.Text = "Matin";
             this.radioBtnMatin.UseVisualStyleBackColor = true;
-            this.radioBtnMatin.CheckedChanged += new System.EventHandler(this.ModifierChamp);
+            this.radioBtnMatin.Click += new System.EventHandler(this.ModifierChamp_Souris);
+            this.radioBtnMatin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ModifierChamp);
             // 
             // txtBoxTheme
             // 
@@ -396,7 +398,7 @@
             this.txtBoxTheme.Name = "txtBoxTheme";
             this.txtBoxTheme.Size = new System.Drawing.Size(181, 20);
             this.txtBoxTheme.TabIndex = 19;
-            this.txtBoxTheme.TextChanged += new System.EventHandler(this.ModifierChamp);
+            this.txtBoxTheme.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ModifierChamp);
             // 
             // btnAnnulerNouveau
             // 
@@ -442,7 +444,7 @@
             this.txtBoxPrix.Name = "txtBoxPrix";
             this.txtBoxPrix.Size = new System.Drawing.Size(181, 20);
             this.txtBoxPrix.TabIndex = 14;
-            this.txtBoxPrix.TextChanged += new System.EventHandler(this.ModifierChamp);
+            this.txtBoxPrix.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ModifierChamp);
             // 
             // label4
             // 
@@ -478,7 +480,7 @@
             this.txtBoxNbPlaces.Name = "txtBoxNbPlaces";
             this.txtBoxNbPlaces.Size = new System.Drawing.Size(161, 20);
             this.txtBoxNbPlaces.TabIndex = 5;
-            this.txtBoxNbPlaces.TextChanged += new System.EventHandler(this.ModifierChamp);
+            this.txtBoxNbPlaces.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ModifierChamp);
             // 
             // txtBoxNomPresident
             // 
@@ -487,7 +489,7 @@
             this.txtBoxNomPresident.Name = "txtBoxNomPresident";
             this.txtBoxNomPresident.Size = new System.Drawing.Size(181, 20);
             this.txtBoxNomPresident.TabIndex = 4;
-            this.txtBoxNomPresident.TextChanged += new System.EventHandler(this.ModifierChamp);
+            this.txtBoxNomPresident.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ModifierChamp);
             // 
             // txtBoxSalle
             // 
@@ -496,7 +498,7 @@
             this.txtBoxSalle.Name = "txtBoxSalle";
             this.txtBoxSalle.Size = new System.Drawing.Size(181, 20);
             this.txtBoxSalle.TabIndex = 3;
-            this.txtBoxSalle.TextChanged += new System.EventHandler(this.ModifierChamp);
+            this.txtBoxSalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ModifierChamp);
             // 
             // btnSupprSession
             // 
