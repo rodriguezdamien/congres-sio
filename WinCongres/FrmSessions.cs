@@ -143,7 +143,7 @@ namespace WinCongres
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+            }
         }
 
         /// <summary>
@@ -175,6 +175,7 @@ namespace WinCongres
             sessionModifie.DateSession = sessionModifie.DateSession.Date;
             SessionManager.UpdateSession(sessionModifie);
             isEditing = false;
+            btnModifier.Enabled = false;
             MessageBox.Show("La session a bien été modifiée", "Session modifiée", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -232,11 +233,13 @@ namespace WinCongres
             btnAnnulerNouveau.Visible = false;
             //Remise à false de isEditing pour "sortir" du "mode" édition
             isEditing = false;
+            btnModifier.Enabled = false;
         }
 
         private void ModifierChamp(object sender, KeyEventArgs e)
         {
             isEditing = true;
+            btnModifier.Enabled = true;
         }
 
         /// <summary>
@@ -247,6 +250,7 @@ namespace WinCongres
         private void ModifierChamp_Souris(object sender, EventArgs e)
         {
             isEditing = true;
+            btnModifier.Enabled = true;
         }
     }
 }

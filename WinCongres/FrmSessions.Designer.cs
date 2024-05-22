@@ -516,6 +516,7 @@
             // btnModifier
             // 
             this.btnModifier.BackColor = System.Drawing.Color.Teal;
+            this.btnModifier.Enabled = false;
             this.btnModifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModifier.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnModifier.Location = new System.Drawing.Point(170, 258);
