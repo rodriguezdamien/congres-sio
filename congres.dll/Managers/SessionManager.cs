@@ -118,7 +118,7 @@ namespace congres.dll.Managers
                 DBManager.ConnexionDB.Close();
             }
         }
-
+        
         /// <summary>
         /// Supprime une session de la base de données.
         /// </summary>
@@ -159,6 +159,47 @@ namespace congres.dll.Managers
                 DBManager.ConnexionDB.Close();
             }
         }
+
+        /// <summary>
+        /// Obtient une liste de tout les congressistes ne participant pas à la session.
+        /// </summary>
+        /// <param name="uneSession">La session où l'on souhaite connaître les non-participants</param>
+        /// <returns>Liste des congressistes non-participants.</returns>
+        public static List<Congressiste> GetCongressistesNonParticipants(Session uneSession)
+        {
+            List<Congressiste> congressistes = new List<Congressiste>();
+            try
+            {
+                DBManager.ConnexionDB.Open();
+                //Requête avec un Not Exists et sans étoile dans la sous-requête
+                SqlCommand req = new SqlCommand("SELECT c.id,c.nom,c.prenom,c.tel,c.adresse,c.cp,c.ville,c.accompte,c.idLigue,c.idHebergement " +
+                                                "FROM Congressiste c " +
+                                                "WHERE NOT EXISTS (SELECT i.idCongressiste FROM INSCRIRE i WHERE i.idCongressiste = c.id AND i.idSession = @idSession)", DBManager.ConnexionDB);
+                req.Parameters.AddWithValue("@idSession", uneSession.Id);
+                SqlDataReader reader = req.ExecuteReader();
+                while (reader.Read())
+                {
+                    congressistes.Add(new Congressiste(id: reader.GetInt32(0),
+                                                       nom: reader.GetString(1),
+                                                       prenom: reader.GetString(2),
+                                                       tel: reader.GetString(3),
+                                                       adresse: reader.GetString(4),
+                                                       cp: reader.GetString(5),
+                                                       ville: reader.GetString(6),
+                                                       accompte: reader.GetDecimal(7),
+                                                       montantARegler: 0,
+                                                       idLigue: reader.GetInt32(8),
+                                                       idHebergement: reader.GetInt32(9)
+                                                       ));
+                }
+            }
+            finally
+            {
+                DBManager.ConnexionDB.Close();
+            }
+            return congressistes;
+        }
+
         /// <summary>
         /// Récupération de toute les sessions auxquelles un congressiste participe.
         /// </summary>
