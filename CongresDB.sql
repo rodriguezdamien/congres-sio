@@ -1,21 +1,18 @@
-DROP DATABASE IF EXISTS CongresDB;
+use master;
+go
+drop database if exists CongresDB;
+
+drop login AppliGestCongres;
+create login AppliGestCongres with password = 'MdpComplexe34';
 
 CREATE DATABASE CongresDB;
-
+go
 use CongresDB;
 go
-
-DROP USER AppliGestCongres;
-
-DROP LOGIN AppliGestCongres;
-
-create login AppliGestCongres with password = 'MdpComplexe34';
-GO
 
 create user AppliGestCongres for login AppliGestCongres;
 go
 
-DROP TABLE IF EXISTS SESSION;
 CREATE TABLE SESSION(
    id INT identity,
    theme VARCHAR(100),
@@ -28,7 +25,6 @@ CREATE TABLE SESSION(
    CONSTRAINT pk_session PRIMARY KEY(id)
 );
 
-DROP TABLE IF EXISTS ACTIVITE;
 CREATE TABLE ACTIVITE(
    id INT identity,
    nom VARCHAR(100),
@@ -39,7 +35,6 @@ CREATE TABLE ACTIVITE(
    CONSTRAINT pk_activite PRIMARY KEY(id)
 );
 
-DROP TABLE IF EXISTS LIGUE;
 CREATE TABLE LIGUE(
    id INT identity,
    nomLigue VARCHAR(200),
@@ -49,7 +44,6 @@ CREATE TABLE LIGUE(
    CONSTRAINT pk_ligue PRIMARY KEY(id)
 );
 
-DROP TABLE IF EXISTS HEBERGEMENT;
 CREATE TABLE HEBERGEMENT(
    id INT identity,
    nom VARCHAR(50),
@@ -62,7 +56,6 @@ CREATE TABLE HEBERGEMENT(
    CONSTRAINT pk_hebergement PRIMARY KEY(id)
 );
 
-DROP TABLE IF EXISTS CONGRESSISTE;
 CREATE TABLE CONGRESSISTE(
    id INT identity,
    nom VARCHAR(50),
@@ -79,7 +72,6 @@ CREATE TABLE CONGRESSISTE(
    CONSTRAINT fk_congressiste_hebergement FOREIGN KEY(idHebergement) REFERENCES HEBERGEMENT(id)
 );
 
-DROP TABLE IF EXISTS INSCRIRE;
 CREATE TABLE INSCRIRE(
    idSession INT,
    idCongressiste INT,
@@ -88,7 +80,6 @@ CREATE TABLE INSCRIRE(
    CONSTRAINT fk_inscrire_congressiste FOREIGN KEY(idCongressiste) REFERENCES CONGRESSISTE(id)
 );
 
-DROP TABLE IF EXISTS PARTICIPER;
 CREATE TABLE PARTICIPER(
    idActivite INT,
    idCongressiste INT,
@@ -379,3 +370,12 @@ AS
     SELECT @montantT = prix FROM HEBERGEMENT WHERE id = (SELECT idHebergement FROM CONGRESSISTE WHERE id = @idC)
     SELECT @montantT = @montantT + ISNULL(SUM(prix), 0) FROM ACTIVITE WHERE id IN (SELECT idActivite FROM PARTICIPER WHERE idCongressiste = @idC)
     SELECT SUM(@montantT - accompte) as montantTotal FROM CONGRESSISTE WHERE id = @idC
+
+GO
+CREATE OR ALTER TRIGGER tr_SuppressionSession ON SESSION
+INSTEAD OF DELETE
+AS
+BEGIN
+	DELETE FROM INSCRIRE WHERE idSession IN (SELECT id FROM deleted)
+	DELETE FROM SESSION WHERE id IN (SELECT id FROM deleted)
+END
