@@ -12,18 +12,29 @@ using System.Windows.Forms;
 
 namespace WinCongres
 {
-    public partial class FrmSessionsAjoutParticipant : Form
+    public partial class FrmAjoutParticipant : Form
     {
         Session laSession;
+        Activite activite;
         /// <summary>
-        /// Constructeur du formulaire : Affiche les congressistes ne participant pas à une session pour que l'utilisateur puisse ajouter un nouveau participant.
+        /// Constructeur du formulaire pour les sessions : Affiche les congressistes ne participant pas à une session pour que l'utilisateur puisse ajouter un nouveau participant.
         /// </summary>
         /// <param name="uneSession">La session où l'utilisateur souhaite ajouter un participant</param>
-        public FrmSessionsAjoutParticipant(ref Session uneSession)
+        public FrmAjoutParticipant(ref Session uneSession)
         {
             InitializeComponent();
             laSession = uneSession;
             bindSrcCongressistesNonParticip.DataSource = SessionManager.GetCongressistesNonParticipants(uneSession);
+        }
+
+        /// <summary>
+        /// Constructeur du formulaire pour les activités : Affiche les congressistes ne participant pas à une activité pour que l'utilisateur puisse ajouter un nouveau participant.
+        /// </summary>
+        public FrmAjoutParticipant(ref Activite uneActivite)
+        {
+            InitializeComponent();
+            activite = uneActivite;
+            bindSrcCongressistesNonParticip.DataSource = ActiviteManager.GetCongressistesNonParticipants(uneActivite);
         }
 
         /// <summary>
@@ -47,16 +58,25 @@ namespace WinCongres
         }
 
         /// <summary>
-        /// Ajoute un congressiste à la session et ferme le formulaire.
+        /// Ajoute un congressiste à la session ou à l'activité et ferme le formulaire.
         /// </summary>
         private void AjouterCongressiste()
         {
             Congressiste unCongressiste = (Congressiste)bindSrcCongressistesNonParticip.Current;
             try
             {
-                SessionManager.AddParticipant(laSession, unCongressiste);
-                laSession.CongressisteParticipants.Add(unCongressiste);
-                MessageBox.Show($"{unCongressiste.Prenom} {unCongressiste.Nom} a bien été ajouté à la session.", "Ajout réussi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (activite != null)
+                {
+                    ActiviteManager.AddParticipant(activite, unCongressiste);
+                    activite.CongressisteParticipants.Add(unCongressiste);
+                    MessageBox.Show($"{unCongressiste.Prenom} {unCongressiste.Nom} a bien été ajouté à l'activité.", "Ajout réussi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    SessionManager.AddParticipant(laSession, unCongressiste);
+                    laSession.CongressisteParticipants.Add(unCongressiste);
+                    MessageBox.Show($"{unCongressiste.Prenom} {unCongressiste.Nom} a bien été ajouté à la session.", "Ajout réussi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {

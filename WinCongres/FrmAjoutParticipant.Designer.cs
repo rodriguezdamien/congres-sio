@@ -1,6 +1,6 @@
 ﻿namespace WinCongres
 {
-    partial class FrmSessionsAjoutParticipant
+    partial class FrmAjoutParticipant
     {
         /// <summary>
         /// Required designer variable.
