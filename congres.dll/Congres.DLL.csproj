@@ -49,6 +49,7 @@
     <Compile Include="Managers\DBManager.cs" />
     <Compile Include="Hebergement.cs" />
     <Compile Include="Ligue.cs" />
+    <Compile Include="Managers\ActiviteManager.cs" />
     <Compile Include="Managers\SessionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Session.cs" />
