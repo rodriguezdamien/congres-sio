@@ -376,6 +376,7 @@
             this.radioBtnApresMidi.TabStop = true;
             this.radioBtnApresMidi.Text = "Après-midi";
             this.radioBtnApresMidi.UseVisualStyleBackColor = true;
+            this.radioBtnApresMidi.Click += new System.EventHandler(this.ModifierChamp_Souris);
             // 
             // radioBtnMatin
             // 

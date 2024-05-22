@@ -52,11 +52,11 @@
     <Compile Include="FrmActivites.Designer.cs">
       <DependentUpon>FrmActivites.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmSessionsAjoutParticipant.cs">
+    <Compile Include="FrmAjoutParticipant.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmSessionsAjoutParticipant.Designer.cs">
-      <DependentUpon>FrmSessionsAjoutParticipant.cs</DependentUpon>
+    <Compile Include="FrmAjoutParticipant.Designer.cs">
+      <DependentUpon>FrmAjoutParticipant.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmCongressiste.cs">
       <SubType>Form</SubType>
@@ -86,9 +86,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmActivites.resx">
       <DependentUpon>FrmActivites.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmSessionsAjoutParticipant.resx">
-      <DependentUpon>FrmSessionsAjoutParticipant.cs</DependentUpon>
+    <EmbeddedResource Include="FrmAjoutParticipant.resx">
+      <DependentUpon>FrmAjoutParticipant.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCongressiste.resx">
       <DependentUpon>FrmCongressiste.cs</DependentUpon>

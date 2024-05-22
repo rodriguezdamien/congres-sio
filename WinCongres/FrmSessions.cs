@@ -50,7 +50,7 @@ namespace WinCongres
         private void btnAjouterParticipant_Click(object sender, EventArgs e)
         {
             Session uneSession = (Session)bindSrcSessions.Current;
-            FrmSessionsAjoutParticipant frmSessionsAjoutParticipant = new FrmSessionsAjoutParticipant(ref uneSession);
+            FrmAjoutParticipant frmSessionsAjoutParticipant = new FrmAjoutParticipant(ref uneSession);
             frmSessionsAjoutParticipant.ShowDialog();
             bindSrcParticipants.ResetBindings(false);
         }
