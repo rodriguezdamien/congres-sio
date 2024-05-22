@@ -138,6 +138,27 @@ namespace congres.dll.Managers
             }
 
         }
+
+        /// <summary>
+        /// Ajoute un congressiste à une session.
+        /// </summary>
+        /// <param name="uneSession">La session où l'on souhaite ajouter le congressiste</param>
+        /// <param name="unCongressiste">Le congressiste que l'on souhaite ajouter</param>
+        public static void AddParticipant(Session uneSession, Congressiste unCongressiste)
+        {
+            try
+            {
+                DBManager.ConnexionDB.Open();
+                SqlCommand req = new SqlCommand("INSERT INTO INSCRIRE(idCongressiste,idSession) VALUES(@idCongressiste,@idSession)", DBManager.ConnexionDB);
+                req.Parameters.AddWithValue("@idCongressiste", unCongressiste.Id);
+                req.Parameters.AddWithValue("@idSession", uneSession.Id);
+                req.ExecuteNonQuery();
+            }
+            finally
+            {
+                DBManager.ConnexionDB.Close();
+            }
+        }
         /// <summary>
         /// Récupération de toute les sessions auxquelles un congressiste participe.
         /// </summary>
