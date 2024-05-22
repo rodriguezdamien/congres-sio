@@ -119,6 +119,10 @@ namespace congres.dll.Managers
             }
         }
 
+        /// <summary>
+        /// Supprime une session de la base de données.
+        /// </summary>
+        /// <param name="uneSession">La session que l'on souhaite supprimer.</param>
         public static void DeleteSession(Session uneSession)
         {
             try
