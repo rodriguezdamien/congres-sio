@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridCongressistesNonParticip = new System.Windows.Forms.DataGridView();
+            this.lblHowTo = new System.Windows.Forms.Label();
+            this.btnAjouterCongressiste = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prenomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindSrcCongressistesNonParticip = new System.Windows.Forms.BindingSource(this.components);
-            this.lblHowTo = new System.Windows.Forms.Label();
-            this.btnAjouterCongressiste = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCongressistesNonParticip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindSrcCongressistesNonParticip)).BeginInit();
             this.SuspendLayout();
@@ -58,9 +58,30 @@
             this.dataGridCongressistesNonParticip.RowHeadersWidth = 62;
             this.dataGridCongressistesNonParticip.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridCongressistesNonParticip.ShowEditingIcon = false;
-            this.dataGridCongressistesNonParticip.Size = new System.Drawing.Size(552, 434);
+            this.dataGridCongressistesNonParticip.Size = new System.Drawing.Size(380, 338);
             this.dataGridCongressistesNonParticip.TabIndex = 5;
             this.dataGridCongressistesNonParticip.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCongressistesNonParticip_CellDoubleClick);
+            // 
+            // lblHowTo
+            // 
+            this.lblHowTo.AutoSize = true;
+            this.lblHowTo.Location = new System.Drawing.Point(43, 9);
+            this.lblHowTo.Name = "lblHowTo";
+            this.lblHowTo.Size = new System.Drawing.Size(322, 26);
+            this.lblHowTo.TabIndex = 6;
+            this.lblHowTo.Text = "Double-cliquez ou sélectionnez un congressiste\r\npuis cliquez sur \"Ajouter\" pour a" +
+    "jouter un congressiste à la session.";
+            this.lblHowTo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnAjouterCongressiste
+            // 
+            this.btnAjouterCongressiste.Location = new System.Drawing.Point(101, 391);
+            this.btnAjouterCongressiste.Name = "btnAjouterCongressiste";
+            this.btnAjouterCongressiste.Size = new System.Drawing.Size(161, 34);
+            this.btnAjouterCongressiste.TabIndex = 7;
+            this.btnAjouterCongressiste.Text = "Ajouter la sélection";
+            this.btnAjouterCongressiste.UseVisualStyleBackColor = true;
+            this.btnAjouterCongressiste.Click += new System.EventHandler(this.btnAjouterCongressiste_Click);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -90,30 +111,11 @@
             // 
             this.bindSrcCongressistesNonParticip.DataSource = typeof(congres.dll.Congressiste);
             // 
-            // lblHowTo
-            // 
-            this.lblHowTo.AutoSize = true;
-            this.lblHowTo.Location = new System.Drawing.Point(10, 16);
-            this.lblHowTo.Name = "lblHowTo";
-            this.lblHowTo.Size = new System.Drawing.Size(554, 13);
-            this.lblHowTo.TabIndex = 6;
-            this.lblHowTo.Text = "Double-cliquez ou sélectionnez un congressiste puis appuyer sur \"Ajouter\" pour aj" +
-    "outer un congressiste à la session.";
-            // 
-            // btnAjouterCongressiste
-            // 
-            this.btnAjouterCongressiste.Location = new System.Drawing.Point(198, 484);
-            this.btnAjouterCongressiste.Name = "btnAjouterCongressiste";
-            this.btnAjouterCongressiste.Size = new System.Drawing.Size(161, 34);
-            this.btnAjouterCongressiste.TabIndex = 7;
-            this.btnAjouterCongressiste.Text = "Ajouter la sélection";
-            this.btnAjouterCongressiste.UseVisualStyleBackColor = true;
-            // 
             // FrmSessionsAjoutParticipant
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(576, 530);
+            this.ClientSize = new System.Drawing.Size(406, 437);
             this.Controls.Add(this.btnAjouterCongressiste);
             this.Controls.Add(this.lblHowTo);
             this.Controls.Add(this.dataGridCongressistesNonParticip);
