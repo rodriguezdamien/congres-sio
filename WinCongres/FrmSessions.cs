@@ -105,7 +105,19 @@ namespace WinCongres
         /// <exception cref="NotImplementedException"></exception>
         private void btnConfirmNouveau_Click(object sender, EventArgs e)
         {
-                //TODO : AJOUTER LA VERIFCATION DES CHAMPS
+            try
+            {
+                //Vérification des champs (y a des meilleures manières de faire je conçois mais bon)
+                //Vérification des champs textes, il ne faut aucun champ vide.
+                if (string.IsNullOrWhiteSpace(txtBoxNbPlaces.Text) || string.IsNullOrWhiteSpace(txtBoxNomPresident.Text) || string.IsNullOrWhiteSpace(txtBoxPrix.Text) || string.IsNullOrEmpty(txtBoxSalle.Text) || string.IsNullOrEmpty(txtBoxTheme.Text))
+                    throw new Exception("Veuillez remplir tous les champs.");
+                //Vérification de la date de la session, elle ne peut pas être antérieure à la date actuelle.
+                if (datePickerSession.Value < DateTime.Now)
+                    throw new Exception("La date de la session ne peut pas être antérieure à la date actuelle.");
+                //Vérification de la sélection du moment de la journée, il faut qu'au moins un soit sélectionné.
+                if (!radioBtnMatin.Checked && !radioBtnApresMidi.Checked)
+                    throw new Exception("Veuillez sélectionner le moment de la journée de la session.");
+                
                 bindSrcSessions.EndEdit();
                 Session nouvelleSession = (Session)bindSrcSessions.Current;
                 if (radioBtnMatin.Checked)
@@ -126,6 +138,12 @@ namespace WinCongres
                 //Remise à false de isEditing pour "sortir" du "mode" édition
                 isEditing = false;
                 MessageBox.Show("La session a bien été ajoutée", "Session ajoutée", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
         }
 
         /// <summary>
