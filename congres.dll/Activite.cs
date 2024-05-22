@@ -15,7 +15,8 @@ namespace congres.dll
         public int NbPlace { get; set; }
         public decimal Prix { get; set; }
         public bool EstMatin { get; set; }
-
+        public string AffichageMomentJournee { get { return this.EstMatin ? "Matin" : "Après-midi"; } }
+        public List<Congressiste> CongressisteParticipants { get; set; }
         /**<summary> Constructeur de Activite avec tout ses attributs </summary>
          * <param name="id"> Id de l'activite </param>
          * <param name="nom"> Nom de l'activite </param>
@@ -32,6 +33,11 @@ namespace congres.dll
             this.NbPlace = nbPlace;
             this.Prix = prix;
             this.EstMatin = estMatin;
+        }
+
+        public Activite()
+        {
+
         }
      }
 }
