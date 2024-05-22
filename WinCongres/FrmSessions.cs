@@ -166,17 +166,34 @@ namespace WinCongres
         /// <exception cref="NotImplementedException"></exception>
         private void btnModifier_Click(object sender, EventArgs e)
         {
-            bindSrcSessions.EndEdit();
-            Session sessionModifie = (Session)bindSrcSessions.Current;
-            if (radioBtnMatin.Checked)
-                sessionModifie.EstMatin = true;
-            else
-                sessionModifie.EstMatin = false;
-            sessionModifie.DateSession = sessionModifie.DateSession.Date;
-            SessionManager.UpdateSession(sessionModifie);
-            isEditing = false;
-            btnModifier.Enabled = false;
-            MessageBox.Show("La session a bien été modifiée", "Session modifiée", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                //Vérification des champs textes, il ne faut aucun champ vide.
+                if (string.IsNullOrWhiteSpace(txtBoxNbPlaces.Text) || string.IsNullOrWhiteSpace(txtBoxNomPresident.Text) || string.IsNullOrWhiteSpace(txtBoxPrix.Text) || string.IsNullOrEmpty(txtBoxSalle.Text) || string.IsNullOrEmpty(txtBoxTheme.Text))
+                    throw new Exception("Veuillez remplir tous les champs.");
+                //Vérification de la date de la session, elle ne peut pas être antérieure à la date actuelle.
+                if (datePickerSession.Value < DateTime.Now)
+                    throw new Exception("La date de la session ne peut pas être antérieure à la date actuelle.");
+                //Vérification de la sélection du moment de la journée, il faut qu'au moins un soit sélectionné.
+                if (!radioBtnMatin.Checked && !radioBtnApresMidi.Checked)
+                    throw new Exception("Veuillez sélectionner le moment de la journée de la session.");
+                
+                bindSrcSessions.EndEdit();
+                Session sessionModifie = (Session)bindSrcSessions.Current;
+                if (radioBtnMatin.Checked)
+                    sessionModifie.EstMatin = true;
+                else
+                    sessionModifie.EstMatin = false;
+                sessionModifie.DateSession = sessionModifie.DateSession.Date;
+                SessionManager.UpdateSession(sessionModifie);
+                isEditing = false;
+                btnModifier.Enabled = false;
+                MessageBox.Show("La session a bien été modifiée", "Session modifiée", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
