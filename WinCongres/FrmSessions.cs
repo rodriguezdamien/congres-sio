@@ -63,7 +63,14 @@ namespace WinCongres
         /// <exception cref="NotImplementedException"></exception>
         private void btnSupprParticipant_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException("Pas encore implémenté");
+            Congressiste congressisteASuppr = (Congressiste)bindSrcParticipants.Current;
+            Session session = (Session)bindSrcSessions.Current;
+            if (MessageBox.Show($"Voulez-vous vraiment supprimer {congressisteASuppr.Prenom} {congressisteASuppr.Nom} de cette session ?", "Suppression", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                SessionManager.DeleteParticipant(session, congressisteASuppr);
+                bindSrcParticipants.RemoveCurrent();
+                MessageBox.Show("Le participant a bien été supprimé.", "Participant supprimé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         /// <summary>
