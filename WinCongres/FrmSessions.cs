@@ -49,7 +49,10 @@ namespace WinCongres
         /// <exception cref="NotImplementedException"></exception>
         private void btnAjouterParticipant_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException("Pas encore implémenté");
+            Session uneSession = (Session)bindSrcSessions.Current;
+            FrmSessionsAjoutParticipant frmSessionsAjoutParticipant = new FrmSessionsAjoutParticipant(ref uneSession);
+            frmSessionsAjoutParticipant.ShowDialog();
+            bindSrcParticipants.ResetBindings(false);
         }
 
         /// <summary>
@@ -206,10 +209,19 @@ namespace WinCongres
             isEditing = false;
         }
 
-        private void ModifierChamp(object sender, EventArgs e)
+        private void ModifierChamp(object sender, KeyEventArgs e)
         {
-            if (tabControlSession.SelectedIndex == 1)
-                isEditing = true;
+            isEditing = true;
+        }
+
+        /// <summary>
+        /// Permet de savoir si un utilisateur a modifié un champ avec sa souris
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ModifierChamp_Souris(object sender, EventArgs e)
+        {
+            isEditing = true;
         }
     }
 }
