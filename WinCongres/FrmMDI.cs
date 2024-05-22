@@ -32,7 +32,16 @@ namespace WinCongres
         }
         private void menuBtnActivites_Click(object sender, EventArgs e)
         {
-
+            if (Application.OpenForms["FrmActivites"] == null)
+            {
+                FrmActivites unFrmActivites = new FrmActivites();
+                unFrmActivites.MdiParent = this;
+                unFrmActivites.Show();
+            }
+            else
+            {
+                Application.OpenForms["FrmActivites"].Focus();
+            }
         }
         private void menuBtnHebergements_Click(object sender, EventArgs e)
         {
