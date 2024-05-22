@@ -201,6 +201,27 @@ namespace congres.dll.Managers
         }
 
         /// <summary>
+        /// Supprime un participant d'une session dans la base de données.
+        /// </summary>
+        /// <param name="uneSession"></param>
+        /// <param name="unCongressiste"></param>
+        public static void DeleteParticipant(Session uneSession, Congressiste unCongressiste)
+        {
+            try
+            {
+                DBManager.ConnexionDB.Open();
+                SqlCommand req = new SqlCommand("DELETE FROM INSCRIRE WHERE idCongressiste = @idCongressiste AND idSession = @idSession", DBManager.ConnexionDB);
+                req.Parameters.AddWithValue("@idCongressiste", unCongressiste.Id);
+                req.Parameters.AddWithValue("@idSession", uneSession.Id);
+                req.ExecuteNonQuery();
+            }
+            finally
+            {
+                DBManager.ConnexionDB.Close();
+            }
+        }
+
+        /// <summary>
         /// Récupération de toute les sessions auxquelles un congressiste participe.
         /// </summary>
         /// <param name="idC">id du congressiste</param>
