@@ -119,6 +119,21 @@ namespace congres.dll.Managers
             }
         }
 
+        public static void DeleteSession(Session uneSession)
+        {
+            try
+            {
+                DBManager.ConnexionDB.Open();
+                SqlCommand req = new SqlCommand("DELETE FROM Session WHERE id = @id", DBManager.ConnexionDB);
+                req.Parameters.AddWithValue("@id", uneSession.Id);
+                req.ExecuteNonQuery();
+            }
+            finally
+            {
+                DBManager.ConnexionDB.Close();
+            }
+
+        }
         /// <summary>
         /// Récupération de toute les sessions auxquelles un congressiste participe.
         /// </summary>
