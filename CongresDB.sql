@@ -17,7 +17,7 @@ CREATE TABLE SESSION(
    id INT identity,
    theme VARCHAR(100),
    nomPresident VARCHAR(50),
-   nbPlace INT,
+   nbPlaces INT,
    salle VARCHAR(120),
    prix DECIMAL(15,2),
    dateSession DATE,
@@ -29,7 +29,7 @@ CREATE TABLE ACTIVITE(
    id INT identity,
    nom VARCHAR(100),
    dateActivite DATE,
-   nbPlace INT,
+   nbPlaces INT,
    prix DECIMAL(15,2),
    estMatin BIT,
    CONSTRAINT pk_activite PRIMARY KEY(id)
@@ -91,7 +91,7 @@ CREATE TABLE PARTICIPER(
 
 
 -- Jeu d'essai pour la table SESSION
-INSERT INTO SESSION (theme, nomPresident, nbPlace, salle, prix, dateSession, estMatin) VALUES 
+INSERT INTO SESSION (theme, nomPresident, nbPlaces, salle, prix, dateSession, estMatin) VALUES 
 ('Session d''inauguration', 'Snow', 20, 'La Marignane', 50.00, '2024-06-03', 0), -- 1
 ('Stratégies de coaching efficaces', 'Johnson', 10, 'Eiffel', 85.00, '2024-06-03', 1), -- 2
 ('Alimentation et performance sportive', 'Smith', 11, 'Salle des Congrès', 80.00, '2024-06-04', 0), -- 3
@@ -112,7 +112,7 @@ INSERT INTO HEBERGEMENT (nom, adresse, cp, ville, tel, nbEtoiles, prix) VALUES
 ('Petit Hôtel', '8 Rue Cambronne', '75015', 'Paris', '0145987654', '1', 70.00);
 
 -- Jeu d'essai pour la table ACTIVITE
-INSERT INTO ACTIVITE (nom, dateActivite, nbPlace, prix, estMatin) VALUES 
+INSERT INTO ACTIVITE (nom, dateActivite, nbPlaces, prix, estMatin) VALUES 
 ('Natation', '2024-06-03', 7, 20.00, 0), -- 1
 ('Tennis', '2024-06-03', 8, 30.00, 1), -- 2
 ('Yoga', '2024-06-04', 8, 40.00, 0), -- 3
@@ -337,26 +337,26 @@ INSERT INTO PARTICIPER (idActivite, idCongressiste) VALUES
 GO
 
 -- Procédure stockée qui renvoie le nombre de place disponible pour un idSession donné
-drop procedure if exists nbPlaceDispoSession;
+drop procedure if exists nbPlacesDispoSession;
 go
-CREATE PROCEDURE nbPlaceDispoSession
+CREATE PROCEDURE nbPlacesDispoSession
 @idS INT
 AS
-   declare @nbPlacePrise INT
-   select @nbPlacePrise=count(*) from INSCRIRE where idSession = @idS
-   select SUM(nbPlace - @nbPlacePrise) as nbPlaceDispo from SESSION where id = @idS
+   declare @nbPlacesPrise INT
+   select @nbPlacesPrise=count(*) from INSCRIRE where idSession = @idS
+   select SUM(nbPlaces - @nbPlacesPrise) as nbPlacesDispo from SESSION where id = @idS
 
 
 
 -- Procédure stockée qui renvoie le nombre de place disponible pour un idActivite donné
-drop procedure if exists nbPlaceDispoActivite;
+drop procedure if exists nbPlacesDispoActivite;
 go
-CREATE PROCEDURE nbPlaceDispoActivite
+CREATE PROCEDURE nbPlacesDispoActivite
 @idA INT
 AS
-   declare @nbPlaceReserver INT
-   select @nbPlaceReserver = count(*)  from PARTICIPER where idActivite = @idA
-   select SUM(nbPlace - @nbPlaceReserver) as nbPlaceDispo from ACTIVITE where id = @idA
+   declare @nbPlacesReservees INT
+   select @nbPlacesReservees = count(*)  from PARTICIPER where idActivite = @idA
+   select SUM(nbPlaces - @nbPlacesReservees) as nbPlacesDispo from ACTIVITE where id = @idA
 
 -- Procédure stockée qui renvoie le montant totale à régler pour un congressiste donné
 DROP PROCEDURE IF EXISTS montantTotal
@@ -378,4 +378,13 @@ AS
 BEGIN
 	DELETE FROM INSCRIRE WHERE idSession IN (SELECT id FROM deleted)
 	DELETE FROM SESSION WHERE id IN (SELECT id FROM deleted)
+END
+
+GO
+CREATE OR ALTER TRIGGER tr_SuppressionActivite ON ACTIVITE
+INSTEAD OF DELETE
+AS
+BEGIN
+	DELETE FROM PARTICIPER WHERE idActivite IN (SELECT id FROM deleted)
+	DELETE FROM ACTIVITE WHERE id IN (SELECT id FROM deleted)
 END
