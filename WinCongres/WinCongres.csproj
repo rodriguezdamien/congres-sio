@@ -99,6 +99,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCongressiste.resx">
       <DependentUpon>FrmCongressiste.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHebergements.resx">
       <DependentUpon>FrmHebergements.cs</DependentUpon>
