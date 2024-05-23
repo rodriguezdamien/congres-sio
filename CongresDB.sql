@@ -13,16 +13,25 @@ go
 create user AppliGestCongres for login AppliGestCongres;
 go
 
+CREATE TABLE SALLE(
+   id INT identity,
+   libelle VARCHAR(100),
+   CONSTRAINT pk_salle PRIMARY KEY(id)
+);
+
+
 CREATE TABLE SESSION(
-   id INT identity,
-   theme VARCHAR(100),
-   nomPresident VARCHAR(50),
-   nbPlaces INT,
-   salle VARCHAR(120),
-   prix DECIMAL(15,2),
-   dateSession DATE,
-   estMatin BIT,
-   CONSTRAINT pk_session PRIMARY KEY(id)
+   id INT identity,
+   theme VARCHAR(100),
+   nomPresident VARCHAR(50),
+   nbPlaces INT,
+   salle VARCHAR(120),
+   prix DECIMAL(15,2),
+   dateSession DATE,
+   estMatin BIT,
+   idSalle int NOT NULL,
+   CONSTRAINT pk_session PRIMARY KEY(id),
+   CONSTRAINT fk_session_salle FOREIGN KEY(idSalle) REFERENCES SALLE(id)
 );
 
 CREATE TABLE ACTIVITE(
@@ -66,7 +75,7 @@ CREATE TABLE CONGRESSISTE(
    ville VARCHAR(50),
    accompte DECIMAL(15,2),
    idLigue INT NOT NULL,
-   idHebergement INT NOT NULL,
+   idHebergement INT,
    CONSTRAINT pk_congressiste PRIMARY KEY(id),
    CONSTRAINT fk_congressiste_ligue FOREIGN KEY(idLigue) REFERENCES LIGUE(id),
    CONSTRAINT fk_congressiste_hebergement FOREIGN KEY(idHebergement) REFERENCES HEBERGEMENT(id)
@@ -88,20 +97,26 @@ CREATE TABLE PARTICIPER(
    CONSTRAINT fk_participer_congressiste FOREIGN KEY(idCongressiste) REFERENCES CONGRESSISTE(id)
 );
 
-
+-- Jeu d'essai pour la table SALLE
+INSERT INTO SALLE (libelle) VALUES 
+('B418'),
+('Usain Bolt'),
+('Nelson Mandela'),
+('Roger Federer'),
+('Hicham El Guerrouj'); 
 
 -- Jeu d'essai pour la table SESSION
-INSERT INTO SESSION (theme, nomPresident, nbPlaces, salle, prix, dateSession, estMatin) VALUES 
-('Session d''inauguration', 'Snow', 20, 'La Marignane', 50.00, '2024-06-03', 0), -- 1
-('Stratégies de coaching efficaces', 'Johnson', 10, 'Eiffel', 85.00, '2024-06-03', 1), -- 2
-('Alimentation et performance sportive', 'Smith', 11, 'Salle des Congrès', 80.00, '2024-06-04', 0), -- 3
-('Prévention des blessures chez les jeunes sportifs', 'Dubois', 12, 'Rivoli', 75.00, '2024-06-04', 1), -- 4
-('Evaluation psychologique du sportif', 'McKinney', 12, 'Léon Blum', 75.00, '2024-06-05', 0), -- 5
-('Gestion du stress chez les athlètes', 'Garcia', 14, 'Montmartre', 70.00, '2024-06-05', 1), -- 6
-('Nouvelles technologies dans le domaine sportif', 'Wang', 13, 'Palais des Congrès', 90.00, '2024-06-06', 0), -- 7
-('Réhabilitation après blessure sportive', 'Chen', 12, 'Victor Hugo', 65.00, '2024-06-06', 1), -- 8
-('Pratiques sportives et usages de drogues', 'Costa Correia', 15, '50.00', 100.00, '2024-06-07', 0), -- 9
-('Impact du sommeil sur la performance sportive', 'Lee', 15, 'Louvre', 60.00, '2024-06-07', 1); -- 10
+INSERT INTO SESSION (theme, nomPresident, nbPlaces, salle, prix, dateSession, estMatin, idSalle) VALUES 
+('Session d''inauguration', 'Snow', 20, 'La Marignane', 50.00, '2024-06-03', 0, 1), -- 1
+('Stratégies de coaching efficaces', 'Johnson', 10, 'Eiffel', 85.00, '2024-06-03', 1, 2), -- 2
+('Alimentation et performance sportive', 'Smith', 11, 'Salle des Congrès', 80.00, '2024-06-04', 0, 1), -- 3
+('Prévention des blessures chez les jeunes sportifs', 'Dubois', 12, 'Rivoli', 75.00, '2024-06-04', 1, 2), -- 4
+('Evaluation psychologique du sportif', 'McKinney', 12, 'Léon Blum', 75.00, '2024-06-05', 0, 3), -- 5
+('Gestion du stress chez les athlètes', 'Garcia', 14, 'Montmartre', 70.00, '2024-06-05', 1, 4), -- 6
+('Nouvelles technologies dans le domaine sportif', 'Wang', 13, 'Palais des Congrès', 90.00, '2024-06-06',0, 5), -- 7
+('Réhabilitation après blessure sportive', 'Chen', 12, 'Victor Hugo', 65.00, '2024-06-06', 1, 4), -- 8
+('Pratiques sportives et usages de drogues', 'Costa Correia', 15, '50.00', 100.00, '2024-06-07', 0, 3), -- 9
+('Impact du sommeil sur la performance sportive', 'Lee', 15, 'Louvre', 60.00, '2024-06-07', 1, 5); -- 10
 
 -- Jeu d'essai pour la table HEBERGEMENT
 INSERT INTO HEBERGEMENT (nom, adresse, cp, ville, tel, nbEtoiles, prix) VALUES 
@@ -406,3 +421,7 @@ BEGIN
 IF((select count(idCongressiste) from INSCRIRE where idSession IN (select idSession from inserted)) > (select nbPlaces from SESSION where id in (select idSession from inserted)))
 throw 50002, 'Il n''y a plus de place disponible pour cette session.',0
 END
+
+Select * From SALLE
+Select * From SESSION
+

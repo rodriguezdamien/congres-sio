@@ -44,7 +44,7 @@ namespace congres.dll.Managers
 
                     double montant = GetMontantARegler(id);
 
-                    lesCongressistes.Add(new Congressiste(id, nom, prenom, tel, adresse, cp, ville, accompte, montantARegler: montant, idLigue, idHebergement));
+                    lesCongressistes.Add(new Congressiste(id, nom, prenom, tel, adresse, cp, ville, accompte, restantDu: montant, montantTotal: montant + (double)accompte, idLigue, idHebergement));
                 }
             }
             finally
