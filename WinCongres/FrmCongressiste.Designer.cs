@@ -77,6 +77,7 @@
             this.villeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accompteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.montantARegler = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.montantTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlCongressiste.SuspendLayout();
             this.tabPageListe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCongressiste)).BeginInit();
@@ -126,7 +127,8 @@
             this.cpDataGridViewTextBoxColumn,
             this.villeDataGridViewTextBoxColumn,
             this.accompteDataGridViewTextBoxColumn,
-            this.montantARegler});
+            this.montantARegler,
+            this.montantTotal});
             this.dataGridCongressiste.DataSource = this.bindSrcCongressiste;
             this.dataGridCongressiste.Location = new System.Drawing.Point(0, 0);
             this.dataGridCongressiste.MultiSelect = false;
@@ -554,11 +556,19 @@
             // 
             // montantARegler
             // 
-            this.montantARegler.DataPropertyName = "montantARegler";
-            this.montantARegler.HeaderText = "Montant à régler";
+            this.montantARegler.DataPropertyName = "RestantDu";
+            this.montantARegler.HeaderText = "Restant dû";
             this.montantARegler.Name = "montantARegler";
             this.montantARegler.ReadOnly = true;
-            this.montantARegler.Width = 77;
+            this.montantARegler.Width = 84;
+            // 
+            // montantTotal
+            // 
+            this.montantTotal.DataPropertyName = "montantTotal";
+            this.montantTotal.HeaderText = "Montant Total";
+            this.montantTotal.Name = "montantTotal";
+            this.montantTotal.ReadOnly = true;
+            this.montantTotal.Width = 98;
             // 
             // FrmCongressiste
             // 
@@ -638,5 +648,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn villeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accompteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn montantARegler;
+        private System.Windows.Forms.DataGridViewTextBoxColumn montantTotal;
     }
 }

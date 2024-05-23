@@ -26,7 +26,7 @@ namespace congres.dll
         /// <param name="accompte">Accompte du congressiste</param>
         /// <param name="idLigue">Clé étrangère IdLigue du congressiste</param>
         /// <param name="idHebergement">Clé étrangère IdHebergement du congressiste</param>
-        public Congressiste(int id, string nom, string prenom, string tel, string adresse, string cp, string ville, decimal accompte,double montantARegler, int idLigue, int? idHebergement)
+        public Congressiste(int id, string nom, string prenom, string tel, string adresse, string cp, string ville, decimal accompte,double restantDu, double montantTotal, int idLigue, int? idHebergement)
         {
             this.Id = id;
             this.Nom = nom;
@@ -36,7 +36,8 @@ namespace congres.dll
             this.Cp = cp;
             this.Ville = ville;
             this.Accompte = accompte;
-            this.montantARegler = montantARegler;
+            this.RestantDu = restantDu;
+            this.montantTotal = montantTotal;
             this.IdLigue = idLigue;
             this.IdHebergement = idHebergement;
         }
@@ -50,7 +51,8 @@ namespace congres.dll
         public string Ville { get; set; }
         //conversion de float à double
         public decimal Accompte { get; set; }
-        public double montantARegler { get; set; }
+        public double RestantDu { get; set; }
+        public double montantTotal { get; set; }
         public int IdLigue { get; set; }
         public Ligue laLigue { get; set; }
         public int? IdHebergement { get; set; }
