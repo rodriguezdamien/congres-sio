@@ -372,7 +372,7 @@ AS
     SELECT SUM(@montantT - accompte) as montantTotal FROM CONGRESSISTE WHERE id = @idC
 
 GO
-CREATE OR ALTER TRIGGER tr_SuppressionSession ON SESSION
+CREATE OR ALTER TRIGGER TD_Session ON SESSION
 INSTEAD OF DELETE
 AS
 BEGIN
@@ -381,10 +381,28 @@ BEGIN
 END
 
 GO
-CREATE OR ALTER TRIGGER tr_SuppressionActivite ON ACTIVITE
+CREATE OR ALTER TRIGGER TD_Activite ON ACTIVITE
 INSTEAD OF DELETE
 AS
 BEGIN
 	DELETE FROM PARTICIPER WHERE idActivite IN (SELECT id FROM deleted)
 	DELETE FROM ACTIVITE WHERE id IN (SELECT id FROM deleted)
+END
+
+GO
+CREATE OR ALTER TRIGGER TI_Participer ON PARTICIPER
+AFTER INSERT
+AS
+BEGIN
+IF((select count(idCongressiste) from PARTICIPER where idActivite IN (select idActivite from inserted) group by idActivite) > (select nbPlaces from ACTIVITE where id in (select idActivite from inserted)))
+throw 50001, 'Il n''y a plus de place disponible pour cette activité.',0
+END
+
+GO
+CREATE OR ALTER TRIGGER TI_Inscrire ON INSCRIRE
+AFTER INSERT
+AS
+BEGIN
+IF((select count(idCongressiste) from INSCRIRE where idSession IN (select idSession from inserted)) > (select nbPlaces from SESSION where id in (select idSession from inserted)))
+throw 50002, 'Il n''y a plus de place disponible pour cette session.',0
 END
