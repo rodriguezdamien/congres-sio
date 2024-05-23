@@ -422,6 +422,22 @@ IF((select count(idCongressiste) from INSCRIRE where idSession IN (select idSess
 throw 50002, 'Il n''y a plus de place disponible pour cette session.',0
 END
 
-Select * From SALLE
-Select * From SESSION
+-- Trigger qui controle que la date d'ajout/modification d'une session
+GO
+CREATE OR ALTER TRIGGER TIU_Session ON SESSION
+AFTER INSERT, UPDATE
+AS
+	BEGIN
+		IF((select month(dateSession) from inserted) != 6)
+			throw 50002, 'La session se déroule uniquement en juin.',0		
+	END
 
+-- Trigger qui controle que la date d'ajout/modification d'une activité
+GO
+CREATE OR ALTER TRIGGER TIU_Activite ON ACTIVITE
+AFTER INSERT, UPDATE
+AS
+	BEGIN
+		IF((select month(dateActivite) from inserted) != 6)
+			throw 50002, 'L''acitvité se déroule uniquement en juin.',0		
+	END
