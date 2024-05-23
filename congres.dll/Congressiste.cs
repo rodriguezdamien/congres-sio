@@ -71,7 +71,8 @@ namespace congres.dll
         public Ligue laLigue { get; set; }
         public int? IdHebergement { get; set; }
         public Hebergement sonHebergement { get; set; }
-
+        public List<Session> SessionsInscrit { get; set; }
+        public List<Activite> ActivitesInscrit { get; set; }
 
     }
 }

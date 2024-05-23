@@ -32,7 +32,6 @@
             this.menuBtnSessions = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBtnActivites = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBtnHebergements = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuBtnInscriptions = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBtnLigues = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCongressiste = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBtnSalle = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +45,6 @@
             this.menuBtnSessions,
             this.menuBtnActivites,
             this.menuBtnHebergements,
-            this.menuBtnInscriptions,
             this.menuBtnLigues,
             this.btnCongressiste,
             this.menuBtnSalle});
@@ -77,13 +75,6 @@
             this.menuBtnHebergements.Size = new System.Drawing.Size(97, 22);
             this.menuBtnHebergements.Text = "Hébergements";
             this.menuBtnHebergements.Click += new System.EventHandler(this.menuBtnHebergements_Click);
-            // 
-            // menuBtnInscriptions
-            // 
-            this.menuBtnInscriptions.Name = "menuBtnInscriptions";
-            this.menuBtnInscriptions.Size = new System.Drawing.Size(80, 22);
-            this.menuBtnInscriptions.Text = "Inscriptions";
-            this.menuBtnInscriptions.Click += new System.EventHandler(this.menuBtnInscriptions_Click);
             // 
             // menuBtnLigues
             // 
@@ -130,7 +121,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuBtnSessions;
         private System.Windows.Forms.ToolStripMenuItem menuBtnActivites;
         private System.Windows.Forms.ToolStripMenuItem menuBtnHebergements;
-        private System.Windows.Forms.ToolStripMenuItem menuBtnInscriptions;
         private System.Windows.Forms.ToolStripMenuItem menuBtnLigues;
         private System.Windows.Forms.ToolStripMenuItem btnCongressiste;
         private System.Windows.Forms.ToolStripMenuItem menuBtnSalle;
