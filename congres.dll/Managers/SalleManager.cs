@@ -36,7 +36,7 @@ namespace congres.dll.Managers
 
             SqlCommand reqAjoutSalle = new SqlCommand("INSERT INTO SALLE (libelle) Values (@libelle)", DBManager.ConnexionDB);
 
-            reqAjoutSalle.Parameters.AddWithValue("@adresse", newSalle.Libelle);
+            reqAjoutSalle.Parameters.AddWithValue("@libelle", newSalle.Libelle);
 
             SqlCommand reqGetId = new SqlCommand("SELECT @@IDENTITY", DBManager.ConnexionDB);
 
@@ -91,6 +91,39 @@ namespace congres.dll.Managers
                 DBManager.ConnexionDB.Close();
             }
 
+        }
+
+        public static List<Session> GetSessionsBySalle(int idSalle)
+        {
+            List<Session> sessionList = new List<Session>();
+
+            SqlCommand reqGet = new SqlCommand("SELECT id, theme, nomPresident, NbPlaces, salle, prix, dateSession, estMatin FROM Session  " +
+                "WHERE idSalle = @idSalle;", DBManager.ConnexionDB);
+            reqGet.Parameters.AddWithValue("@idSalle", idSalle);
+
+            try
+            {
+                DBManager.ConnexionDB.Open();
+                SqlDataReader reader = reqGet.ExecuteReader();
+                while (reader.Read())
+                {
+                    sessionList.Add(new Session(id: reader.GetInt32(0),
+                                             theme: reader.GetString(1),
+                                             nomPresident: reader.GetString(2),
+                                             nbPlaces: reader.GetInt32(3),
+                                             salle: reader.GetString(4),
+                                             prix: reader.GetDecimal(5),
+                                             dateSession: reader.GetDateTime(6),
+                                             estMatin: reader.GetBoolean(7)
+                                             ));
+                }
+            }
+            finally
+            {
+                DBManager.ConnexionDB.Close();
+            }
+
+            return sessionList;
         }
 
     }
