@@ -68,7 +68,8 @@ namespace congres.dll.Managers
                                                        cp: reader.GetString(5),
                                                        ville: reader.GetString(6),
                                                        accompte: reader.GetDecimal(7),
-                                                       montantARegler: 0,
+                                                       restantDu: 0,
+                                                       montantTotal: 0,
                                                        idLigue:reader.GetInt32(8),
                                                        idHebergement:reader.GetInt32(9)
                                                        ));
@@ -187,7 +188,8 @@ namespace congres.dll.Managers
                                                        cp: reader.GetString(5),
                                                        ville: reader.GetString(6),
                                                        accompte: reader.GetDecimal(7),
-                                                       montantARegler: 0,
+                                                       restantDu: 0,
+                                                       montantTotal: 0,
                                                        idLigue: reader.GetInt32(8),
                                                        idHebergement: reader.GetInt32(9)
                                                        ));
