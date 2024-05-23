@@ -210,7 +210,7 @@ namespace WinCongres
             {
                 ActiviteManager.DeleteActivite(activiteASuppr);
                 bindSrcActivites.RemoveCurrent();
-                MessageBox.Show("l'activité a bien été supprimée.", "Activite supprimée", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("L'activité a bien été supprimée.", "Activite supprimée", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
