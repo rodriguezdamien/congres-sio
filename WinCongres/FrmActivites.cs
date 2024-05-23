@@ -172,7 +172,7 @@ namespace WinCongres
                 if (string.IsNullOrWhiteSpace(txtBoxNbPlaces.Text) || string.IsNullOrWhiteSpace(txtBoxPrix.Text) || string.IsNullOrEmpty(txtBoxNom.Text))
                     throw new Exception("Veuillez remplir tous les champs.");
                 if (!int.TryParse(txtBoxNbPlaces.Text, out _) || !decimal.TryParse(txtBoxPrix.Text, out _))
-                    throw new Exception("Veuillez saisir des valeurs numériques pour les nombres de places et le prix.");
+                    throw new Exception("Veuillez saisir des valeurs numériques pour le nombre de places et le prix.");
                 //Vérification de la date de l'activité, elle ne peut pas être antérieure à la date actuelle.
                 if (datePickerActivite.Value < DateTime.Now)
                     throw new Exception("La date de la activité ne peut pas être antérieure à la date actuelle.");

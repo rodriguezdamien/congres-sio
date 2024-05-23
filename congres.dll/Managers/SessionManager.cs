@@ -19,14 +19,14 @@ namespace congres.dll.Managers
             try
             {
                 DBManager.ConnexionDB.Open();
-                SqlCommand req = new SqlCommand("SELECT id,theme,nomPresident,nbPlace,salle,prix,dateSession,estMatin FROM Session", DBManager.ConnexionDB);
+                SqlCommand req = new SqlCommand("SELECT id,theme,nomPresident,NbPlaces,salle,prix,dateSession,estMatin FROM Session", DBManager.ConnexionDB);
                 SqlDataReader reader = req.ExecuteReader();
                 while (reader.Read())
                 {
                     sessions.Add(new Session(id: reader.GetInt32(0),
                                              theme: reader.GetString(1),
                                              nomPresident: reader.GetString(2),
-                                             nbPlace: reader.GetInt32(3),
+                                             nbPlaces: reader.GetInt32(3),
                                              salle: reader.GetString(4),
                                              prix: reader.GetDecimal(5),
                                              dateSession:reader.GetDateTime(6),
@@ -83,10 +83,10 @@ namespace congres.dll.Managers
         public static void AddSession(ref Session uneSession) {
             try {
                 DBManager.ConnexionDB.Open();
-                SqlCommand req = new SqlCommand("INSERT INTO Session(theme,nomPresident,nbPlace,salle,prix,dateSession,estMatin) VALUES(@theme,@nomPresident,@nbPlace,@salle,@prix,@dateSession,@estMatin); SELECT SCOPE_IDENTITY();", DBManager.ConnexionDB);
+                SqlCommand req = new SqlCommand("INSERT INTO Session(theme,nomPresident,NbPlaces,salle,prix,dateSession,estMatin) VALUES(@theme,@nomPresident,@NbPlaces,@salle,@prix,@dateSession,@estMatin); SELECT SCOPE_IDENTITY();", DBManager.ConnexionDB);
                 req.Parameters.AddWithValue("@theme", uneSession.Theme);
                 req.Parameters.AddWithValue("@nomPresident", uneSession.NomPresident);
-                req.Parameters.AddWithValue("@nbPlace", uneSession.NbPlace);
+                req.Parameters.AddWithValue("@NbPlaces", uneSession.NbPlaces);
                 req.Parameters.AddWithValue("@salle", uneSession.Salle);
                 req.Parameters.AddWithValue("@prix", uneSession.Prix);
                 req.Parameters.AddWithValue("@dateSession", uneSession.DateSession);
@@ -102,10 +102,10 @@ namespace congres.dll.Managers
         {
             try { 
             DBManager.ConnexionDB.Open();
-            SqlCommand req = new SqlCommand("UPDATE Session SET theme = @theme, nomPresident = @nomPresident, nbPlace = @nbPlace, salle = @salle, prix = @prix, dateSession = @dateSession, estMatin = @estMatin WHERE id = @id", DBManager.ConnexionDB);
+            SqlCommand req = new SqlCommand("UPDATE Session SET theme = @theme, nomPresident = @nomPresident, NbPlaces = @NbPlaces, salle = @salle, prix = @prix, dateSession = @dateSession, estMatin = @estMatin WHERE id = @id", DBManager.ConnexionDB);
             req.Parameters.AddWithValue("@theme", uneSession.Theme);
             req.Parameters.AddWithValue("@nomPresident", uneSession.NomPresident);
-            req.Parameters.AddWithValue("@nbPlace", uneSession.NbPlace);
+            req.Parameters.AddWithValue("@NbPlaces", uneSession.NbPlaces);
             req.Parameters.AddWithValue("@salle", uneSession.Salle);
             req.Parameters.AddWithValue("@prix", uneSession.Prix);
             req.Parameters.AddWithValue("@dateSession", uneSession.DateSession);
@@ -230,7 +230,7 @@ namespace congres.dll.Managers
         {
             List<Session> sessionList = new List<Session>();
 
-            SqlCommand reqGet = new SqlCommand("SELECT id, theme, nomPresident, nbPlace, salle, prix, dateSession, estMatin FROM INSCRIRE I " +
+            SqlCommand reqGet = new SqlCommand("SELECT id, theme, nomPresident, NbPlaces, salle, prix, dateSession, estMatin FROM INSCRIRE I " +
                 "                               JOIN SESSION S on I.idSession = S.id" +
                 "                               WHERE idCongressiste = @idC;", DBManager.ConnexionDB);
             reqGet.Parameters.AddWithValue("@idC", idC);
@@ -244,7 +244,7 @@ namespace congres.dll.Managers
                     sessionList.Add(new Session(id: reader.GetInt32(0),
                                              theme: reader.GetString(1),
                                              nomPresident: reader.GetString(2),
-                                             nbPlace: reader.GetInt32(3),
+                                             nbPlaces: reader.GetInt32(3),
                                              salle: reader.GetString(4),
                                              prix: reader.GetDecimal(5),
                                              dateSession: reader.GetDateTime(6),

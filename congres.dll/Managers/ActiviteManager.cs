@@ -19,13 +19,13 @@ namespace congres.dll.Managers
             try
             {
                 DBManager.ConnexionDB.Open();
-                SqlCommand req = new SqlCommand("SELECT id,nom,nbPlace,prix,dateActivite,estMatin FROM Activite", DBManager.ConnexionDB);
+                SqlCommand req = new SqlCommand("SELECT id,nom,NbPlaces,prix,dateActivite,estMatin FROM Activite", DBManager.ConnexionDB);
                 SqlDataReader reader = req.ExecuteReader();
                 while (reader.Read())
                 {
                     Activites.Add(new Activite(id: reader.GetInt32(0),
                                              nom: reader.GetString(1),
-                                             nbPlace: reader.GetInt32(2),
+                                             nbPlaces: reader.GetInt32(2),
                                              prix: reader.GetDecimal(3),
                                              dateActivite:reader.GetDateTime(4),
                                              estMatin:reader.GetBoolean(5)
@@ -81,9 +81,9 @@ namespace congres.dll.Managers
         public static void AddActivite(ref Activite uneActivite) {
             try {
                 DBManager.ConnexionDB.Open();
-                SqlCommand req = new SqlCommand("INSERT INTO Activite(nom,nbPlace,prix,dateActivite,estMatin) VALUES(@nom,@nbPlace,@prix,@dateActivite,@estMatin); SELECT SCOPE_IDENTITY();", DBManager.ConnexionDB);
+                SqlCommand req = new SqlCommand("INSERT INTO Activite(nom,NbPlaces,prix,dateActivite,estMatin) VALUES(@nom,@NbPlaces,@prix,@dateActivite,@estMatin); SELECT SCOPE_IDENTITY();", DBManager.ConnexionDB);
                 req.Parameters.AddWithValue("@nom", uneActivite.Nom);
-                req.Parameters.AddWithValue("@nbPlace", uneActivite.NbPlace);
+                req.Parameters.AddWithValue("@NbPlaces", uneActivite.NbPlaces);
                 req.Parameters.AddWithValue("@prix", uneActivite.Prix);
                 req.Parameters.AddWithValue("@dateActivite", uneActivite.DateActivite);
                 req.Parameters.AddWithValue("@estMatin", uneActivite.EstMatin);
@@ -98,9 +98,9 @@ namespace congres.dll.Managers
         {
             try { 
             DBManager.ConnexionDB.Open();
-            SqlCommand req = new SqlCommand("UPDATE Activite SET nom = @nom,  nbPlace = @nbPlace, prix = @prix, dateActivite = @dateActivite, estMatin = @estMatin WHERE id = @id", DBManager.ConnexionDB);
+            SqlCommand req = new SqlCommand("UPDATE Activite SET nom = @nom,  NbPlaces = @NbPlaces, prix = @prix, dateActivite = @dateActivite, estMatin = @estMatin WHERE id = @id", DBManager.ConnexionDB);
             req.Parameters.AddWithValue("@nom", uneActivite.Nom);
-            req.Parameters.AddWithValue("@nbPlace", uneActivite.NbPlace);
+            req.Parameters.AddWithValue("@NbPlaces", uneActivite.NbPlaces);
             req.Parameters.AddWithValue("@prix", uneActivite.Prix);
             req.Parameters.AddWithValue("@dateActivite", uneActivite.DateActivite);
             req.Parameters.AddWithValue("@estMatin", uneActivite.EstMatin);
