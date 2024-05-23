@@ -110,5 +110,40 @@ namespace congres.dll.Managers
 
         }
 
+        public static List<Congressiste> GetCongressistesByHebergement(int idHebergement)
+        {
+            List<Congressiste> lesCongressistes = new List<Congressiste>();
+
+            SqlCommand reqGetCongressistes = new SqlCommand("SELECT id, nom, prenom, tel, adresse, cp, ville, accompte, idLigue, idHebergement FROM Congressiste " +
+                "                                           WHERE idHebergement = @idHebergement;", DBManager.ConnexionDB);
+            reqGetCongressistes.Parameters.AddWithValue("@idHebergement", idHebergement);
+
+            try
+            {
+                DBManager.ConnexionDB.Open();
+                SqlDataReader reader = reqGetCongressistes.ExecuteReader();
+                while (reader.Read())
+                {
+                    lesCongressistes.Add(new Congressiste(id: reader.GetInt32(0),
+                                             nom: reader.GetString(1),
+                                             prenom: reader.GetString(2),
+                                             tel: reader.GetString(3),
+                                             adresse: reader.GetString(4),
+                                             cp: reader.GetString(5),
+                                             ville: reader.GetString(6),
+                                             accompte: reader.GetDecimal(7),
+                                             idLigue: reader.GetInt32(8),
+                                             idHebergement: reader.GetInt32(9)
+                                             ));
+                }
+            }
+            finally
+            {
+                DBManager.ConnexionDB.Close();
+            }
+
+            return lesCongressistes;
+        }
+
     }
 }
