@@ -76,6 +76,12 @@
     <Compile Include="FrmMDI.Designer.cs">
       <DependentUpon>FrmMDI.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSalle.Designer.cs">
+      <DependentUpon>FrmSalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSessions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     <EmbeddedResource Include="FrmHebergements.resx">
       <DependentUpon>FrmHebergements.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmSalle.resx">
+      <DependentUpon>FrmSalle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmSessions.resx">
       <DependentUpon>FrmSessions.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -117,6 +126,7 @@
     <None Include="Properties\DataSources\congres.dll.Congressiste.datasource" />
     <None Include="Properties\DataSources\congres.dll.Hebergement.datasource" />
     <None Include="Properties\DataSources\congres.dll.Ligue.datasource" />
+    <None Include="Properties\DataSources\congres.dll.Salle.datasource" />
     <None Include="Properties\DataSources\congres.dll.Session.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

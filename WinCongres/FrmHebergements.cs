@@ -21,7 +21,7 @@ namespace WinCongres
 
         private void FrmHebergements_Load(object sender, EventArgs e)
         {
-            this.bindSrcHebergement.DataSource = HebergementManager.GetHebergements();            
+            this.bindSrcHebergement.DataSource = HebergementManager.GetHebergements();
         }
 
         private void dataGridHebergement_CurrentCellChanged(object sender, EventArgs e)
@@ -109,11 +109,9 @@ namespace WinCongres
             {
                 try
                 {
-
                     // Supprimer l'hébergement
                     bindSrcHebergement.EndEdit();
                     HebergementManager.DeleteHebergement((Hebergement)bindSrcHebergement.Current);
-
 
                     MessageBox.Show("Hébergemement supprimé.", "Information", MessageBoxButtons.OK);
                     bindSrcHebergement.RemoveCurrent();
