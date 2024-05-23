@@ -42,6 +42,20 @@ namespace congres.dll
             this.IdHebergement = idHebergement;
         }
 
+        public Congressiste(int id, string nom, string prenom, string tel, string adresse, string cp, string ville, decimal accompte, int idLigue, int? idHebergement)
+        {
+            this.Id = id;
+            this.Nom = nom;
+            this.Prenom = prenom;
+            this.Tel = tel;
+            this.Adresse = adresse;
+            this.Cp = cp;
+            this.Ville = ville;
+            this.Accompte = accompte;
+            this.IdLigue = idLigue;
+            this.IdHebergement = idHebergement;
+        }
+
         public int Id { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
