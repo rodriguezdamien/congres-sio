@@ -22,8 +22,32 @@ namespace WinCongres
         public FrmSessions()
         {
             InitializeComponent();
-            bindSrcSessions.DataSource = SessionManager.GetSessions();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmSessions_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                bindSrcSessions.DataSource = SessionManager.GetSessions();
+                bindSrcSalles.DataSource = SalleManager.GetSalles();
+                foreach (Session session in bindSrcSessions)
+                {
+                    int i = 0;
+                    while (((Salle)bindSrcSalles[i]).Id != session.IdSalle)
+                    {
+                        i++;
+                    }
+                    session.LaSalle = (Salle)bindSrcSalles[i];
+                }
+            }
+            finally { }
+        }
+
         /// <summary>
         /// Actions qui seront effectuées au moment du changement de la session sélectionné
         /// </summary>
@@ -109,7 +133,7 @@ namespace WinCongres
             {
                 //Vérification des champs (y a des meilleures manières de faire je conçois mais bon)
                 //Vérification des champs textes, il ne faut aucun champ vide.
-                if (string.IsNullOrWhiteSpace(txtBoxNbPlaces.Text) || string.IsNullOrWhiteSpace(txtBoxNomPresident.Text) || string.IsNullOrWhiteSpace(txtBoxPrix.Text) || string.IsNullOrEmpty(txtBoxSalle.Text) || string.IsNullOrEmpty(txtBoxTheme.Text))
+                if (string.IsNullOrWhiteSpace(txtBoxNbPlaces.Text) || string.IsNullOrWhiteSpace(txtBoxNomPresident.Text) || string.IsNullOrWhiteSpace(txtBoxPrix.Text) || string.IsNullOrEmpty(txtBoxTheme.Text))
                     throw new Exception("Veuillez remplir tous les champs.");
                 //Vérification de la date de la session, elle ne peut pas être antérieure à la date actuelle.
                 if (datePickerSession.Value < DateTime.Now)
@@ -169,7 +193,7 @@ namespace WinCongres
             try
             {
                 //Vérification des champs textes, il ne faut aucun champ vide.
-                if (string.IsNullOrWhiteSpace(txtBoxNbPlaces.Text) || string.IsNullOrWhiteSpace(txtBoxNomPresident.Text) || string.IsNullOrWhiteSpace(txtBoxPrix.Text) || string.IsNullOrEmpty(txtBoxSalle.Text) || string.IsNullOrEmpty(txtBoxTheme.Text))
+                if (string.IsNullOrWhiteSpace(txtBoxNbPlaces.Text) || string.IsNullOrWhiteSpace(txtBoxNomPresident.Text) || string.IsNullOrWhiteSpace(txtBoxPrix.Text) || string.IsNullOrEmpty(txtBoxTheme.Text))
                     throw new Exception("Veuillez remplir tous les champs.");
                 //Vérification de la date de la session, elle ne peut pas être antérieure à la date actuelle.
                 if (datePickerSession.Value < DateTime.Now)
