@@ -101,8 +101,8 @@ namespace WinCongres
         private void dataGridSalle_CurrentCellChanged(object sender, EventArgs e)
         {
             Salle uneS = (Salle)bindSrcSalle.Current;
-
-            bindSrcSession.DataSource = SalleManager.GetSessionsBySalle(uneS.Id);
+            uneS.LesSessions = SalleManager.GetSessionsBySalle(uneS);
+            bindSrcSession.DataSource = uneS.LesSessions;
         }
     }
 }
