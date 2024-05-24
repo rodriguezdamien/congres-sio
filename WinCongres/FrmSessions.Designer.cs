@@ -562,7 +562,6 @@
         private System.Windows.Forms.TabPage tabPageSessions;
         private System.Windows.Forms.DataGridView dataGridSession;
         private System.Windows.Forms.TabPage tabPageDetail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nbPlaceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridView dataGridParticipants;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnAnnulerNouveau;

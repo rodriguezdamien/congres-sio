@@ -49,6 +49,20 @@ namespace congres.dll
             this.Prenom = prenom;
         }
 
+        public Congressiste(int id, string nom, string prenom, string tel, string adresse, string cp, string ville, decimal accompte, int idLigue, int? idHebergement)
+        {
+            this.Id = id;
+            this.Nom = nom;
+            this.Prenom = prenom;
+            this.Tel = tel;
+            this.Adresse = adresse;
+            this.Cp = cp;
+            this.Ville = ville;
+            this.Accompte = accompte;
+            this.IdLigue = idLigue;
+            this.IdHebergement = idHebergement;
+        }
+
         public int Id { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
@@ -64,7 +78,8 @@ namespace congres.dll
         public Ligue laLigue { get; set; }
         public int? IdHebergement { get; set; }
         public Hebergement sonHebergement { get; set; }
-
+        public List<Session> SessionsInscrit { get; set; }
+        public List<Activite> ActivitesInscrit { get; set; }
 
     }
 }

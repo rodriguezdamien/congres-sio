@@ -29,24 +29,7 @@ namespace WinCongres
 
             Hebergement unH = (Hebergement)bindSrcHebergement.Current;
 
-            if(unH.LesCongressistes != null)
-            {
-                unH.LesCongressistes.Clear();
-
-            }
-
-
-            this.bindSrcCongressiste.DataSource = CongressisteManager.GetCongressistes();
-
-            foreach (Congressiste unC in this.bindSrcCongressiste)
-            {
-                if (unC.IdHebergement == unH.Id)
-                {
-                    unH.LesCongressistes.Add(unC);
-                }
-            }
-            this.bindSrcCongressiste.DataSource = unH.LesCongressistes;
-           
+            bindSrcCongressiste.DataSource = HebergementManager.GetCongressistesByHebergement(Convert.ToInt32(unH.Id));
 
         }
 

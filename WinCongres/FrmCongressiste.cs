@@ -105,8 +105,10 @@ namespace WinCongres
         private void dataGridCongressiste_CurrentCellChanged(object sender, EventArgs e)
         {
             Congressiste unC = (Congressiste)bindSrcCongressiste.Current;
-
-            bindSrcSession.DataSource = SessionManager.GetSessionsByCongressiste(unC.Id);
+            unC.SessionsInscrit = CongressisteManager.GetSessionsInscrit(unC.Id);
+            unC.ActivitesInscrit = CongressisteManager.GetActivitesInscrit(unC.Id);
+            bindSrcSession.DataSource = unC.SessionsInscrit;
+            bindSrcActivites.DataSource = unC.ActivitesInscrit;
         }
 
         private void btnModifier_Click(object sender, EventArgs e)

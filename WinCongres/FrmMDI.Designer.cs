@@ -32,9 +32,9 @@
             this.menuBtnSessions = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBtnActivites = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBtnHebergements = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuBtnInscriptions = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBtnLigues = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCongressiste = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuBtnSalle = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMDI.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,13 +45,13 @@
             this.menuBtnSessions,
             this.menuBtnActivites,
             this.menuBtnHebergements,
-            this.menuBtnInscriptions,
             this.menuBtnLigues,
-            this.btnCongressiste});
+            this.btnCongressiste,
+            this.menuBtnSalle});
             this.menuStripMDI.Location = new System.Drawing.Point(0, 0);
             this.menuStripMDI.Name = "menuStripMDI";
             this.menuStripMDI.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStripMDI.Size = new System.Drawing.Size(1461, 24);
+            this.menuStripMDI.Size = new System.Drawing.Size(1370, 24);
             this.menuStripMDI.TabIndex = 0;
             this.menuStripMDI.Text = "menuStripMDI";
             // 
@@ -76,13 +76,6 @@
             this.menuBtnHebergements.Text = "Hébergements";
             this.menuBtnHebergements.Click += new System.EventHandler(this.menuBtnHebergements_Click);
             // 
-            // menuBtnInscriptions
-            // 
-            this.menuBtnInscriptions.Name = "menuBtnInscriptions";
-            this.menuBtnInscriptions.Size = new System.Drawing.Size(80, 22);
-            this.menuBtnInscriptions.Text = "Inscriptions";
-            this.menuBtnInscriptions.Click += new System.EventHandler(this.menuBtnInscriptions_Click);
-            // 
             // menuBtnLigues
             // 
             this.menuBtnLigues.Name = "menuBtnLigues";
@@ -97,11 +90,18 @@
             this.btnCongressiste.Text = "Congressistes";
             this.btnCongressiste.Click += new System.EventHandler(this.btnCongressiste_Click);
             // 
+            // menuBtnSalle
+            // 
+            this.menuBtnSalle.Name = "menuBtnSalle";
+            this.menuBtnSalle.Size = new System.Drawing.Size(43, 22);
+            this.menuBtnSalle.Text = "Salle";
+            this.menuBtnSalle.Click += new System.EventHandler(this.menuBtnSalle_Click);
+            // 
             // FrmMDI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1461, 855);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.menuStripMDI);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStripMDI;
@@ -121,8 +121,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuBtnSessions;
         private System.Windows.Forms.ToolStripMenuItem menuBtnActivites;
         private System.Windows.Forms.ToolStripMenuItem menuBtnHebergements;
-        private System.Windows.Forms.ToolStripMenuItem menuBtnInscriptions;
         private System.Windows.Forms.ToolStripMenuItem menuBtnLigues;
         private System.Windows.Forms.ToolStripMenuItem btnCongressiste;
+        private System.Windows.Forms.ToolStripMenuItem menuBtnSalle;
     }
 }

@@ -78,5 +78,19 @@ namespace WinCongres
                 Application.OpenForms["FrmCongressiste"].Focus();
             }
         }
+
+        private void menuBtnSalle_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["FrmSalle"] == null)
+            {
+                FrmSalle unFrmSalle = new FrmSalle();
+                unFrmSalle.MdiParent = this;
+                unFrmSalle.Show();
+            }
+            else
+            {
+                Application.OpenForms["FrmSalle"].Focus();
+            }
+        }
     }
 }
