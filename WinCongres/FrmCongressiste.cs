@@ -113,7 +113,6 @@ namespace WinCongres
 
         private void btnModifier_Click(object sender, EventArgs e)
         {
-            // Modifier l'hébergement
             bindSrcHebergement.EndEdit();
             CongressisteManager.UpdtCongressiste((Congressiste)bindSrcCongressiste.Current);
 
@@ -130,7 +129,7 @@ namespace WinCongres
                 {
 
                     // Supprimer l'hébergement
-                    bindSrcHebergement.EndEdit();
+                    bindSrcCongressiste.EndEdit();
                     CongressisteManager.DelCongressiste(((Congressiste)bindSrcCongressiste.Current).Id);
 
 

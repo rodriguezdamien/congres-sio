@@ -30,6 +30,8 @@ namespace congres.dll
             this.Ville = ville;
         }
 
+        public Ligue() { }
+
 
     }
 }

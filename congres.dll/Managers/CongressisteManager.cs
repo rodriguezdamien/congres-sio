@@ -84,8 +84,7 @@ namespace congres.dll.Managers
             try
             {
                 DBManager.ConnexionDB.Open();
-                int ligneAjt = reqAdd.ExecuteNonQuery();
-                //if simplifié
+                reqAdd.ExecuteNonQuery();
                 id = reqGetId.ExecuteScalar();
             }
             finally
