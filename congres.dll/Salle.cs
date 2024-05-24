@@ -22,6 +22,11 @@ namespace congres.dll
             this.Libelle = libelle;
         }
 
+        public override string ToString()
+        {
+            return this.Libelle;
+        }
+
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
