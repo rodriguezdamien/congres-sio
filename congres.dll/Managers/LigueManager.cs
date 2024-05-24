@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace congres.dll.Managers
 {
@@ -77,6 +78,35 @@ namespace congres.dll.Managers
             }
 
             return isDel;
+        }
+
+        public static List<Congressiste> GetCongressisteByLigue(int idL)
+        {
+            List<Congressiste> lesC = new List<Congressiste>();
+
+            SqlCommand reqGetC = new SqlCommand("SELECT id, nom, prenom FROM CONGRESSISTE WHERE idLigue = @idL", DBManager.ConnexionDB);
+            reqGetC.Parameters.AddWithValue("@idL", idL);
+
+            try
+            {
+                DBManager.ConnexionDB.Open();
+                DBManager.ConnexionDB.Open();
+                SqlDataReader reader = reqGetC.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    string nom = reader.GetString(1);
+                    string prenom = reader.GetString(2);
+
+                    lesC.Add(new Congressiste(id, nom, prenom));
+                }
+            }
+            finally
+            {
+                DBManager.ConnexionDB.Close();
+            }
+
+            return lesC;
         }
     }
 }
