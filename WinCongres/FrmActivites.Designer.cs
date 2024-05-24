@@ -558,7 +558,6 @@
         private System.Windows.Forms.GroupBox groupBoxParticipants;
         private System.Windows.Forms.Button btnAjouterParticipant;
         private System.Windows.Forms.Button btnSupprParticipant;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nbPlaces;
         private System.Windows.Forms.Label lblDateActivite;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn;
