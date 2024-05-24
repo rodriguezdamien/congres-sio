@@ -93,7 +93,7 @@ namespace congres.dll.Managers
 
         }
 
-        public static List<Session> GetSessionsBySalle(ref Salle uneSalle)
+        public static List<Session> GetSessionsBySalle(Salle uneSalle)
         {
             List<Session> sessionList = new List<Session>();
 
