@@ -19,7 +19,7 @@ namespace congres.dll.Managers
             try
             {
                 DBManager.ConnexionDB.Open();
-                SqlCommand req = new SqlCommand("SELECT id,theme,nomPresident,NbPlaces,salle,prix,dateSession,estMatin FROM Session", DBManager.ConnexionDB);
+                SqlCommand req = new SqlCommand("SELECT id,theme,nomPresident,NbPlaces,idSalle,prix,dateSession,estMatin FROM Session", DBManager.ConnexionDB);
                 SqlDataReader reader = req.ExecuteReader();
                 while (reader.Read())
                 {
@@ -27,7 +27,7 @@ namespace congres.dll.Managers
                                              theme: reader.GetString(1),
                                              nomPresident: reader.GetString(2),
                                              nbPlaces: reader.GetInt32(3),
-                                             salle: reader.GetString(4),
+                                             idSalle: reader.GetInt32(4),
                                              prix: reader.GetDecimal(5),
                                              dateSession:reader.GetDateTime(6),
                                              estMatin:reader.GetBoolean(7)
@@ -88,7 +88,7 @@ namespace congres.dll.Managers
                 req.Parameters.AddWithValue("@theme", uneSession.Theme);
                 req.Parameters.AddWithValue("@nomPresident", uneSession.NomPresident);
                 req.Parameters.AddWithValue("@NbPlaces", uneSession.NbPlaces);
-                req.Parameters.AddWithValue("@salle", uneSession.Salle);
+                req.Parameters.AddWithValue("@idSalle", uneSession.LaSalle.Id);
                 req.Parameters.AddWithValue("@prix", uneSession.Prix);
                 req.Parameters.AddWithValue("@dateSession", uneSession.DateSession);
                 req.Parameters.AddWithValue("@estMatin", uneSession.EstMatin);
@@ -103,11 +103,11 @@ namespace congres.dll.Managers
         {
             try { 
             DBManager.ConnexionDB.Open();
-            SqlCommand req = new SqlCommand("UPDATE Session SET theme = @theme, nomPresident = @nomPresident, NbPlaces = @NbPlaces, salle = @salle, prix = @prix, dateSession = @dateSession, estMatin = @estMatin WHERE id = @id", DBManager.ConnexionDB);
+            SqlCommand req = new SqlCommand("UPDATE Session SET theme = @theme, nomPresident = @nomPresident, NbPlaces = @NbPlaces, idSalle = @idSalle, prix = @prix, dateSession = @dateSession, estMatin = @estMatin WHERE id = @id", DBManager.ConnexionDB);
             req.Parameters.AddWithValue("@theme", uneSession.Theme);
             req.Parameters.AddWithValue("@nomPresident", uneSession.NomPresident);
             req.Parameters.AddWithValue("@NbPlaces", uneSession.NbPlaces);
-            req.Parameters.AddWithValue("@salle", uneSession.Salle);
+            req.Parameters.AddWithValue("@idSalle", uneSession.LaSalle.Id);
             req.Parameters.AddWithValue("@prix", uneSession.Prix);
             req.Parameters.AddWithValue("@dateSession", uneSession.DateSession);
             req.Parameters.AddWithValue("@estMatin", uneSession.EstMatin);

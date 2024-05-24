@@ -93,13 +93,13 @@ namespace congres.dll.Managers
 
         }
 
-        public static List<Session> GetSessionsBySalle(int idSalle)
+        public static List<Session> GetSessionsBySalle(ref Salle uneSalle)
         {
             List<Session> sessionList = new List<Session>();
 
-            SqlCommand reqGet = new SqlCommand("SELECT id, theme, nomPresident, NbPlaces, salle, prix, dateSession, estMatin FROM Session  " +
+            SqlCommand reqGet = new SqlCommand("SELECT id, theme, nomPresident, NbPlaces, prix, dateSession, estMatin FROM Session  " +
                 "WHERE idSalle = @idSalle;", DBManager.ConnexionDB);
-            reqGet.Parameters.AddWithValue("@idSalle", idSalle);
+            reqGet.Parameters.AddWithValue("@idSalle", uneSalle.Id);
 
             try
             {
@@ -111,7 +111,7 @@ namespace congres.dll.Managers
                                              theme: reader.GetString(1),
                                              nomPresident: reader.GetString(2),
                                              nbPlaces: reader.GetInt32(3),
-                                             salle: reader.GetString(4),
+                                             idSalle: uneSalle.Id,
                                              prix: reader.GetDecimal(5),
                                              dateSession: reader.GetDateTime(6),
                                              estMatin: reader.GetBoolean(7)

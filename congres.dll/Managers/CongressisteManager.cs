@@ -194,7 +194,7 @@ namespace congres.dll.Managers
         {
             List<Session> sessionList = new List<Session>();
 
-            SqlCommand reqGet = new SqlCommand("SELECT id, theme, nomPresident, NbPlaces, salle, prix, dateSession, estMatin FROM INSCRIRE I " +
+            SqlCommand reqGet = new SqlCommand("SELECT id, theme, nomPresident, NbPlaces, idSalle, prix, dateSession, estMatin FROM INSCRIRE I " +
                 "                               JOIN SESSION S on I.idSession = S.id" +
                 "                               WHERE idCongressiste = @idC;", DBManager.ConnexionDB);
             reqGet.Parameters.AddWithValue("@idC", idC);
@@ -209,7 +209,7 @@ namespace congres.dll.Managers
                                              theme: reader.GetString(1),
                                              nomPresident: reader.GetString(2),
                                              nbPlaces: reader.GetInt32(3),
-                                             salle: reader.GetString(4),
+                                             idSalle: reader.GetInt32(4),
                                              prix: reader.GetDecimal(5),
                                              dateSession: reader.GetDateTime(6),
                                              estMatin: reader.GetBoolean(7)
