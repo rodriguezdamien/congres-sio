@@ -10,6 +10,7 @@ namespace congres.dll
     {
         public int Id { get; set; }
         public string Libelle { get; set; }
+        public List<Session> LesSessions { get; set; }
 
         /// <summary>
         /// Constructeur de la classe Salle
