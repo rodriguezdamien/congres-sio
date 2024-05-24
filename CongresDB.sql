@@ -411,6 +411,25 @@ AS
 BEGIN
 IF((select count(idCongressiste) from PARTICIPER where idActivite IN (select idActivite from inserted) group by idActivite) > (select nbPlaces from ACTIVITE where id in (select idActivite from inserted)))
 throw 50001, 'Il n''y a plus de place disponible pour cette activité.',0
+-- Condition qui vérifie que le congressiste n'est pas déjà inscrit à une activité ou à une session à la même date
+DECLARE @idCongressiste INT
+DECLARE @dateActivite date
+DECLARE @estMatinActivite BIT
+Select @idCongressiste = idCongressiste, @dateActivite = dateActivite, @estMatinActivite = estMatin
+from inserted
+	JOIN ACTIVITE ON ACTIVITE.id = inserted.idActivite;
+IF((SELECT count(idActivite)
+	from participer p
+	join activite a on a.id = p.idActivite
+	where idCongressiste = @idCongressiste
+		and dateActivite = @dateActivite
+		and estMatin = @estMatinActivite) > 1 OR exists(SELECT idSession
+														FROM Inscrire I
+														JOIN Session S on S.id = I.idSession
+														WHERE idCongressiste = @idCongressiste
+															and dateSession = @dateActivite
+															and estMatin = @estMatinActivite))
+throw 50002, 'Le congressiste est déjà inscrit à une session ou une activité qui se déroule au même moment.',0
 END
 
 GO
@@ -419,7 +438,25 @@ AFTER INSERT
 AS
 BEGIN
 IF((select count(idCongressiste) from INSCRIRE where idSession IN (select idSession from inserted)) > (select nbPlaces from SESSION where id in (select idSession from inserted)))
-throw 50002, 'Il n''y a plus de place disponible pour cette session.',0
+throw 50003, 'Il n''y a plus de place disponible pour cette session.',0
+DECLARE @idCongressiste INT
+DECLARE @dateSession date
+DECLARE @estMatinSession BIT
+Select @idCongressiste = idCongressiste,@dateSession = dateSession, @estMatinSession = estMatin
+from inserted
+	JOIN Session ON Session.id = inserted.idSession;
+IF((SELECT count(idSession)
+	from inscrire i
+	join session s on s.id = i.idSession
+	where idCongressiste = @idCongressiste
+		and dateSession = @dateSession
+		and estMatin = @estMatinSession) > 1 OR exists(SELECT idActivite
+														FROM Participer P
+														JOIN Activite A on A.id = P.idActivite
+														WHERE idCongressiste = @idCongressiste
+															and dateActivite = @dateSession
+															and estMatin = @estMatinSession))
+throw 50004, 'Le congressiste est déjà inscrit à une session ou une activité qui se déroule au même moment.',0
 END
 
 -- Trigger qui controle que la date d'ajout/modification d'une session
@@ -429,7 +466,7 @@ AFTER INSERT, UPDATE
 AS
 	BEGIN
 		IF((select month(dateSession) from inserted) != 6)
-			throw 50002, 'La session se déroule uniquement en juin.',0		
+			throw 50005, 'La session ne peut se dérouler uniquement en juin.',0		
 	END
 
 -- Trigger qui controle que la date d'ajout/modification d'une activité
@@ -439,5 +476,5 @@ AFTER INSERT, UPDATE
 AS
 	BEGIN
 		IF((select month(dateActivite) from inserted) != 6)
-			throw 50002, 'L''acitvité se déroule uniquement en juin.',0		
+			throw 50006, 'L''actvité ne peut se dérouler uniquement en juin.',0		
 	END
