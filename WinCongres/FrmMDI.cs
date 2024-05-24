@@ -62,7 +62,16 @@ namespace WinCongres
         }
         private void menuBtnLigues_Click(object sender, EventArgs e)
         {
-
+            if (Application.OpenForms["FrmLigue"] == null)
+            {
+                FrmLigue unFrmLigue = new FrmLigue();
+                unFrmLigue.MdiParent = this;
+                unFrmLigue.Show();
+            }
+            else
+            {
+                Application.OpenForms["FrmLigue"].Focus();
+            }
         }
 
         private void btnCongressiste_Click(object sender, EventArgs e)

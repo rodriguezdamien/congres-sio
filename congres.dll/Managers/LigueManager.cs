@@ -36,6 +36,32 @@ namespace congres.dll.Managers
             return ligues;
         }
 
+        public static int AddLigue(Ligue ligue)
+        {
+            object id;
+
+            SqlCommand reqAdd = new SqlCommand("INSERT INTO LIGUE (nomLigue,adresse,cp,ville) VALUES (@n, @a, @cp, @v);", DBManager.ConnexionDB);
+            reqAdd.Parameters.AddWithValue("@n", ligue.Nom);
+            reqAdd.Parameters.AddWithValue("@a", ligue.Adresse);
+            reqAdd.Parameters.AddWithValue("@cp", ligue.CodePostal);
+            reqAdd.Parameters.AddWithValue("@v", ligue.Ville);
+
+            SqlCommand reqGetId = new SqlCommand("SELECT @@IDENTITY", DBManager.ConnexionDB);
+
+            try
+            {
+                DBManager.ConnexionDB.Open();
+                reqAdd.ExecuteNonQuery();
+                id = reqGetId.ExecuteScalar();
+            }
+            finally
+            {
+                DBManager.ConnexionDB.Close();
+            }
+
+            return Convert.ToInt32(id);
+        }
+
         public static bool UpdtLigue(Ligue ligue)
         {
             bool isUdpt = false;
@@ -89,7 +115,6 @@ namespace congres.dll.Managers
 
             try
             {
-                DBManager.ConnexionDB.Open();
                 DBManager.ConnexionDB.Open();
                 SqlDataReader reader = reqGetC.ExecuteReader();
                 while (reader.Read())
