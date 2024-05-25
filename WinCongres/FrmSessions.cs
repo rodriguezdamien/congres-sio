@@ -44,6 +44,8 @@ namespace WinCongres
                     }
                     session.LaSalle = (Salle)bindSrcSalles[i];
                 }
+                datePickerSession.MinDate = new DateTime(DateTime.Now.Year, 6, 1);
+                datePickerSession.MaxDate = new DateTime(DateTime.Now.Year, 6, 30);
             }
             finally { }
         }
@@ -117,7 +119,8 @@ namespace WinCongres
             btnConfirmNouveau.Visible = true;
             btnAnnulerNouveau.Visible = true;
             tabControlSession.SelectedIndex = 1;
-            datePickerSession.Value = DateTime.Now;
+            datePickerSession.Value = new DateTime(DateTime.Now.Year, 6, 1);
+            cmbBoxSalle.SelectedIndex = 0;
             isEditing = true;
         }
 
