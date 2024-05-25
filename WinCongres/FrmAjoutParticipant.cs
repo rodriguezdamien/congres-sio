@@ -75,6 +75,7 @@ namespace WinCongres
                 {
                     SessionManager.AddParticipant(laSession, unCongressiste);
                     laSession.CongressisteParticipants.Add(unCongressiste);
+                    laSession.NbPlacesRestantes--;
                     MessageBox.Show($"{unCongressiste.Prenom} {unCongressiste.Nom} a bien été ajouté à la session.", "Ajout réussi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

@@ -194,7 +194,6 @@ namespace WinCongres
         {
             try
             {
-                Activite activiteModifie = (Activite)bindSrcActivites.Current;
                 //Vérification des champs textes, il ne faut aucun champ vide.
                 if (string.IsNullOrWhiteSpace(txtBoxNbPlaces.Text) || string.IsNullOrWhiteSpace(txtBoxPrix.Text) || string.IsNullOrEmpty(txtBoxNom.Text))
                     throw new Exception("Veuillez remplir tous les champs.");
