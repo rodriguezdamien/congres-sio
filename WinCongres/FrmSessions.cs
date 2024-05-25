@@ -37,6 +37,7 @@ namespace WinCongres
                 bindSrcSalles.DataSource = SalleManager.GetSalles();
                 foreach (Session session in bindSrcSessions)
                 {
+                    session.NbPlacesRestantes = SessionManager.GetPlacesRestantes(session);
                     int i = 0;
                     while (((Salle)bindSrcSalles[i]).Id != session.IdSalle)
                     {
@@ -79,6 +80,8 @@ namespace WinCongres
             FrmAjoutParticipant frmSessionsAjoutParticipant = new FrmAjoutParticipant(ref uneSession);
             frmSessionsAjoutParticipant.ShowDialog();
             bindSrcParticipants.ResetBindings(false);
+            if (uneSession.NbPlacesRestantes <= 0)
+                btnAjouterParticipant.Enabled = false;
         }
 
         /// <summary>
@@ -95,6 +98,8 @@ namespace WinCongres
             {
                 SessionManager.DeleteParticipant(session, congressisteASuppr);
                 bindSrcParticipants.RemoveCurrent();
+                    session.NbPlacesRestantes++;
+                    btnAjouterParticipant.Enabled = true;
                 MessageBox.Show("Le participant a bien été supprimé.", "Participant supprimé", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -157,6 +162,10 @@ namespace WinCongres
                 btnNouveau.Enabled = true;
                 btnModifier.Visible = true;
                 btnSupprSession.Visible = true;
+                nouvelleSession.NbPlacesRestantes = SessionManager.GetPlacesRestantes(nouvelleSession);
+                if (nouvelleSession.NbPlacesRestantes <= 0)
+                    btnAjouterParticipant.Enabled = false;
+                else
                 btnAjouterParticipant.Enabled = true;
                 btnSupprParticipant.Enabled = true;
                 //Désactivation des boutons de création
@@ -215,6 +224,11 @@ namespace WinCongres
                 //Posez pas de question jsp pourquoi j'ai pas juste fait sessionModifie.LaSalle.Id
                 sessionModifie.IdSalle = ((Salle)cmbBoxSalle.SelectedItem).Id;
                 SessionManager.UpdateSession(sessionModifie);
+                sessionModifie.NbPlacesRestantes = SessionManager.GetPlacesRestantes(sessionModifie);
+                if(sessionModifie.NbPlacesRestantes <= 0)
+                    btnAjouterParticipant.Enabled = false;
+                else
+                    btnAjouterParticipant.Enabled = true;
                 isEditing = false;
                 btnModifier.Enabled = false;
                 MessageBox.Show("La session a bien été modifiée", "Session modifiée", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -249,7 +263,10 @@ namespace WinCongres
         /// <param name="e"></param>
         private void tabControlSession_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            //Possibilité de mettre le MessageBox ici ?
+            if (((Session)bindSrcSessions.Current).NbPlacesRestantes <= 0)
+                btnAjouterParticipant.Enabled = false;
+            else
+                btnAjouterParticipant.Enabled = true;
             if (isEditing)
             {
                 if (MessageBox.Show("Des modifications n'ont pas été validés, êtes vous sûr de vouloir continuer ? \n\n Toutes les modifications seront perdues. ", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)

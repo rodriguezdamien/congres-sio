@@ -39,6 +39,7 @@
             this.nomPresidentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LaSalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nbPlacesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NbPlacesRestantes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prixDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateSessionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.affichageMomentJourneeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -142,7 +143,8 @@
             this.themeDataGridViewTextBoxColumn,
             this.nomPresidentDataGridViewTextBoxColumn,
             this.LaSalle,
-            this.nbPlacesDataGridViewTextBoxColumn,
+            this.NbPlaces,
+            this.NbPlacesRestantes,
             this.prixDataGridViewTextBoxColumn,
             this.dateSessionDataGridViewTextBoxColumn,
             this.affichageMomentJourneeDataGridViewTextBoxColumn});
@@ -197,6 +199,14 @@
             this.nbPlacesDataGridViewTextBoxColumn.Name = "nbPlacesDataGridViewTextBoxColumn";
             this.nbPlacesDataGridViewTextBoxColumn.ReadOnly = true;
             this.nbPlacesDataGridViewTextBoxColumn.Width = 118;
+            // 
+            // NbPlacesRestantes
+            // 
+            this.NbPlacesRestantes.DataPropertyName = "NbPlacesRestantes";
+            this.NbPlacesRestantes.HeaderText = "Places restantes";
+            this.NbPlacesRestantes.Name = "NbPlacesRestantes";
+            this.NbPlacesRestantes.ReadOnly = true;
+            this.NbPlacesRestantes.Width = 110;
             // 
             // prixDataGridViewTextBoxColumn
             // 
@@ -615,7 +625,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn themeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomPresidentDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn LaSalle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nbPlacesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NbPlaces;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NbPlacesRestantes;
         private System.Windows.Forms.DataGridViewTextBoxColumn prixDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateSessionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn affichageMomentJourneeDataGridViewTextBoxColumn;

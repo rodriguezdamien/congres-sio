@@ -67,6 +67,7 @@
             this.nomDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateActiviteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nbPlacesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NbPlacesRestantes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prixDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.affichageMomentJourneeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             lblNom = new System.Windows.Forms.Label();
@@ -138,6 +139,7 @@
             this.nomDataGridViewTextBoxColumn1,
             this.dateActiviteDataGridViewTextBoxColumn,
             this.nbPlacesDataGridViewTextBoxColumn,
+            this.NbPlacesRestantes,
             this.prixDataGridViewTextBoxColumn,
             this.affichageMomentJourneeDataGridViewTextBoxColumn});
             this.dataGridActivite.DataSource = this.bindSrcActivites;
@@ -494,6 +496,14 @@
             this.nbPlacesDataGridViewTextBoxColumn.ReadOnly = true;
             this.nbPlacesDataGridViewTextBoxColumn.Width = 80;
             // 
+            // NbPlacesRestantes
+            // 
+            this.NbPlacesRestantes.DataPropertyName = "NbPlacesRestantes";
+            this.NbPlacesRestantes.HeaderText = "Places restantes";
+            this.NbPlacesRestantes.Name = "NbPlacesRestantes";
+            this.NbPlacesRestantes.ReadOnly = true;
+            this.NbPlacesRestantes.Width = 101;
+            // 
             // prixDataGridViewTextBoxColumn
             // 
             this.prixDataGridViewTextBoxColumn.DataPropertyName = "Prix";
@@ -569,6 +579,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateActiviteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nbPlacesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NbPlacesRestantes;
         private System.Windows.Forms.DataGridViewTextBoxColumn prixDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn affichageMomentJourneeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;

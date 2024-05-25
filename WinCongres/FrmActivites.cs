@@ -71,6 +71,8 @@ namespace WinCongres
             FrmAjoutParticipant frmActivitesAjoutParticipant = new FrmAjoutParticipant(ref uneActivite);
             frmActivitesAjoutParticipant.ShowDialog();
             bindSrcParticipants.ResetBindings(false);
+            if (uneActivite.NbPlacesRestantes <= 0)
+                btnAjouterParticipant.Enabled = false;
         }
 
         /// <summary>
@@ -87,6 +89,8 @@ namespace WinCongres
             {
                 ActiviteManager.DeleteParticipant(activite, congressisteASuppr);
                 bindSrcParticipants.RemoveCurrent();
+                activite.NbPlacesRestantes++;
+                btnAjouterParticipant.Enabled = true;
                 MessageBox.Show("Le participant a bien été supprimé.", "Participant supprimé", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -148,6 +152,10 @@ namespace WinCongres
                 btnNouveau.Enabled = true;
                 btnModifier.Visible = true;
                 btnSupprActivite.Visible = true;
+                nouvelleActivite.NbPlacesRestantes = ActiviteManager.GetPlacesRestantes(nouvelleActivite);
+                if (nouvelleActivite.NbPlacesRestantes <= 0)
+                    btnAjouterParticipant.Enabled = false;
+                else
                 btnAjouterParticipant.Enabled = true;
                 btnSupprParticipant.Enabled = true;
                 //Désactivation des boutons de création
@@ -206,6 +214,11 @@ namespace WinCongres
                 activiteModifie.DateActivite = activiteModifie.DateActivite.Date;
                 ActiviteManager.UpdateActivite(activiteModifie);
                 isEditing = false;
+                activiteModifiee.NbPlacesRestantes = ActiviteManager.GetPlacesRestantes(activiteModifiee);
+                if (activiteModifiee.NbPlacesRestantes <= 0)
+                    btnAjouterParticipant.Enabled = false;
+                else
+                    btnAjouterParticipant.Enabled = true;
                 btnModifier.Enabled = false;
                 MessageBox.Show("l'activité a bien été modifiée", "Activite modifiée", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -239,6 +252,10 @@ namespace WinCongres
         /// <param name="e"></param>
         private void tabControlActivite_Selecting(object sender, TabControlCancelEventArgs e)
         {
+            if (((Activite)bindSrcActivites.Current).NbPlacesRestantes <= 0)
+                btnAjouterParticipant.Enabled = false;
+            else
+                btnAjouterParticipant.Enabled = true;
             //Possibilité de mettre le MessageBox ici ?
             if (isEditing)
             {
