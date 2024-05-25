@@ -112,9 +112,9 @@ namespace congres.dll.Managers
                                              nomPresident: reader.GetString(2),
                                              nbPlaces: reader.GetInt32(3),
                                              idSalle: uneSalle.Id,
-                                             prix: reader.GetDecimal(5),
-                                             dateSession: reader.GetDateTime(6),
-                                             estMatin: reader.GetBoolean(7)
+                                             prix: reader.GetDecimal(4),
+                                             dateSession: reader.GetDateTime(5),
+                                             estMatin: reader.GetBoolean(6)
                                              ));
                 }
             }
