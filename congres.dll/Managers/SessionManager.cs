@@ -184,7 +184,6 @@ namespace congres.dll.Managers
             try
             {
                 DBManager.ConnexionDB.Open();
-                //Requête avec un Not Exists et sans étoile dans la sous-requête
                 SqlCommand req = new SqlCommand("SELECT c.id,c.nom,c.prenom,c.tel,c.adresse,c.cp,c.ville,c.accompte,c.idLigue,c.idHebergement " +
                                                 "FROM Congressiste c " +
                                                 "WHERE NOT EXISTS (SELECT i.idCongressiste FROM INSCRIRE i WHERE i.idCongressiste = c.id AND i.idSession = @idSession)", DBManager.ConnexionDB);

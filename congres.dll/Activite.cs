@@ -9,6 +9,7 @@ namespace congres.dll
      public class Activite
     {
         
+        //on aurait pu faire un héritage de session quand même
         public int Id { get; set; }
         public string Nom { get; set; }
         public DateTime DateActivite { get; set; }
