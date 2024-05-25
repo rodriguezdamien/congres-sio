@@ -22,7 +22,25 @@ namespace WinCongres
         public FrmActivites()
         {
             InitializeComponent();
-            bindSrcActivites.DataSource = ActiviteManager.GetActivites();
+        }
+
+        private void FrmActivites_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                this.bindSrcActivites.DataSource = ActiviteManager.GetActivites();
+                foreach(Activite uneActivite in bindSrcActivites)
+                {
+                    uneActivite.NbPlacesRestantes = ActiviteManager.GetPlacesRestantes(uneActivite);
+                }
+                datePickerActivite.MinDate = new DateTime(DateTime.Now.Year, 6, 1);
+                datePickerActivite.MaxDate = new DateTime(DateTime.Now.Year, 6, 30);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         /// <summary>
         /// Actions qui seront effectuées au moment du changement de l'activité sélectionné
