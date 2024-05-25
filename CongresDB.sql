@@ -383,6 +383,7 @@ AS
 
     SELECT @montantT = prix FROM HEBERGEMENT WHERE id = (SELECT idHebergement FROM CONGRESSISTE WHERE id = @idC)
     SELECT @montantT = @montantT + ISNULL(SUM(prix), 0) FROM ACTIVITE WHERE id IN (SELECT idActivite FROM PARTICIPER WHERE idCongressiste = @idC)
+	SELECT @montantT = @montantT + ISNULL(SUM(prix), 0) FROM SESSION WHERE id IN (SELECT idSession FROM INSCRIRE WHERE idCongressiste = @idC)
     SELECT SUM(@montantT - accompte) as montantTotal FROM CONGRESSISTE WHERE id = @idC
 
 GO
