@@ -209,12 +209,13 @@ namespace WinCongres
                 if (int.Parse(txtBoxNbPlaces.Text) < ((Activite)bindSrcActivites.Current).CongressisteParticipants.Count)
                     throw new Exception("La session ne peut pas avoir moins de places que de congressistes inscrits.");
                 bindSrcActivites.EndEdit();
+                Activite activiteModifiee = (Activite)bindSrcActivites.Current;
                 if (radioBtnMatin.Checked)
-                    activiteModifie.EstMatin = true;
+                    activiteModifiee.EstMatin = true;
                 else
-                    activiteModifie.EstMatin = false;
-                activiteModifie.DateActivite = activiteModifie.DateActivite.Date;
-                ActiviteManager.UpdateActivite(activiteModifie);
+                    activiteModifiee.EstMatin = false;
+                activiteModifiee.DateActivite = activiteModifiee.DateActivite.Date;
+                ActiviteManager.UpdateActivite(activiteModifiee);
                 isEditing = false;
                 activiteModifiee.NbPlacesRestantes = ActiviteManager.GetPlacesRestantes(activiteModifiee);
                 if (activiteModifiee.NbPlacesRestantes <= 0)
