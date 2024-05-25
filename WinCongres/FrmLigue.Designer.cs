@@ -33,9 +33,17 @@
             this.tabControlLigue = new System.Windows.Forms.TabControl();
             this.tabPageLigues = new System.Windows.Forms.TabPage();
             this.dataGridLigue = new System.Windows.Forms.DataGridView();
+            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adresseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codePostalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.villeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindSrcLigue = new System.Windows.Forms.BindingSource(this.components);
             this.tabPageDetail = new System.Windows.Forms.TabPage();
             this.groupBoxCongressiste = new System.Windows.Forms.GroupBox();
             this.dataGridCongressiste = new System.Windows.Forms.DataGridView();
+            this.nomDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prenomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindSrcCongressiste = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxLigue = new System.Windows.Forms.GroupBox();
             this.txtBoxVille = new System.Windows.Forms.MaskedTextBox();
             this.txtBoxId = new System.Windows.Forms.TextBox();
@@ -48,28 +56,30 @@
             this.lblNom = new System.Windows.Forms.Label();
             this.txtBoxAdresse = new System.Windows.Forms.TextBox();
             this.txtBoxNom = new System.Windows.Forms.TextBox();
-            this.btnSupprLigue = new System.Windows.Forms.Button();
             this.btnModifier = new System.Windows.Forms.Button();
+            this.btnSupprLigue = new System.Windows.Forms.Button();
             this.btnNouveau = new System.Windows.Forms.Button();
-            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adresseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codePostalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.villeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindSrcLigue = new System.Windows.Forms.BindingSource(this.components);
-            this.nomDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prenomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindSrcCongressiste = new System.Windows.Forms.BindingSource(this.components);
             lblId = new System.Windows.Forms.Label();
             this.tabControlLigue.SuspendLayout();
             this.tabPageLigues.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridLigue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindSrcLigue)).BeginInit();
             this.tabPageDetail.SuspendLayout();
             this.groupBoxCongressiste.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCongressiste)).BeginInit();
-            this.groupBoxLigue.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindSrcLigue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindSrcCongressiste)).BeginInit();
+            this.groupBoxLigue.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // lblId
+            // 
+            lblId.AutoSize = true;
+            lblId.Location = new System.Drawing.Point(9, 54);
+            lblId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            lblId.Name = "lblId";
+            lblId.Size = new System.Drawing.Size(16, 13);
+            lblId.TabIndex = 18;
+            lblId.Text = "Id";
             // 
             // tabControlLigue
             // 
@@ -120,6 +130,42 @@
             this.dataGridLigue.TabIndex = 0;
             this.dataGridLigue.CurrentCellChanged += new System.EventHandler(this.dataGridLigue_CurrentCellChanged);
             // 
+            // nomDataGridViewTextBoxColumn
+            // 
+            this.nomDataGridViewTextBoxColumn.DataPropertyName = "Nom";
+            this.nomDataGridViewTextBoxColumn.HeaderText = "Nom";
+            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
+            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomDataGridViewTextBoxColumn.Width = 54;
+            // 
+            // adresseDataGridViewTextBoxColumn
+            // 
+            this.adresseDataGridViewTextBoxColumn.DataPropertyName = "Adresse";
+            this.adresseDataGridViewTextBoxColumn.HeaderText = "Adresse";
+            this.adresseDataGridViewTextBoxColumn.Name = "adresseDataGridViewTextBoxColumn";
+            this.adresseDataGridViewTextBoxColumn.ReadOnly = true;
+            this.adresseDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // codePostalDataGridViewTextBoxColumn
+            // 
+            this.codePostalDataGridViewTextBoxColumn.DataPropertyName = "CodePostal";
+            this.codePostalDataGridViewTextBoxColumn.HeaderText = "Code postal";
+            this.codePostalDataGridViewTextBoxColumn.Name = "codePostalDataGridViewTextBoxColumn";
+            this.codePostalDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codePostalDataGridViewTextBoxColumn.Width = 88;
+            // 
+            // villeDataGridViewTextBoxColumn
+            // 
+            this.villeDataGridViewTextBoxColumn.DataPropertyName = "Ville";
+            this.villeDataGridViewTextBoxColumn.HeaderText = "Ville";
+            this.villeDataGridViewTextBoxColumn.Name = "villeDataGridViewTextBoxColumn";
+            this.villeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.villeDataGridViewTextBoxColumn.Width = 51;
+            // 
+            // bindSrcLigue
+            // 
+            this.bindSrcLigue.DataSource = typeof(congres.dll.Ligue);
+            // 
             // tabPageDetail
             // 
             this.tabPageDetail.Controls.Add(this.groupBoxCongressiste);
@@ -164,6 +210,26 @@
             this.dataGridCongressiste.Size = new System.Drawing.Size(398, 325);
             this.dataGridCongressiste.TabIndex = 4;
             // 
+            // nomDataGridViewTextBoxColumn1
+            // 
+            this.nomDataGridViewTextBoxColumn1.DataPropertyName = "Nom";
+            this.nomDataGridViewTextBoxColumn1.HeaderText = "Nom";
+            this.nomDataGridViewTextBoxColumn1.Name = "nomDataGridViewTextBoxColumn1";
+            this.nomDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.nomDataGridViewTextBoxColumn1.Width = 54;
+            // 
+            // prenomDataGridViewTextBoxColumn
+            // 
+            this.prenomDataGridViewTextBoxColumn.DataPropertyName = "Prenom";
+            this.prenomDataGridViewTextBoxColumn.HeaderText = "Prenom";
+            this.prenomDataGridViewTextBoxColumn.Name = "prenomDataGridViewTextBoxColumn";
+            this.prenomDataGridViewTextBoxColumn.ReadOnly = true;
+            this.prenomDataGridViewTextBoxColumn.Width = 68;
+            // 
+            // bindSrcCongressiste
+            // 
+            this.bindSrcCongressiste.DataSource = typeof(congres.dll.Congressiste);
+            // 
             // groupBoxLigue
             // 
             this.groupBoxLigue.Controls.Add(this.txtBoxVille);
@@ -193,16 +259,6 @@
             this.txtBoxVille.Name = "txtBoxVille";
             this.txtBoxVille.Size = new System.Drawing.Size(160, 20);
             this.txtBoxVille.TabIndex = 23;
-            // 
-            // lblId
-            // 
-            lblId.AutoSize = true;
-            lblId.Location = new System.Drawing.Point(9, 54);
-            lblId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            lblId.Name = "lblId";
-            lblId.Size = new System.Drawing.Size(16, 13);
-            lblId.TabIndex = 18;
-            lblId.Text = "Id";
             // 
             // txtBoxId
             // 
@@ -301,19 +357,6 @@
             this.txtBoxNom.Size = new System.Drawing.Size(181, 20);
             this.txtBoxNom.TabIndex = 3;
             // 
-            // btnSupprLigue
-            // 
-            this.btnSupprLigue.BackColor = System.Drawing.Color.Transparent;
-            this.btnSupprLigue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSupprLigue.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnSupprLigue.Location = new System.Drawing.Point(533, 450);
-            this.btnSupprLigue.Name = "btnSupprLigue";
-            this.btnSupprLigue.Size = new System.Drawing.Size(234, 34);
-            this.btnSupprLigue.TabIndex = 1;
-            this.btnSupprLigue.Text = "Supprimer la ligue";
-            this.btnSupprLigue.UseVisualStyleBackColor = false;
-            this.btnSupprLigue.Click += new System.EventHandler(this.btnSupprLigue_Click);
-            // 
             // btnModifier
             // 
             this.btnModifier.BackColor = System.Drawing.Color.Teal;
@@ -327,6 +370,19 @@
             this.btnModifier.UseVisualStyleBackColor = false;
             this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
             // 
+            // btnSupprLigue
+            // 
+            this.btnSupprLigue.BackColor = System.Drawing.Color.Transparent;
+            this.btnSupprLigue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSupprLigue.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnSupprLigue.Location = new System.Drawing.Point(533, 450);
+            this.btnSupprLigue.Name = "btnSupprLigue";
+            this.btnSupprLigue.Size = new System.Drawing.Size(234, 34);
+            this.btnSupprLigue.TabIndex = 1;
+            this.btnSupprLigue.Text = "Supprimer la ligue";
+            this.btnSupprLigue.UseVisualStyleBackColor = false;
+            this.btnSupprLigue.Click += new System.EventHandler(this.btnSupprLigue_Click);
+            // 
             // btnNouveau
             // 
             this.btnNouveau.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -338,66 +394,11 @@
             this.btnNouveau.UseVisualStyleBackColor = true;
             this.btnNouveau.Click += new System.EventHandler(this.btnNouveau_Click);
             // 
-            // nomDataGridViewTextBoxColumn
-            // 
-            this.nomDataGridViewTextBoxColumn.DataPropertyName = "Nom";
-            this.nomDataGridViewTextBoxColumn.HeaderText = "Nom";
-            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
-            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nomDataGridViewTextBoxColumn.Width = 54;
-            // 
-            // adresseDataGridViewTextBoxColumn
-            // 
-            this.adresseDataGridViewTextBoxColumn.DataPropertyName = "Adresse";
-            this.adresseDataGridViewTextBoxColumn.HeaderText = "Adresse";
-            this.adresseDataGridViewTextBoxColumn.Name = "adresseDataGridViewTextBoxColumn";
-            this.adresseDataGridViewTextBoxColumn.ReadOnly = true;
-            this.adresseDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // codePostalDataGridViewTextBoxColumn
-            // 
-            this.codePostalDataGridViewTextBoxColumn.DataPropertyName = "CodePostal";
-            this.codePostalDataGridViewTextBoxColumn.HeaderText = "Code postal";
-            this.codePostalDataGridViewTextBoxColumn.Name = "codePostalDataGridViewTextBoxColumn";
-            this.codePostalDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codePostalDataGridViewTextBoxColumn.Width = 88;
-            // 
-            // villeDataGridViewTextBoxColumn
-            // 
-            this.villeDataGridViewTextBoxColumn.DataPropertyName = "Ville";
-            this.villeDataGridViewTextBoxColumn.HeaderText = "Ville";
-            this.villeDataGridViewTextBoxColumn.Name = "villeDataGridViewTextBoxColumn";
-            this.villeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.villeDataGridViewTextBoxColumn.Width = 51;
-            // 
-            // bindSrcLigue
-            // 
-            this.bindSrcLigue.DataSource = typeof(congres.dll.Ligue);
-            // 
-            // nomDataGridViewTextBoxColumn1
-            // 
-            this.nomDataGridViewTextBoxColumn1.DataPropertyName = "Nom";
-            this.nomDataGridViewTextBoxColumn1.HeaderText = "Nom";
-            this.nomDataGridViewTextBoxColumn1.Name = "nomDataGridViewTextBoxColumn1";
-            this.nomDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.nomDataGridViewTextBoxColumn1.Width = 54;
-            // 
-            // prenomDataGridViewTextBoxColumn
-            // 
-            this.prenomDataGridViewTextBoxColumn.DataPropertyName = "Prenom";
-            this.prenomDataGridViewTextBoxColumn.HeaderText = "Prenom";
-            this.prenomDataGridViewTextBoxColumn.Name = "prenomDataGridViewTextBoxColumn";
-            this.prenomDataGridViewTextBoxColumn.ReadOnly = true;
-            this.prenomDataGridViewTextBoxColumn.Width = 68;
-            // 
-            // bindSrcCongressiste
-            // 
-            this.bindSrcCongressiste.DataSource = typeof(congres.dll.Congressiste);
-            // 
             // FrmLigue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ClientSize = new System.Drawing.Size(1068, 501);
             this.Controls.Add(this.btnNouveau);
             this.Controls.Add(this.tabControlLigue);
@@ -408,13 +409,13 @@
             this.tabControlLigue.ResumeLayout(false);
             this.tabPageLigues.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridLigue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindSrcLigue)).EndInit();
             this.tabPageDetail.ResumeLayout(false);
             this.groupBoxCongressiste.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCongressiste)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindSrcCongressiste)).EndInit();
             this.groupBoxLigue.ResumeLayout(false);
             this.groupBoxLigue.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindSrcLigue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindSrcCongressiste)).EndInit();
             this.ResumeLayout(false);
 
         }

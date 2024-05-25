@@ -21,7 +21,7 @@ namespace WinCongres
         }
 
         /// <summary>
-        /// Affichage de la liste des congressistes.
+        /// Affichage de la liste des congressistes et synchronise les clés primaire et étrangère de chaque congressiste.
         /// </summary>
         private void FrmCongressiste_Load(object sender, EventArgs e)
         {
@@ -85,6 +85,9 @@ namespace WinCongres
             tabControlCongressiste.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Bouton qui permet l'ajout d'un nouveau congressiste.
+        /// </summary>
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             bindSrcCongressiste.EndEdit();
@@ -102,6 +105,9 @@ namespace WinCongres
             comboBxLigue.Enabled = true;
         }
 
+        /// <summary>
+        /// Permet de charger les Activités et les Sessions auxquels le congressiste est inscrit.
+        /// </summary>
         private void dataGridCongressiste_CurrentCellChanged(object sender, EventArgs e)
         {
             Congressiste unC = (Congressiste)bindSrcCongressiste.Current;
@@ -111,6 +117,9 @@ namespace WinCongres
             bindSrcActivites.DataSource = unC.ActivitesInscrit;
         }
 
+        /// <summary>
+        /// Permet la modification des informations d'un congressiste.
+        /// </summary>
         private void btnModifier_Click(object sender, EventArgs e)
         {
             bindSrcHebergement.EndEdit();
@@ -121,6 +130,9 @@ namespace WinCongres
             bindSrcHebergement.ResetCurrentItem();
         }
 
+        /// <summary>
+        /// Permet de supprimer le congresssiste actuellement sélectionné tout en demandant à l'utilisateur confirmation.
+        /// </summary>
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show($"Êtes-vous sûr de vouloir supprimer {((Congressiste)bindSrcCongressiste.Current).Nom} {((Congressiste)bindSrcCongressiste.Current).Prenom} de la liste des congressistes ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)

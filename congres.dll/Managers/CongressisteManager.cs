@@ -141,7 +141,7 @@ namespace congres.dll.Managers
         }
 
         /// <summary>
-        /// 
+        /// Permet la suppression d'un congressiste.
         /// </summary>
         /// <param name="idC">Id du congressiste à supprimer</param>
         /// <returns></returns>
@@ -167,6 +167,11 @@ namespace congres.dll.Managers
             return isDel;
         }
 
+        /// <summary>
+        /// R"cupère le montant à régler pour un congressiste donné tout en retirant l'accompte de ce congressiste.
+        /// </summary>
+        /// <param name="idCongressiste">id du congressiste</param>
+        /// <returns>retourne le resant du</returns>
         private static double GetMontantARegler(int idCongressiste)
         {
             double montant;
@@ -223,6 +228,11 @@ namespace congres.dll.Managers
             return sessionList;
         }
 
+        /// <summary>
+        /// Permet de récupérer les activités auxquels le congressiste est inscrit.
+        /// </summary>
+        /// <param name="idC">id du congressiste</param>
+        /// <returns>liste d'objet Activite</returns>
         public static List<Activite> GetActivitesInscrit(int idC)
         {
             List<Activite> ActiviteList = new List<Activite>();
