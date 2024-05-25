@@ -79,6 +79,11 @@ namespace congres.dll.Managers
             }
             return congressistes;
         }
+
+        /// <summary>
+        /// Permet l'ajout d'une acitivité.
+        /// </summary>
+        /// <param name="uneActivite">objet Activite</param>
         public static void AddActivite(ref Activite uneActivite) {
             try {
                 DBManager.ConnexionDB.Open();
@@ -95,6 +100,10 @@ namespace congres.dll.Managers
             }
         }
 
+        /// <summary>
+        /// Permet la mise à jour des informations d'une activité.
+        /// </summary>
+        /// <param name="uneActivite">objet Activite</param>
         public static void UpdateActivite(Activite uneActivite)
         {
             try { 

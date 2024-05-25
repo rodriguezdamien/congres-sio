@@ -11,9 +11,9 @@ namespace congres.dll.Managers
     {
 
         /// <summary>
-        /// 
+        /// Retourne la liste de tous les hébergements.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>liste d'objet Hebergement</returns>
         public static List<Hebergement> GetHebergements()
         {
             List<Hebergement> hebergements = new List<Hebergement>();
@@ -34,7 +34,11 @@ namespace congres.dll.Managers
             return hebergements;
         }
 
-
+        /// <summary>
+        /// Permet l'ajout d'un hébergement.
+        /// </summary>
+        /// <param name="newHebergement">objet hébergement</param>
+        /// <returns>l'id du nouvelle hébergement</returns>
         public static int AddHebergement(Hebergement newHebergement)
         {
             object id;
@@ -65,6 +69,10 @@ namespace congres.dll.Managers
             return Convert.ToInt32(id);
         }
 
+        /// <summary>
+        /// Permet la mise à jour des informations d'un hébergement.
+        /// </summary>
+        /// <param name="updateHebergement">objet hébergement</param>
         public static void EditHebergement(Hebergement updateHebergement)
         {
 
@@ -91,6 +99,10 @@ namespace congres.dll.Managers
 
         }
 
+        /// <summary>
+        /// Permet de supprimer un hébergement.
+        /// </summary>
+        /// <param name="deleteHebergement">objet hébergement</param>
         public static void DeleteHebergement(Hebergement deleteHebergement)
         {
 
@@ -110,6 +122,11 @@ namespace congres.dll.Managers
 
         }
 
+        /// <summary>
+        /// Permet d'obtenir la liste de congressiste pour un hébergement donné.
+        /// </summary>
+        /// <param name="idHebergement">objet hébergement</param>
+        /// <returns>liste d'objet Congressiste</returns>
         public static List<Congressiste> GetCongressistesByHebergement(int idHebergement)
         {
             List<Congressiste> lesCongressistes = new List<Congressiste>();

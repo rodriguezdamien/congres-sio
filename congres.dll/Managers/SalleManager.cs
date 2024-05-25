@@ -9,6 +9,10 @@ namespace congres.dll.Managers
 {
     public class SalleManager
     {
+        /// <summary>
+        /// Permet d'obtenir la liste des toutes les salles.
+        /// </summary>
+        /// <returns>liste d'objet Salles</returns>
         public static List<Salle> GetSalles()
         {
             List<Salle> salles = new List<Salle>();
@@ -28,8 +32,12 @@ namespace congres.dll.Managers
             }
             return salles;
         }
-    
 
+        /// <summary>
+        /// Permet d'ajouter une nouvelle salle.
+        /// </summary>
+        /// <param name="newSalle">objet salle</param>
+        /// <returns>l'id de la salle ajouté</returns>
         public static int AddSalle(Salle newSalle)
         {
             object id;
@@ -54,6 +62,10 @@ namespace congres.dll.Managers
             return Convert.ToInt32(id);
         }
 
+        /// <summary>
+        /// Permet de mettre à jour les informations d'une salle
+        /// </summary>
+        /// <param name="updateSalle">objet salle</param>
         public static void EditSalle(Salle updateSalle)
         {
 
@@ -74,6 +86,10 @@ namespace congres.dll.Managers
 
         }
 
+        /// <summary>
+        /// Permet de supprimer une salle.
+        /// </summary>
+        /// <param name="deleteSalle">objet salle</param>
         public static void DeleteSalle(Salle deleteSalle)
         {
 
@@ -93,6 +109,11 @@ namespace congres.dll.Managers
 
         }
 
+        /// <summary>
+        /// Retourne la liste des sessions pour une salle donné.
+        /// </summary>
+        /// <param name="uneSalle">objet salle</param>
+        /// <returns>liste d'objet Session</returns>
         public static List<Session> GetSessionsBySalle(Salle uneSalle)
         {
             List<Session> sessionList = new List<Session>();

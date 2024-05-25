@@ -40,11 +40,12 @@ namespace congres.dll.Managers
             }
             return sessions;
         }
+
         /// <summary>
-        /// Récupération de tout les congressistes participant à la session passé en paramètre.
+        /// Permet d'obtenir la liste des participants d'une session donné.
         /// </summary>
-        /// <param name="idSession"></param>
-        /// <returns></returns>
+        /// <param name="uneSession">objet session</param>
+        /// <returns>liste d'objet Congressiste</returns>
         public static List<Congressiste> GetParticipantsSession(Session uneSession)
         {
             List<Congressiste> congressistes = new List<Congressiste>();
@@ -81,6 +82,11 @@ namespace congres.dll.Managers
             }
             return congressistes;
         }
+
+        /// <summary>
+        /// Permet l'ajout d'une nouvelle session.
+        /// </summary>
+        /// <param name="uneSession">objet session</param>
         public static void AddSession(ref Session uneSession) {
             try {
                 DBManager.ConnexionDB.Open();
@@ -99,6 +105,11 @@ namespace congres.dll.Managers
             }
         }
 
+        /// <summary>
+        /// Permet de mettre à jour les informations d'une session.
+        /// </summary>
+        /// <param name="uneSession">objet session</param>
+        /// <exception cref="Exception">Erreur lors de la modification</exception>
         public static void UpdateSession(Session uneSession)
         {
             try { 
