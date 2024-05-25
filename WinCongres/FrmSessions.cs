@@ -141,7 +141,6 @@ namespace WinCongres
                 //Vérification de la sélection du moment de la journée, il faut qu'au moins un soit sélectionné.
                 if (!radioBtnMatin.Checked && !radioBtnApresMidi.Checked)
                     throw new Exception("Veuillez sélectionner le moment de la journée de la session.");
-                
                 bindSrcSessions.EndEdit();
                 Session nouvelleSession = (Session)bindSrcSessions.Current;
                 if (radioBtnMatin.Checked)
@@ -149,6 +148,7 @@ namespace WinCongres
                 else
                     nouvelleSession.EstMatin = false;
                 nouvelleSession.DateSession = nouvelleSession.DateSession.Date;
+                nouvelleSession.IdSalle = ((Salle)cmbBoxSalle.SelectedItem).Id;
                 SessionManager.AddSession(ref nouvelleSession);
                 //Réactivation des boutons de modifications
                 btnNouveau.Enabled = true;
@@ -209,6 +209,8 @@ namespace WinCongres
                 else
                     sessionModifie.EstMatin = false;
                 sessionModifie.DateSession = sessionModifie.DateSession.Date;
+                //Posez pas de question jsp pourquoi j'ai pas juste fait sessionModifie.LaSalle.Id
+                sessionModifie.IdSalle = ((Salle)cmbBoxSalle.SelectedItem).Id;
                 SessionManager.UpdateSession(sessionModifie);
                 isEditing = false;
                 btnModifier.Enabled = false;
