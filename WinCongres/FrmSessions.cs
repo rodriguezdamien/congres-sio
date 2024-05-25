@@ -51,7 +51,7 @@ namespace WinCongres
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+            }
         }
 
         /// <summary>
@@ -95,15 +95,24 @@ namespace WinCongres
         /// <exception cref="NotImplementedException"></exception>
         private void btnSupprParticipant_Click(object sender, EventArgs e)
         {
-            Congressiste congressisteASuppr = (Congressiste)bindSrcParticipants.Current;
-            Session session = (Session)bindSrcSessions.Current;
-            if (MessageBox.Show($"Voulez-vous vraiment supprimer {congressisteASuppr.Prenom} {congressisteASuppr.Nom} de cette session ?", "Suppression", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            try
             {
-                SessionManager.DeleteParticipant(session, congressisteASuppr);
-                bindSrcParticipants.RemoveCurrent();
+                Congressiste congressisteASuppr = (Congressiste)bindSrcParticipants.Current;
+                if (congressisteASuppr == null)
+                    throw new Exception("Aucun congressiste n'est sélectionné.");
+                Session session = (Session)bindSrcSessions.Current;
+                if (MessageBox.Show($"Voulez-vous vraiment supprimer {congressisteASuppr.Prenom} {congressisteASuppr.Nom} de cette session ?", "Suppression", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    SessionManager.DeleteParticipant(session, congressisteASuppr);
+                    bindSrcParticipants.RemoveCurrent();
                     session.NbPlacesRestantes++;
                     btnAjouterParticipant.Enabled = true;
-                MessageBox.Show("Le participant a bien été supprimé.", "Participant supprimé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Le participant a bien été supprimé.", "Participant supprimé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -171,7 +180,7 @@ namespace WinCongres
                 if (nouvelleSession.NbPlacesRestantes <= 0)
                     btnAjouterParticipant.Enabled = false;
                 else
-                btnAjouterParticipant.Enabled = true;
+                    btnAjouterParticipant.Enabled = true;
                 btnSupprParticipant.Enabled = true;
                 //Désactivation des boutons de création
                 btnConfirmNouveau.Visible = false;
