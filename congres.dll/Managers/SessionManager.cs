@@ -84,7 +84,7 @@ namespace congres.dll.Managers
         public static void AddSession(ref Session uneSession) {
             try {
                 DBManager.ConnexionDB.Open();
-                SqlCommand req = new SqlCommand("INSERT INTO Session(theme,nomPresident,NbPlaces,salle,prix,dateSession,estMatin) VALUES(@theme,@nomPresident,@NbPlaces,@salle,@prix,@dateSession,@estMatin); SELECT SCOPE_IDENTITY();", DBManager.ConnexionDB);
+                SqlCommand req = new SqlCommand("INSERT INTO Session(theme,nomPresident,NbPlaces,idSalle,prix,dateSession,estMatin) VALUES(@theme,@nomPresident,@NbPlaces,@idSalle,@prix,@dateSession,@estMatin); SELECT SCOPE_IDENTITY();", DBManager.ConnexionDB);
                 req.Parameters.AddWithValue("@theme", uneSession.Theme);
                 req.Parameters.AddWithValue("@nomPresident", uneSession.NomPresident);
                 req.Parameters.AddWithValue("@NbPlaces", uneSession.NbPlaces);
@@ -112,7 +112,8 @@ namespace congres.dll.Managers
             req.Parameters.AddWithValue("@dateSession", uneSession.DateSession);
             req.Parameters.AddWithValue("@estMatin", uneSession.EstMatin);
             req.Parameters.AddWithValue("@id", uneSession.Id);
-            req.ExecuteNonQuery();
+            if (req.ExecuteNonQuery() == 0)
+                throw new Exception("Une erreur est survenue lors de la modification de la session.");
             }
             finally
             {
