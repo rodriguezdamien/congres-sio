@@ -139,7 +139,8 @@ namespace WinCongres
                 //Vérification de la sélection du moment de la journée, il faut qu'au moins un soit sélectionné.
                 if (!radioBtnMatin.Checked && !radioBtnApresMidi.Checked)
                     throw new Exception("Veuillez sélectionner le moment de la journée de l'activité.");
-                
+                if (!int.TryParse(txtBoxNbPlaces.Text, out _) || !decimal.TryParse(txtBoxPrix.Text, out _))
+                    throw new Exception("Veuillez saisir des valeurs numériques pour le nombre de places et le prix.");
                 bindSrcActivites.EndEdit();
                 Activite nouvelleActivite = (Activite)bindSrcActivites.Current;
                 if (radioBtnMatin.Checked)
@@ -205,7 +206,8 @@ namespace WinCongres
                 //Vérification de la sélection du moment de la journée, il faut qu'au moins un soit sélectionné.
                 if (!radioBtnMatin.Checked && !radioBtnApresMidi.Checked)
                     throw new Exception("Veuillez sélectionner le moment de la journée de l'activité.");
-                
+                if (int.Parse(txtBoxNbPlaces.Text) < ((Activite)bindSrcActivites.Current).CongressisteParticipants.Count)
+                    throw new Exception("La session ne peut pas avoir moins de places que de congressistes inscrits.");
                 bindSrcActivites.EndEdit();
                 if (radioBtnMatin.Checked)
                     activiteModifie.EstMatin = true;

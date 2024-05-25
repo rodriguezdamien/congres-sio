@@ -146,6 +146,8 @@ namespace WinCongres
                 //Vérification de la date de la session, elle ne peut pas être antérieure à la date actuelle.
                 if (datePickerSession.Value < DateTime.Now)
                     throw new Exception("La date de la session ne peut pas être antérieure à la date actuelle.");
+                if (!int.TryParse(txtBoxNbPlaces.Text, out _) || !decimal.TryParse(txtBoxPrix.Text, out _))
+                    throw new Exception("Veuillez saisir des valeurs numériques pour le nombre de places et le prix.");
                 //Vérification de la sélection du moment de la journée, il faut qu'au moins un soit sélectionné.
                 if (!radioBtnMatin.Checked && !radioBtnApresMidi.Checked)
                     throw new Exception("Veuillez sélectionner le moment de la journée de la session.");
@@ -213,7 +215,10 @@ namespace WinCongres
                 //Vérification de la sélection du moment de la journée, il faut qu'au moins un soit sélectionné.
                 if (!radioBtnMatin.Checked && !radioBtnApresMidi.Checked)
                     throw new Exception("Veuillez sélectionner le moment de la journée de la session.");
-                
+                if (!int.TryParse(txtBoxNbPlaces.Text, out _) || !decimal.TryParse(txtBoxPrix.Text, out _))
+                    throw new Exception("Veuillez saisir des valeurs numériques pour le nombre de places et le prix.");
+                if (int.Parse(txtBoxNbPlaces.Text) < ((Session)bindSrcSessions.Current).CongressisteParticipants.Count)
+                    throw new Exception("La session ne peut pas avoir moins de places que de congressistes inscrits.");
                 bindSrcSessions.EndEdit();
                 Session sessionModifie = (Session)bindSrcSessions.Current;
                 if (radioBtnMatin.Checked)
