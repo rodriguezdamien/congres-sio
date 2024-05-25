@@ -48,7 +48,10 @@ namespace WinCongres
                 datePickerSession.MinDate = new DateTime(DateTime.Now.Year, 6, 1);
                 datePickerSession.MaxDate = new DateTime(DateTime.Now.Year, 6, 30);
             }
-            finally { }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
         }
 
         /// <summary>
