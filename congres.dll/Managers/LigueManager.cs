@@ -10,6 +10,10 @@ namespace congres.dll.Managers
 {
     public static class LigueManager
     {
+        /// <summary>
+        /// Permet de retourner la liste des ligues.
+        /// </summary>
+        /// <returns>Liste d'objet Ligue</returns>
         public static List<Ligue> GetLigues()
         {
             List<Ligue> ligues = new List<Ligue>();
@@ -36,6 +40,11 @@ namespace congres.dll.Managers
             return ligues;
         }
 
+        /// <summary>
+        /// Permet l'ajout d'une ligue.
+        /// </summary>
+        /// <param name="ligue">objet ligue</param>
+        /// <returns>l'id de la nouvelle ligue ajouté</returns>
         public static int AddLigue(Ligue ligue)
         {
             object id;
@@ -62,6 +71,11 @@ namespace congres.dll.Managers
             return Convert.ToInt32(id);
         }
 
+        /// <summary>
+        /// Permet de mettre à jour les informations d'une ligue.
+        /// </summary>
+        /// <param name="ligue">objet ligue qui sera mit à jour</param>
+        /// <returns>true: si la modification à été faite, false: si la modification n'as pas été faite</returns>
         public static bool UpdtLigue(Ligue ligue)
         {
             bool isUdpt = false;
@@ -86,6 +100,11 @@ namespace congres.dll.Managers
             return isUdpt;
         }
 
+        /// <summary>
+        /// Permet de supprimer une ligue.
+        /// </summary>
+        /// <param name="idL">id de la ligue à supprimer</param>
+        /// <returns>true: si la suppression à été faite, false: si la suppression n'as pas été faite</returns>
         public static bool DelLigue(int idL)
         {
             bool isDel = false;
@@ -106,6 +125,11 @@ namespace congres.dll.Managers
             return isDel;
         }
 
+        /// <summary>
+        /// Retourne la liste des congressiste en fonction de la ligue.
+        /// </summary>
+        /// <param name="idL">id de la ligue</param>
+        /// <returns>liste d'obejt Congressiste</returns>
         public static List<Congressiste> GetCongressisteByLigue(int idL)
         {
             List<Congressiste> lesC = new List<Congressiste>();
