@@ -13,6 +13,7 @@ namespace congres.dll
         public string Nom { get; set; }
         public DateTime DateActivite { get; set; }
         public int NbPlaces { get; set; }
+        public int NbPlacesRestantes { get; set; }
         public decimal Prix { get; set; }
         public bool EstMatin { get; set; }
         public string AffichageMomentJournee { get { return this.EstMatin ? "Matin" : "Après-midi"; } }

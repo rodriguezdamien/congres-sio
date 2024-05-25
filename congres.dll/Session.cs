@@ -16,10 +16,12 @@ namespace congres.dll
         public decimal Prix { get; set; }
         public DateTime DateSession { get; set; }
         public bool EstMatin { get; set; }
-        public string AffichageMomentJournee { get { return this.EstMatin ? "Matin" : "Après-midi"; } }
         public List<Congressiste> CongressisteParticipants { get; set; }
         public Salle LaSalle { get; set; }
         public int IdSalle { get; set; }
+        public int NbPlacesRestantes { get; set; }
+        //Il doit y avoir de meilleur manière de faire, mais pour le contexte, c'est suffisant
+        public string AffichageMomentJournee { get { return this.EstMatin ? "Matin" : "Après-midi"; } }
 
 
         /**<summary> Constructeur de Session avec tout ses attributs </summary>
