@@ -258,10 +258,8 @@ INSERT INTO PARTICIPER (idActivite, idCongressiste) VALUES
 (9, 9),
 (9, 15);
 
--- ProcÈdure stockÈe qui renvoie le nombre de place disponible pour un idSession donnÈ
-drop procedure if exists nbPlacesDispoSession;
 go
-CREATE PROCEDURE nbPlacesDispoSession
+CREATE OR ALTER PROCEDURE nbPlacesDispoSession
 @idS INT
 AS
    declare @nbPlacesPrise INT
@@ -271,9 +269,8 @@ AS
 
 
 -- ProcÈdure stockÈe qui renvoie le nombre de place disponible pour un idActivite donnÈ
-drop procedure if exists nbPlacesDispoActivite;
 go
-CREATE PROCEDURE nbPlacesDispoActivite
+CREATE OR ALTER PROCEDURE nbPlacesDispoActivite
 @idA INT
 AS
    declare @nbPlacesReservees INT
@@ -281,9 +278,8 @@ AS
    select SUM(nbPlaces - @nbPlacesReservees) as nbPlacesDispo from ACTIVITE where id = @idA
 
 -- ProcÈdure stockÈe qui renvoie le montant totale ‡ rÈgler pour un congressiste donnÈ
-DROP PROCEDURE IF EXISTS montantTotal
 GO
-CREATE PROCEDURE montantTotal 
+CREATE OR ALTER PROCEDURE montantTotal 
     @idC INT
 AS
     DECLARE @accompte DECIMAL(15,2)
@@ -313,7 +309,7 @@ BEGIN
 END
 
 GO
-CREATE OR ALTER TRIGGER TI_Participer ON PARTICIPER
+CREATE OR ALTER TRIGGER TI_Inscrire ON INSCRIRE
 AFTER INSERT
 AS
 BEGIN
@@ -323,9 +319,12 @@ throw 50001, 'Il n''y a plus de place disponible pour cette activitÈ.',0
 DECLARE @idCongressiste INT
 DECLARE @dateActivite date
 DECLARE @estMatinActivite BIT
-Select @idCongressiste = idCongressiste, @dateActivite = dateActivite, @estMatinActivite = estMatin
-from inserted
-	JOIN ACTIVITE ON ACTIVITE.id = inserted.idActivite;
+open cursParticiper
+fetch next from cursParticiper into @idActivite,@idCongressiste,@dateActivite,@estMatinActivite
+while(@@FETCH_STATUS = 0)
+	begin
+	IF((select count(idCongressiste) from Participer where idActivite = @idActivite group by idActivite) > (select nbPlaces from Activite where id = @idActivite))
+		throw 50001, 'Il n''y a plus de place disponible pour cette activit√©.',0
 IF((SELECT count(idActivite)
 	from participer p
 	join activite a on a.id = p.idActivite
