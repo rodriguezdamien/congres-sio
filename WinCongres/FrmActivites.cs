@@ -115,7 +115,7 @@ namespace WinCongres
             btnConfirmNouveau.Visible = true;
             btnAnnulerNouveau.Visible = true;
             tabControlActivite.SelectedIndex = 1;
-            datePickerActivite.Value = DateTime.Now;
+            datePickerActivite.Value = new DateTime(DateTime.Now.Year, 6, 1);
             isEditing = true;
         }
 
