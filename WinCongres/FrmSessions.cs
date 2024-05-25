@@ -267,6 +267,9 @@ namespace WinCongres
         private void AnnulerModif(object sender,EventArgs e)
         {
             bindSrcSessions.CancelEdit();
+            //Si la session n'a pas été ajoutée à la base de données (et donc pas d'id attribué), on la supprime de la liste (y a ptet mieux mais rien trouvé je déteste ce truc)
+            if(((Session)bindSrcSessions.Current).Id == 0)
+                    bindSrcSessions.RemoveCurrent();
             bindSrcSessions.ResetBindings(false);
             //Réactivation des boutons de modifications
             btnNouveau.Enabled = true;
