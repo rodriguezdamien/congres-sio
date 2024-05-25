@@ -26,7 +26,7 @@ namespace congres.dll
         /// <param name="accompte">Accompte du congressiste</param>
         /// <param name="idLigue">Clé étrangère IdLigue du congressiste</param>
         /// <param name="idHebergement">Clé étrangère IdHebergement du congressiste</param>
-        public Congressiste(int id, string nom, string prenom, string tel, string adresse, string cp, string ville, decimal accompte,double restantDu, double montantTotal, int idLigue, int? idHebergement)
+        public Congressiste(int id, string nom, string prenom, string tel = "", string adresse = "", string cp = "", string ville = "", decimal accompte = 0,double restantDu = 0d, double montantTotal = 0d, int idLigue = 0, int? idHebergement = null)
         {
             this.Id = id;
             this.Nom = nom;
@@ -38,27 +38,6 @@ namespace congres.dll
             this.Accompte = accompte;
             this.RestantDu = restantDu;
             this.montantTotal = montantTotal;
-            this.IdLigue = idLigue;
-            this.IdHebergement = idHebergement;
-        }
-
-        public Congressiste(int id, string nom, string prenom)
-        {
-            this.Id= id;
-            this.Nom = nom;
-            this.Prenom = prenom;
-        }
-
-        public Congressiste(int id, string nom, string prenom, string tel, string adresse, string cp, string ville, decimal accompte, int idLigue, int? idHebergement)
-        {
-            this.Id = id;
-            this.Nom = nom;
-            this.Prenom = prenom;
-            this.Tel = tel;
-            this.Adresse = adresse;
-            this.Cp = cp;
-            this.Ville = ville;
-            this.Accompte = accompte;
             this.IdLigue = idLigue;
             this.IdHebergement = idHebergement;
         }
