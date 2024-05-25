@@ -25,7 +25,6 @@ CREATE TABLE SESSION(
    theme VARCHAR(100),
    nomPresident VARCHAR(50),
    nbPlaces INT,
-   salle VARCHAR(120),
    prix DECIMAL(15,2),
    dateSession DATE,
    estMatin BIT,
@@ -106,17 +105,17 @@ INSERT INTO SALLE (libelle) VALUES
 ('Hicham El Guerrouj'); 
 
 -- Jeu d'essai pour la table SESSION
-INSERT INTO SESSION (theme, nomPresident, nbPlaces, salle, prix, dateSession, estMatin, idSalle) VALUES 
-('Session d''inauguration', 'Snow', 20, 'La Marignane', 50.00, '2024-06-03', 0, 1), -- 1
-('Stratégies de coaching efficaces', 'Johnson', 10, 'Eiffel', 85.00, '2024-06-03', 1, 2), -- 2
-('Alimentation et performance sportive', 'Smith', 11, 'Salle des Congrès', 80.00, '2024-06-04', 0, 1), -- 3
-('Prévention des blessures chez les jeunes sportifs', 'Dubois', 12, 'Rivoli', 75.00, '2024-06-04', 1, 2), -- 4
-('Evaluation psychologique du sportif', 'McKinney', 12, 'Léon Blum', 75.00, '2024-06-05', 0, 3), -- 5
-('Gestion du stress chez les athlètes', 'Garcia', 14, 'Montmartre', 70.00, '2024-06-05', 1, 4), -- 6
-('Nouvelles technologies dans le domaine sportif', 'Wang', 13, 'Palais des Congrès', 90.00, '2024-06-06',0, 5), -- 7
-('Réhabilitation après blessure sportive', 'Chen', 12, 'Victor Hugo', 65.00, '2024-06-06', 1, 4), -- 8
-('Pratiques sportives et usages de drogues', 'Costa Correia', 15, '50.00', 100.00, '2024-06-07', 0, 3), -- 9
-('Impact du sommeil sur la performance sportive', 'Lee', 15, 'Louvre', 60.00, '2024-06-07', 1, 5); -- 10
+INSERT INTO SESSION (theme, nomPresident, nbPlaces, prix, dateSession, estMatin, idSalle) VALUES 
+('Session d''inauguration', 'Snow', 20, 50.00, '2024-06-03', 0, 1), -- 1
+('Stratégies de coaching efficaces', 'Johnson', 10, 85.00, '2024-06-03', 1, 2), -- 2
+('Alimentation et performance sportive', 'Smith', 11, 80.00, '2024-06-04', 0, 1), -- 3
+('Prévention des blessures chez les jeunes sportifs', 'Dubois', 12, 75.00, '2024-06-04', 1, 2), -- 4
+('Evaluation psychologique du sportif', 'McKinney', 12, 75.00, '2024-06-05', 0, 3), -- 5
+('Gestion du stress chez les athlètes', 'Garcia', 14, 70.00, '2024-06-05', 1, 4), -- 6
+('Nouvelles technologies dans le domaine sportif', 'Wang', 13, 90.00, '2024-06-06',0, 5), -- 7
+('Réhabilitation après blessure sportive', 'Chen', 12, 65.00, '2024-06-06', 1, 4), -- 8
+('Pratiques sportives et usages de drogues', 'Costa Correia', 15, 100.00, '2024-06-07', 0, 3), -- 9
+('Impact du sommeil sur la performance sportive', 'Lee', 15, 60.00, '2024-06-07', 1, 5); -- 10
 
 -- Jeu d'essai pour la table HEBERGEMENT
 INSERT INTO HEBERGEMENT (nom, adresse, cp, ville, tel, nbEtoiles, prix) VALUES 
@@ -466,7 +465,14 @@ AFTER INSERT, UPDATE
 AS
 	BEGIN
 		IF((select month(dateSession) from inserted) != 6)
-			throw 50005, 'La session ne peut se dérouler uniquement en juin.',0		
+			throw 50005, 'La session n		e peut se dérouler uniquement en juin.',0
+	DECLARE @idSession INT
+	DECLARE @dateSession DATE
+	DECLARE @estMatin BIT
+	DECLARE @idSalle INT
+	SELECT @idSession = id, @dateSession = dateSession, @estMatin = estMatin, @idSalle = idSalle from Inserted;
+		IF(exists(select id from Session where dateSession = @dateSession and estMatin = @estMatin and idSalle = @idSalle and id != @idSession))
+		throw 50006, 'Une session a déjà lieu dans cette salle au même moment.',0
 	END
 
 -- Trigger qui controle que la date d'ajout/modification d'une activité
