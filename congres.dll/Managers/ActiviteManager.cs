@@ -225,5 +225,22 @@ namespace congres.dll.Managers
                 DBManager.ConnexionDB.Close();
             }
         }
+
+        public static int GetPlacesRestantes(Activite uneActivite)
+        {
+            int placesRestantes = 0;
+            try
+            {
+                DBManager.ConnexionDB.Open();
+                SqlCommand req = new SqlCommand("exec nbPlacesDispoActivite @idActivite", DBManager.ConnexionDB);
+                req.Parameters.AddWithValue("@idActivite", uneActivite.Id);
+                placesRestantes = Convert.ToInt32(req.ExecuteScalar());
+            }
+            finally
+            {
+                DBManager.ConnexionDB.Close();
+            }
+            return placesRestantes;
+        }
     }
 }
