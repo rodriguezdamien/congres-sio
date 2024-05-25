@@ -276,6 +276,8 @@ namespace WinCongres
         /// <param name="e"></param>
         private void AnnulerModif(object sender,EventArgs e)
         {
+            if (((Activite)bindSrcActivites.Current).Id == 0)
+                bindSrcActivites.RemoveCurrent();
             bindSrcActivites.CancelEdit();
             bindSrcActivites.ResetBindings(false);
             //Réactivation des boutons de modifications
