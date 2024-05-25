@@ -38,7 +38,7 @@
             this.themeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomPresidentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LaSalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nbPlacesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NbPlaces = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NbPlacesRestantes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prixDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateSessionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -115,7 +115,7 @@
             this.tabControlSession.Margin = new System.Windows.Forms.Padding(2);
             this.tabControlSession.Name = "tabControlSession";
             this.tabControlSession.SelectedIndex = 0;
-            this.tabControlSession.Size = new System.Drawing.Size(1049, 430);
+            this.tabControlSession.Size = new System.Drawing.Size(1081, 430);
             this.tabControlSession.TabIndex = 0;
             this.tabControlSession.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControlSession_Selecting);
             // 
@@ -126,7 +126,7 @@
             this.tabPageSessions.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageSessions.Name = "tabPageSessions";
             this.tabPageSessions.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageSessions.Size = new System.Drawing.Size(1041, 404);
+            this.tabPageSessions.Size = new System.Drawing.Size(1073, 404);
             this.tabPageSessions.TabIndex = 0;
             this.tabPageSessions.Text = "Liste des sessions";
             this.tabPageSessions.UseVisualStyleBackColor = true;
@@ -157,7 +157,7 @@
             this.dataGridSession.RowHeadersWidth = 62;
             this.dataGridSession.RowTemplate.Height = 28;
             this.dataGridSession.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridSession.Size = new System.Drawing.Size(1041, 404);
+            this.dataGridSession.Size = new System.Drawing.Size(1073, 404);
             this.dataGridSession.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
@@ -192,13 +192,13 @@
             this.LaSalle.ReadOnly = true;
             this.LaSalle.Width = 55;
             // 
-            // nbPlacesDataGridViewTextBoxColumn
+            // NbPlaces
             // 
-            this.nbPlacesDataGridViewTextBoxColumn.DataPropertyName = "NbPlaces";
-            this.nbPlacesDataGridViewTextBoxColumn.HeaderText = "Nombre de places";
-            this.nbPlacesDataGridViewTextBoxColumn.Name = "nbPlacesDataGridViewTextBoxColumn";
-            this.nbPlacesDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nbPlacesDataGridViewTextBoxColumn.Width = 118;
+            this.NbPlaces.DataPropertyName = "NbPlaces";
+            this.NbPlaces.HeaderText = "Nombre de places";
+            this.NbPlaces.Name = "NbPlaces";
+            this.NbPlaces.ReadOnly = true;
+            this.NbPlaces.Width = 118;
             // 
             // NbPlacesRestantes
             // 
@@ -245,7 +245,7 @@
             this.tabPageDetail.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageDetail.Name = "tabPageDetail";
             this.tabPageDetail.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageDetail.Size = new System.Drawing.Size(1041, 404);
+            this.tabPageDetail.Size = new System.Drawing.Size(1073, 404);
             this.tabPageDetail.TabIndex = 1;
             this.tabPageDetail.Text = "Détails";
             this.tabPageDetail.UseVisualStyleBackColor = true;
@@ -257,14 +257,14 @@
             this.groupBoxParticipants.Controls.Add(this.dataGridParticipants);
             this.groupBoxParticipants.Location = new System.Drawing.Point(626, 29);
             this.groupBoxParticipants.Name = "groupBoxParticipants";
-            this.groupBoxParticipants.Size = new System.Drawing.Size(410, 350);
+            this.groupBoxParticipants.Size = new System.Drawing.Size(442, 350);
             this.groupBoxParticipants.TabIndex = 7;
             this.groupBoxParticipants.TabStop = false;
             this.groupBoxParticipants.Text = "Liste des congressistes participants";
             // 
             // btnSupprParticipant
             // 
-            this.btnSupprParticipant.Location = new System.Drawing.Point(216, 308);
+            this.btnSupprParticipant.Location = new System.Drawing.Point(249, 308);
             this.btnSupprParticipant.Name = "btnSupprParticipant";
             this.btnSupprParticipant.Size = new System.Drawing.Size(124, 31);
             this.btnSupprParticipant.TabIndex = 6;
@@ -274,7 +274,7 @@
             // 
             // btnAjouterParticipant
             // 
-            this.btnAjouterParticipant.Location = new System.Drawing.Point(68, 308);
+            this.btnAjouterParticipant.Location = new System.Drawing.Point(93, 308);
             this.btnAjouterParticipant.Name = "btnAjouterParticipant";
             this.btnAjouterParticipant.Size = new System.Drawing.Size(124, 31);
             this.btnAjouterParticipant.TabIndex = 5;
@@ -300,7 +300,7 @@
             this.dataGridParticipants.RowHeadersWidth = 62;
             this.dataGridParticipants.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridParticipants.ShowEditingIcon = false;
-            this.dataGridParticipants.Size = new System.Drawing.Size(398, 283);
+            this.dataGridParticipants.Size = new System.Drawing.Size(430, 283);
             this.dataGridParticipants.TabIndex = 4;
             // 
             // idDataGridViewTextBoxColumn1
@@ -381,9 +381,12 @@
             // 
             this.txtBoxNbPlaces.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcSessions, "NbPlaces", true));
             this.txtBoxNbPlaces.Location = new System.Drawing.Point(415, 55);
+            this.txtBoxNbPlaces.Mask = "99999";
             this.txtBoxNbPlaces.Name = "txtBoxNbPlaces";
             this.txtBoxNbPlaces.Size = new System.Drawing.Size(160, 20);
             this.txtBoxNbPlaces.TabIndex = 23;
+            this.txtBoxNbPlaces.ValidatingType = typeof(int);
+            this.txtBoxNbPlaces.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ModifierChamp);
             // 
             // datePickerSession
             // 
@@ -564,7 +567,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.ClientSize = new System.Drawing.Size(1068, 501);
+            this.ClientSize = new System.Drawing.Size(1100, 501);
             this.Controls.Add(this.tabControlSession);
             this.Controls.Add(this.btnNouveau);
             this.Margin = new System.Windows.Forms.Padding(2);

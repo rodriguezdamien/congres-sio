@@ -40,6 +40,7 @@
             this.btnAjouterParticipant = new System.Windows.Forms.Button();
             this.dataGridParticipants = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtBoxNbPlaces = new System.Windows.Forms.MaskedTextBox();
             this.datePickerActivite = new System.Windows.Forms.DateTimePicker();
             this.radioBtnApresMidi = new System.Windows.Forms.RadioButton();
             this.radioBtnMatin = new System.Windows.Forms.RadioButton();
@@ -47,22 +48,21 @@
             this.btnAnnulerNouveau = new System.Windows.Forms.Button();
             this.btnConfirmNouveau = new System.Windows.Forms.Button();
             this.lblPrix = new System.Windows.Forms.Label();
+            this.txtBoxPrix = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnSupprActivite = new System.Windows.Forms.Button();
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnNouveau = new System.Windows.Forms.Button();
-            this.txtBoxPrix = new System.Windows.Forms.TextBox();
-            this.txtBoxNbPlaces = new System.Windows.Forms.MaskedTextBox();
-            this.bindSrcActivites = new System.Windows.Forms.BindingSource(this.components);
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prenomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindSrcParticipants = new System.Windows.Forms.BindingSource(this.components);
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prix = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindSrcActivites = new System.Windows.Forms.BindingSource(this.components);
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prenomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindSrcParticipants = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateActiviteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -243,6 +243,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Détails de l\'activité";
             // 
+            // txtBoxNbPlaces
+            // 
+            this.txtBoxNbPlaces.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcActivites, "NbPlaces", true));
+            this.txtBoxNbPlaces.Location = new System.Drawing.Point(415, 54);
+            this.txtBoxNbPlaces.Mask = "999";
+            this.txtBoxNbPlaces.Name = "txtBoxNbPlaces";
+            this.txtBoxNbPlaces.Size = new System.Drawing.Size(161, 20);
+            this.txtBoxNbPlaces.TabIndex = 23;
+            this.txtBoxNbPlaces.ValidatingType = typeof(int);
+            this.txtBoxNbPlaces.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ModifierChamp);
+            // 
             // datePickerActivite
             // 
             this.datePickerActivite.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bindSrcActivites, "DateActivite", true));
@@ -326,6 +337,15 @@
             this.lblPrix.TabIndex = 15;
             this.lblPrix.Text = "Prix";
             // 
+            // txtBoxPrix
+            // 
+            this.txtBoxPrix.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcActivites, "Prix", true));
+            this.txtBoxPrix.Location = new System.Drawing.Point(103, 91);
+            this.txtBoxPrix.Name = "txtBoxPrix";
+            this.txtBoxPrix.Size = new System.Drawing.Size(181, 20);
+            this.txtBoxPrix.TabIndex = 14;
+            this.txtBoxPrix.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ModifierChamp);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -373,59 +393,6 @@
             this.btnNouveau.UseVisualStyleBackColor = true;
             this.btnNouveau.Click += new System.EventHandler(this.btnNouveau_Click);
             // 
-            // txtBoxPrix
-            // 
-            this.txtBoxPrix.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcActivites, "Prix", true));
-            this.txtBoxPrix.Location = new System.Drawing.Point(103, 91);
-            this.txtBoxPrix.Name = "txtBoxPrix";
-            this.txtBoxPrix.Size = new System.Drawing.Size(181, 20);
-            this.txtBoxPrix.TabIndex = 14;
-            this.txtBoxPrix.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ModifierChamp);
-            // 
-            // txtBoxNbPlaces
-            // 
-            this.txtBoxNbPlaces.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindSrcActivites, "NbPlaces", true));
-            this.txtBoxNbPlaces.Location = new System.Drawing.Point(415, 54);
-            this.txtBoxNbPlaces.Mask = "999";
-            this.txtBoxNbPlaces.Name = "txtBoxNbPlaces";
-            this.txtBoxNbPlaces.Size = new System.Drawing.Size(161, 20);
-            this.txtBoxNbPlaces.TabIndex = 23;
-            this.txtBoxNbPlaces.ValidatingType = typeof(int);
-            this.txtBoxNbPlaces.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ModifierChamp);
-            // 
-            // bindSrcActivites
-            // 
-            this.bindSrcActivites.DataSource = typeof(congres.dll.Activite);
-            this.bindSrcActivites.CurrentChanged += new System.EventHandler(this.bindSrcActivite_CurrentChanged);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 41;
-            // 
-            // nomDataGridViewTextBoxColumn
-            // 
-            this.nomDataGridViewTextBoxColumn.DataPropertyName = "Nom";
-            this.nomDataGridViewTextBoxColumn.HeaderText = "Nom";
-            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
-            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nomDataGridViewTextBoxColumn.Width = 54;
-            // 
-            // prenomDataGridViewTextBoxColumn
-            // 
-            this.prenomDataGridViewTextBoxColumn.DataPropertyName = "Prenom";
-            this.prenomDataGridViewTextBoxColumn.HeaderText = "Prenom";
-            this.prenomDataGridViewTextBoxColumn.Name = "prenomDataGridViewTextBoxColumn";
-            this.prenomDataGridViewTextBoxColumn.ReadOnly = true;
-            this.prenomDataGridViewTextBoxColumn.Width = 68;
-            // 
-            // bindSrcParticipants
-            // 
-            this.bindSrcParticipants.DataSource = typeof(congres.dll.Congressiste);
-            // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
@@ -463,6 +430,39 @@
             this.dataGridViewTextBoxColumn2.DataPropertyName = "Nom";
             this.dataGridViewTextBoxColumn2.HeaderText = "Nom de l\'activité";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // bindSrcActivites
+            // 
+            this.bindSrcActivites.DataSource = typeof(congres.dll.Activite);
+            this.bindSrcActivites.CurrentChanged += new System.EventHandler(this.bindSrcActivite_CurrentChanged);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Width = 41;
+            // 
+            // nomDataGridViewTextBoxColumn
+            // 
+            this.nomDataGridViewTextBoxColumn.DataPropertyName = "Nom";
+            this.nomDataGridViewTextBoxColumn.HeaderText = "Nom";
+            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
+            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomDataGridViewTextBoxColumn.Width = 54;
+            // 
+            // prenomDataGridViewTextBoxColumn
+            // 
+            this.prenomDataGridViewTextBoxColumn.DataPropertyName = "Prenom";
+            this.prenomDataGridViewTextBoxColumn.HeaderText = "Prenom";
+            this.prenomDataGridViewTextBoxColumn.Name = "prenomDataGridViewTextBoxColumn";
+            this.prenomDataGridViewTextBoxColumn.ReadOnly = true;
+            this.prenomDataGridViewTextBoxColumn.Width = 68;
+            // 
+            // bindSrcParticipants
+            // 
+            this.bindSrcParticipants.DataSource = typeof(congres.dll.Congressiste);
             // 
             // idDataGridViewTextBoxColumn1
             // 
@@ -531,6 +531,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmActivites";
             this.Text = "Gestion des activités";
+            this.Load += new System.EventHandler(this.FrmActivites_Load);
             this.tabControlActivite.ResumeLayout(false);
             this.tabPageActivites.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridActivite)).EndInit();
@@ -575,6 +576,11 @@
         private System.Windows.Forms.BindingSource bindSrcParticipants;
         private System.Windows.Forms.TextBox txtBoxPrix;
         private System.Windows.Forms.MaskedTextBox txtBoxNbPlaces;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Prix;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateActiviteDataGridViewTextBoxColumn;
@@ -582,10 +588,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NbPlacesRestantes;
         private System.Windows.Forms.DataGridViewTextBoxColumn prixDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn affichageMomentJourneeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Prix;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }
