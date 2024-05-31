@@ -18,6 +18,7 @@ CREATE TABLE SALLE(
    libelle VARCHAR(100),
    CONSTRAINT pk_salle PRIMARY KEY(id)
 );
+grant insert,update,select,delete on Salle to AppliGestCongres;
 
 
 CREATE TABLE SESSION(
@@ -32,6 +33,7 @@ CREATE TABLE SESSION(
    CONSTRAINT pk_session PRIMARY KEY(id),
    CONSTRAINT fk_session_salle FOREIGN KEY(idSalle) REFERENCES SALLE(id)
 );
+grant insert,update,select,delete on Session to AppliGestCongres;
 
 CREATE TABLE ACTIVITE(
    id INT identity,
@@ -42,6 +44,7 @@ CREATE TABLE ACTIVITE(
    estMatin BIT,
    CONSTRAINT pk_activite PRIMARY KEY(id)
 );
+grant insert,update,select,delete on Activite To AppliGestCongres;
 
 CREATE TABLE LIGUE(
    id INT identity,
@@ -51,6 +54,7 @@ CREATE TABLE LIGUE(
    ville VARCHAR(50),
    CONSTRAINT pk_ligue PRIMARY KEY(id)
 );
+grant insert,update,select,delete on Ligue to AppliGestCongres;
 
 CREATE TABLE HEBERGEMENT(
    id INT identity,
@@ -63,6 +67,7 @@ CREATE TABLE HEBERGEMENT(
    prix DECIMAL(15,2),
    CONSTRAINT pk_hebergement PRIMARY KEY(id)
 );
+grant insert,update,select,delete on Hebergement to AppliGestCongres;
 
 CREATE TABLE CONGRESSISTE(
    id INT identity,
@@ -79,6 +84,7 @@ CREATE TABLE CONGRESSISTE(
    CONSTRAINT fk_congressiste_ligue FOREIGN KEY(idLigue) REFERENCES LIGUE(id),
    CONSTRAINT fk_congressiste_hebergement FOREIGN KEY(idHebergement) REFERENCES HEBERGEMENT(id)
 );
+grant insert,update,select,delete on Congressiste to AppliGestCongres;
 
 CREATE TABLE INSCRIRE(
    idSession INT,
@@ -87,6 +93,7 @@ CREATE TABLE INSCRIRE(
    CONSTRAINT fk_inscrire_session FOREIGN KEY(idSession) REFERENCES SESSION(id),
    CONSTRAINT fk_inscrire_congressiste FOREIGN KEY(idCongressiste) REFERENCES CONGRESSISTE(id)
 );
+grant insert,update,select,delete on Inscrire to AppliGestCongres;
 
 CREATE TABLE PARTICIPER(
    idActivite INT,
@@ -95,6 +102,7 @@ CREATE TABLE PARTICIPER(
    CONSTRAINT fk_participer_activite FOREIGN KEY(idActivite) REFERENCES ACTIVITE(id),
    CONSTRAINT fk_participer_congressiste FOREIGN KEY(idCongressiste) REFERENCES CONGRESSISTE(id)
 );
+grant insert,update,select,delete on Participer to AppliGestCongres;
 
 -- Jeu d'essai pour la table SALLE
 INSERT INTO SALLE (libelle) VALUES 
@@ -103,6 +111,7 @@ INSERT INTO SALLE (libelle) VALUES
 ('Nelson Mandela'),
 ('Roger Federer'),
 ('Hicham El Guerrouj'); 
+grant insert,update,select,delete on Salle to AppliGestCongres;
 
 -- Jeu d'essai pour la table SESSION
 INSERT INTO SESSION (theme, nomPresident, nbPlaces, prix, dateSession, estMatin, idSalle) VALUES 
@@ -264,7 +273,9 @@ CREATE OR ALTER PROCEDURE nbPlacesDispoSession
 AS
    declare @nbPlacesPrise INT
    select @nbPlacesPrise=count(*) from INSCRIRE where idSession = @idS
-   select SUM(nbPlaces - @nbPlacesPrise) as nbPlacesDispo from SESSION where id = @idS
+   select SUM(nbPlaces - @nbPlacesPrise) as nbPlacesDispo from SESSION where id = @idS;
+go
+grant execute on nbPlacesDispoSession to AppliGestCongres;
 
 
 
@@ -275,7 +286,9 @@ CREATE OR ALTER PROCEDURE nbPlacesDispoActivite
 AS
    declare @nbPlacesReservees INT
    select @nbPlacesReservees = count(*)  from PARTICIPER where idActivite = @idA
-   select SUM(nbPlaces - @nbPlacesReservees) as nbPlacesDispo from ACTIVITE where id = @idA
+   select SUM(nbPlaces - @nbPlacesReservees) as nbPlacesDispo from ACTIVITE where id = @idA;
+go
+grant execute on nbPlacesDispoActivite to AppliGestCongres;
 
 -- Procédure stockée qui renvoie le montant totale à régler pour un congressiste donné
 GO
@@ -288,7 +301,9 @@ AS
     SELECT @montantT = prix FROM HEBERGEMENT WHERE id = (SELECT idHebergement FROM CONGRESSISTE WHERE id = @idC)
     SELECT @montantT = @montantT + ISNULL(SUM(prix), 0) FROM ACTIVITE WHERE id IN (SELECT idActivite FROM PARTICIPER WHERE idCongressiste = @idC)
 	SELECT @montantT = @montantT + ISNULL(SUM(prix), 0) FROM SESSION WHERE id IN (SELECT idSession FROM INSCRIRE WHERE idCongressiste = @idC)
-    SELECT SUM(@montantT - accompte) as montantTotal FROM CONGRESSISTE WHERE id = @idC
+    SELECT SUM(@montantT - accompte) as montantTotal FROM CONGRESSISTE WHERE id = @idC;
+go
+grant execute on montantTotal to AppliGestCongres;
 
 GO
 CREATE OR ALTER TRIGGER TD_Session ON SESSION
