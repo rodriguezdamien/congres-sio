@@ -41,10 +41,8 @@ namespace congres.dll.Managers
                         idHebergement = reader.GetInt32(9);
 
                     }
-                    reqProcedure.Parameters.AddWithValue("@idC", id);
-                    double montant = Convert.ToDouble(reqProcedure.Parameters[0].Value);
 
-                    lesCongressistes.Add(new Congressiste(id, nom, prenom, tel, adresse, cp, ville, accompte, restantDu: montant, montantTotal: montant + (double)accompte, idLigue, idHebergement));
+                    lesCongressistes.Add(new Congressiste(id, nom, prenom, tel, adresse, cp, ville, accompte, restantDu: 0, montantTotal: 0 + (double)accompte, idLigue, idHebergement));
                 }
             }
             finally
@@ -165,6 +163,27 @@ namespace congres.dll.Managers
             }
 
             return isDel;
+        }
+
+        /// <summary>
+        /// R"cupère le montant à régler pour un congressiste donné tout en retirant l'accompte de ce congressiste.
+        /// </summary>
+        /// <param name="idCongressiste">id du congressiste</param>
+        /// <returns>retourne le resant du</returns>
+        public static double GetMontantARegler(int idCongressiste)
+        {
+            double montant;
+            SqlCommand cmdGetMontant = new SqlCommand("exec montantTotal @idC", DBManager.ConnexionDB);
+            try
+            {
+                DBManager.ConnexionDB.Open();
+                cmdGetMontant.Parameters.AddWithValue("@idC", idCongressiste);
+                var result = cmdGetMontant.ExecuteScalar();
+                montant = Convert.ToDouble(result);
+            }
+            finally { DBManager.ConnexionDB.Close(); }
+
+            return montant;
         }
 
         /// <summary>

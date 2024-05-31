@@ -36,12 +36,16 @@ namespace WinCongres
 
                 foreach (Congressiste unC in this.bindSrcCongressiste)
                 {
+                    unC.RestantDu = CongressisteManager.GetMontantARegler(unC.Id);
+                    unC.montantTotal += unC.RestantDu;
+
                     int i = 0;
                     while (((Hebergement)this.bindSrcHebergement[i]).Id != unC.IdHebergement)
                     {
                         i++;
                     }
                     unC.sonHebergement = (Hebergement)this.bindSrcHebergement[i];
+
                 }
 
                 foreach (Congressiste unC in this.bindSrcCongressiste)
