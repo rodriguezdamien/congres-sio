@@ -278,7 +278,6 @@ go
 grant execute on nbPlacesDispoSession to AppliGestCongres;
 
 
-
 -- Procédure stockée qui renvoie le nombre de place disponible pour un idActivite donné
 go
 CREATE OR ALTER PROCEDURE nbPlacesDispoActivite
@@ -404,8 +403,8 @@ AS
 	BEGIN
 		IF((select month(dateSession) from inserted) != 6)
 			throw 50005, 'La session ne peut se dérouler uniquement en juin.',0
-		IF(select nbPlaces from Inserted) < (select count(idCongressiste) from Inscrire where idSession in (select idSession from Inserted))
-		    throw 50006, 'La session ne peut pas avoir moins de places qu''elle n''a de congressistes inscrits.',0
+		IF((select nbPlaces from Inserted) < isnull((select count(idCongressiste) from Inscrire where idSession in (select id from Inserted)),0))
+			throw 50006, 'Il ne peut pas y avoir moins de places que de congressistes inscrit à la session.',0;
 	DECLARE @idSession INT
 	DECLARE @dateSession DATE
 	DECLARE @estMatin BIT
@@ -415,6 +414,7 @@ AS
 		throw 50007, 'Une session a déjà lieu dans cette salle au même moment.',0
 	END
 
+
 -- Trigger qui controle que la date d'ajout/modification d'une activité
 GO
 CREATE OR ALTER TRIGGER TIU_Activite ON ACTIVITE
@@ -423,6 +423,6 @@ AS
 	BEGIN
 		IF((select month(dateActivite) from inserted) != 6)
 			throw 50008, 'L''actvité ne peut se dérouler uniquement en juin.',0
-		IF(select nbPlaces from Inserted) < (select count(idCongressiste) from Participer where idActivite in (select id from Inserted))
+		IF((select nbPlaces from Inserted) < isnull((select count(idCongressiste) from Participer where idActivite in (select id from Inserted)),0))
 		    throw 50006, 'L''activité ne peut pas avoir moins de places qu''elle n''a de congressistes inscrits.',0
 	END
